@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>初识mysql---基础篇笔记 | martini&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本篇是学习mysql的基础篇笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识mysql---基础篇笔记">
+<meta property="og:url" content="http://example.com/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="martini&#39;s blog">
+<meta property="og:description" content="本篇是学习mysql的基础篇笔记">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-20T14:30:27.000Z">
+<meta property="article:modified_time" content="2020-06-28T15:24:56.000Z">
+<meta property="article:author" content="martini">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="martini&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">martini&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="n-初识mysql-基础篇笔记" class="article article-type-n" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-20T14:30:27.000Z" itemprop="datePublished">2020-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/">默认分类</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      初识mysql---基础篇笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本篇是学习mysql的基础篇笔记</p>
+<a id="more"></a>
+
+<p>#1.DBMS-数据库管理系统<br>####RDBMS-关系型数据库</p>
+<ul>
+<li>Oracle</li>
+<li>MySQL</li>
+<li>MSSQL</li>
+<li>PG<br>####NoSQL-非关系型数据库</li>
+<li>MongoDB</li>
+<li>ES</li>
+<li>Redis<br>#2.MySQL数据库软件—配置<br>###2.1 MySQL服务启动</li>
+</ul>
+<ol>
+<li>手动。  </li>
+<li>cmd–&gt; services.msc 打开服务的窗口</li>
+<li>使用管理员打开cmd<pre><code> net start mysql : 启动mysql的服务
+ net stop mysql:关闭mysql服务</code></pre>
+###2.2 MySQL登录<br> 登陆前服务要启动<ol>
+<li>root用户：command line client</li>
+<li>mysql -uroot -p密码</li>
+<li>mysql -hip -uroot -p连接目标的密码</li>
+<li>mysql –host=ip –user=root –password=连接目标的密码</li>
+<li>mysql -h主机名 -P端口号 -u用户名 -p密码（默认端口3306，用户root）<br>###2.2 MySQL退出</li>
+<li>exit</li>
+<li>quit</li>
+</ol>
+</li>
+</ol>
+<p>###2.3 常见命令和语法大区<br>    ！！！别忘了分号啊</p>
+<ol>
+<li>查看当前所有的数据库<br> show database();</li>
+<li>打开指定的库<br> use 库名;<br> （只要用了use你就在那个库中了）</li>
+<li>查看当前库所有的表<br> show tables;            </li>
+<li>查看其他库所有的表<br> show tables from 库名;  </li>
+<li>创建表<br> create table 表名(<pre><code> 列名 列类型，
+ 列名 列类型，
+ ...</code></pre>
+ )    </li>
+<li>查看表的结构<br> desc 表名;               <h3 id="2-4-查看服务器的版本："><a href="#2-4-查看服务器的版本：" class="headerlink" title="2.4 查看服务器的版本："></a>2.4 查看服务器的版本：</h3> 方式一：登录到mysql服务端<br> select version();<br> 方式二：没有登录到mysql服务端<br> mysql –version或mysql –V<h3 id="2-5-语法规范"><a href="#2-5-语法规范" class="headerlink" title="2.5 语法规范"></a>2.5 语法规范</h3><ol>
+<li>不区分大小写，但建议关键字大写，表名列名小写；</li>
+<li>每句命令要用分号结尾；</li>
+<li>每句命令根据需要，可以进行缩进 或换行；</li>
+<li>注释<br>单行注释：#注释文字<br>单行注释：– 注释文字（注意空格）<br>多行注释：/* 注释文字 */<br>##</li>
+</ol>
+</li>
+<li>ctrl s是保存；选中之后F12好像是格式化；</li>
+<li>安装了navicat，导入girls和myemployees俩数据集<br>##</li>
+</ol>
+<h1 id="3-基础查询-DQL语言"><a href="#3-基础查询-DQL语言" class="headerlink" title="3.基础查询 DQL语言"></a>3.基础查询 DQL语言</h1><h3 id="3-1进阶1"><a href="#3-1进阶1" class="headerlink" title="3.1进阶1"></a>3.1进阶1</h3><pre><code>先打开库
+USE myemployees;
+
+# select 查询列表 from 表名
+查询列表可以是：表中的字段、常量值、表达式、函数
+查询的结果是一个虚拟的表格
+
+#1.查询表中的单个字段
+SELECT last_name FROM employees;
+
+#2.查询表中的多个字段
+SELECT last_name,salary,email FROM employees;
+
+#3.查询表中所有字段（双击左侧） 
+#方式一
+SELECT 
+  `department_id`,             #这个符号是着重号，用于说明是字段而不是关键字``
+  `department_name`,
+  `manager_id`,
+  `location_id` 
+ FROM 
+  employees;
+#方式二
+SELECT * FROM employees ;
+
+#4.查询常量值
+SELECT 100;
+SELECT &#39;john&#39;;
+#（不区分字符和字符串）
+
+#5.查询表达式
+SELECT 100%98;                 #取余
+
+#6.查询函数
+SELECT VERSION();              #调用并得到返回值
+
+#7.起别名
+/*
+①便于理解
+②如果要查询的字段有重名的情况，使用别名可以区分开来
+*/
+#方式一:用as
+SELECT 100%98 AS 结果;
+SELECT last_name AS 姓, first_name AS 名 FROM employees;
+
+#方式二:空格
+SELECT last_name 姓，first_name 名 FROM employees;
+#案例：查询salary，显示结果为out put
+SELECT salary AS &quot;out put&quot; FROM employees;
+
+不能：
+SELECT salary AS &quot;out put&quot; FROM employees;
+因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。
+
+
+#8.去重distinct
+
+#案例：查询员工表涉及到的所有部门编号
+SELECT DISTINCT department_id FROM employees;
+
+
+#9. +号的作用
+
+/*
+java中的+号：
+①运算符：两个操作数都为数值型
+②连接符：只要有一个操作数为字符串
+
+mysql中的+号：
+仅仅只有一个功能：运算符
+
+
+select 100+90；
+select &#39;123&#39;+90; 其中一方为字符型，会试图将字符型数值转换成数值型
+                  如果转换成功则继续加法运算
+select &#39;john&#39;+90; 如果转换失败，则字符型数组值转换成0；
+
+select null+10;只要其中一方为null，则结果为null
+*/
+
+使用concat进行连接
+null和别人拼接的时候都是null
+select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果
+#案例：查询员工名和姓连接成一个字段，并显示为 姓名
+SELECT CONCAT(last_name,first_name) AS 姓名 FROM employees;
+不能：
+SELECT last_name + first_name AS 姓名 FROM employees;
+
+#10.判断是否为空
+#commission_pct是否为空？为空返回what
+SELECT 
+    IFNULL(commission_pct, what) AS 奖金率,
+    commission_pct 
+FROM 
+    employees;</code></pre>
+<h3 id="3-2进阶2-条件查询"><a href="#3-2进阶2-条件查询" class="headerlink" title="3.2进阶2 - 条件查询"></a>3.2进阶2 - 条件查询</h3><pre><code>语法：
+    select
+        查询列表       第三步
+    from
+        表名           第一步
+    where
+        筛选条件;      第二步
+
+分类：
+    1.按条件表达式筛选
+
+    条件运算符: &gt;  &lt;  =    != or &lt;&gt;(不等于)    &gt;= &lt;=
+
+    2.按逻辑表达式筛选
+
+    逻辑运算符：   与&amp;&amp; 或|| 非!
+    sql推荐使用    and or not
+    作用：连接条件表达式
+    &amp;&amp; and 都1则1
+    || or 有1则1
+    ！ not 是0则1
+    3.模糊查询
+    like 
+    between and
+    in 
+    is null
+    is not null        </code></pre>
+<h3 id="3-2-1按照条件表达式查询"><a href="#3-2-1按照条件表达式查询" class="headerlink" title="3.2.1按照条件表达式查询"></a>3.2.1按照条件表达式查询</h3><pre><code>#案例1：查询工资&gt;12000的员工信息
+
+SELECT
+    *
+FROM
+    employees
+WHERE
+    salary &gt; 12000;
+
+#案例2：查询部门编号不等于90号的员工名和部门编号
+SELECT
+    last_name,
+    department_id
+FROM
+    employees
+WHERE
+    department_id != 90;        #最好用&lt;&gt;</code></pre>
+<h3 id="3-2-2按逻辑表达式筛选"><a href="#3-2-2按逻辑表达式筛选" class="headerlink" title="3.2.2按逻辑表达式筛选"></a>3.2.2按逻辑表达式筛选</h3><pre><code>#案例1：查询工资在10000到20000之间的员工名，工资和奖金
+
+SELECT
+    last_name,
+    salary,
+    commission_pct
+FROM
+    employees
+WHERE
+    salary &gt;= 10000 AND salary &lt;= 20000;
+
+#案例2：查询部门编号不在90-120之间，或者工资高于15000的员工信息
+SELECT
+    *
+FROM
+    employees
+WHERE
+    department_id &lt; 90 OR department_id &gt; 120 OR salary &gt; 15000;       
+WHERE
+    NOT(department_id &gt;= 90 AND department_id &lt;= 120) OR salary &gt; 15000;</code></pre>
+<h3 id="3-2-3模糊查询"><a href="#3-2-3模糊查询" class="headerlink" title="3.2.3模糊查询"></a>3.2.3模糊查询</h3><pre><code>/*
+# 1.like:
+①一般和通配符搭配使用
+    通配符：
+    % 任意多个字符，可以是0个
+    _ 任意单个字符
+
+*/
+#案例1：查询员工名中包含字符a的员工信息
+
+SELECT
+    *
+FROM
+    employees
+WHERE
+    last_name LIKE &#39;%a%&#39;;    
+%a%用于匹配，%代表通配符，代表任意个字符
+
+#案例2：查询员工名中第3个字符为n，第五个字符为l的员工名和工资
+SELECT
+    last_name,
+    salary
+FROM
+    employees
+WHERE
+    last_name LIKE &#39;__n_l%&#39;;
+
+#案例3：查询员工名中第二个字符为_的员工名（转义字符）    
+SELECT
+    last_name
+FROM 
+    employees
+WHERE      
+    last_name LIKE &#39;_\_%&#39;;    
+    last_name LIKE &#39;_a_%&#39; ESCAPE &#39;a&#39;;     #a随便取的，为的仅仅是说明a是转义，可以用￥等随意，只需要说明就行    
+#------------------------------------------------#
+#2. between and
+/*
+①使用between and可以提高语句的简洁度
+②包含临界值
+③两个临界值的位置不能调换，不会报错但效果不一样
+
+*/
+
+
+#案例1：查询员工编号在100到120之间的员工信息
+
+SELECT
+    *
+FROM
+    employees
+WHERE
+    employee_id BETWEEN 100 AND 120;
+#------------------------------------------------#    
+#3. in
+/*
+含义：用于判断某字段的值是否属于in列表中的某一项
+特点：
+    ①使用in提高语句简洁度
+    ②in列表的值类型必须统一或者兼容
+    ③不支持通配符，相当于等号
+*/
+#案例：查询员工的工种编号是 IT_PROT, AD_VP, AD_PRES中的一个的员工名和工种编号
+
+SELECT
+    last_name,
+    job_id
+FROM
+    employees
+WHERE
+    job_id=&#39;IT_PROT&#39; OR job_id=&#39;AD_VP&#39; OR job_id=&#39;AD_VP&#39;;
+方法二 - 用in：    
+WHERE
+    job_id IN (&#39;IT_PROT&#39; ,&#39;AD_VP&#39; , &#39;AD_VP&#39;);
+
+#------------------------------------------------#    
+#4. is null(is not null)
+/*
+=或者&lt;&gt;不能用于判断null值
+
+*/
+#案例1：查询没有奖金的员工名和奖金率
+SELECT
+    last_name,
+    commission_pct
+FROM
+    employees
+WHERE
+    commission_pct IS NULL;
+
+####安全等于  &lt;=&gt;  is null可以换成&lt;=&gt; null
+
+
+#案例1：查询没有奖金的员工名和奖金率
+SELECT
+    last_name,
+    commission_pct
+FROM
+    employees
+WHERE
+    commission_pct &lt;=&gt; NULL;
+
+#案例2：查询工资为12000的员工信息
+
+SELECT
+    last_name,
+    salary
+FROM
+    employees
+WHERE
+    salary &lt;=&gt; 12000;
+### 区别
+IS NULL ：仅仅可以判断NULL值
+&lt;=&gt;     ：既可以判断NULL值，又可以判断普通的数值。    
+
+##函数重提
+ concat:拼接字符
+isnull:判断，如果是空值则返回1，不是则返回0
+ifnull:判断，如果是空值则返回一个给定值，不然则返回原本的值</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/" data-id="ckgv13kwr0001gov7cntrdmon" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/29/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/">默认分类</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/29/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/">初识mysql---基础篇笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 martini<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
