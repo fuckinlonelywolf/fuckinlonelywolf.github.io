@@ -7,12 +7,12 @@
   
   <title>martini&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ready for go ahead?">
+  <meta name="description" content="Ready for this?">
 <meta property="og:type" content="website">
 <meta property="og:title" content="martini&#39;s blog">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="martini&#39;s blog">
-<meta property="og:description" content="ready for go ahead?">
+<meta property="og:description" content="Ready for this?">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="martini">
 <meta name="twitter:card" content="summary">
@@ -88,24 +88,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        <p>本篇是初始化内容</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/10/29/hello-world/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/29/hello-world/" data-id="ckguyib8z0000lkv70tmxg3yt" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/29/hello-world/" data-id="ckguzfcj10000kkv7aqfs8zi5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,345 +129,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#1.DBMS-数据库管理系统</p>
-<h4 id="RDBMS-关系型数据库"><a href="#RDBMS-关系型数据库" class="headerlink" title="RDBMS-关系型数据库"></a>RDBMS-关系型数据库</h4><ul>
-<li>Oracle</li>
-<li>MySQL</li>
-<li>MSSQL</li>
-<li>PG<h4 id="NoSQL-非关系型数据库"><a href="#NoSQL-非关系型数据库" class="headerlink" title="NoSQL-非关系型数据库"></a>NoSQL-非关系型数据库</h4></li>
-<li>MongoDB</li>
-<li>ES</li>
-<li>Redis<br>#2.MySQL数据库软件—配置<h3 id="2-1-MySQL服务启动"><a href="#2-1-MySQL服务启动" class="headerlink" title="2.1 MySQL服务启动"></a>2.1 MySQL服务启动</h3><ol>
-<li>手动。  </li>
-<li>cmd–&gt; services.msc 打开服务的窗口</li>
-<li>使用管理员打开cmd<br> net start mysql : 启动mysql的服务<br> net stop mysql:关闭mysql服务<h3 id="2-2-MySQL登录"><a href="#2-2-MySQL登录" class="headerlink" title="2.2 MySQL登录"></a>2.2 MySQL登录</h3>登陆前服务要启动</li>
-<li>root用户：command line client</li>
-<li>mysql -uroot -p密码</li>
-<li>mysql -hip -uroot -p连接目标的密码</li>
-<li>mysql –host=ip –user=root –password=连接目标的密码</li>
-<li>mysql -h主机名 -P端口号 -u用户名 -p密码（默认端口3306，用户root）<h3 id="2-2-MySQL退出"><a href="#2-2-MySQL退出" class="headerlink" title="2.2 MySQL退出"></a>2.2 MySQL退出</h3></li>
-<li>exit</li>
-<li>quit</li>
-</ol>
-</li>
-</ul>
-<h3 id="2-3-常见命令和语法大区"><a href="#2-3-常见命令和语法大区" class="headerlink" title="2.3 常见命令和语法大区"></a>2.3 常见命令和语法大区</h3><pre><code>！！！别忘了分号啊
-1. 查看当前所有的数据库
-show database();
-2. 打开指定的库         
-use 库名;                
-（只要用了use你就在那个库中了）
-3. 查看当前库所有的表
-show tables;            
-4. 查看其他库所有的表
-show tables from 库名;  
-5. 创建表
-create table 表名(
-    列名 列类型，
-    列名 列类型，
-    ...
-)    
-6. 查看表的结构                    
-desc 表名;               </code></pre>
-<h3 id="2-4-查看服务器的版本："><a href="#2-4-查看服务器的版本：" class="headerlink" title="2.4 查看服务器的版本："></a>2.4 查看服务器的版本：</h3><pre><code>方式一：登录到mysql服务端
-select version();
-方式二：没有登录到mysql服务端
-mysql --version或mysql --V</code></pre>
-<h3 id="2-5-语法规范"><a href="#2-5-语法规范" class="headerlink" title="2.5 语法规范"></a>2.5 语法规范</h3><pre><code> 1. 不区分大小写，但建议关键字大写，表名列名小写；
- 2. 每句命令要用分号结尾；
- 3. 每句命令根据需要，可以进行缩进 或换行；
- 4. 注释
-单行注释：#注释文字
-单行注释：-- 注释文字（注意空格）
-多行注释：/* 注释文字 */</code></pre>
-<p>##</p>
-<ol>
-<li>ctrl s是保存；选中之后F12好像是格式化；</li>
-<li>安装了navicat，导入girls和myemployees俩数据集<br>##</li>
-</ol>
-<h1 id="3-基础查询-DQL语言"><a href="#3-基础查询-DQL语言" class="headerlink" title="3.基础查询 DQL语言"></a>3.基础查询 DQL语言</h1><h3 id="3-1进阶1"><a href="#3-1进阶1" class="headerlink" title="3.1进阶1"></a>3.1进阶1</h3><pre><code>先打开库
-USE myemployees;
-
-# select 查询列表 from 表名
-查询列表可以是：表中的字段、常量值、表达式、函数
-查询的结果是一个虚拟的表格
-
-#1.查询表中的单个字段
-SELECT last_name FROM employees;
-
-#2.查询表中的多个字段
-SELECT last_name,salary,email FROM employees;
-
-#3.查询表中所有字段（双击左侧） 
-#方式一
-SELECT 
-  `department_id`,             #这个符号是着重号，用于说明是字段而不是关键字``
-  `department_name`,
-  `manager_id`,
-  `location_id` 
- FROM 
-  employees;
-#方式二
-SELECT * FROM employees ;
-
-#4.查询常量值
-SELECT 100;
-SELECT &#39;john&#39;;
-#（不区分字符和字符串）
-
-#5.查询表达式
-SELECT 100%98;                 #取余
-
-#6.查询函数
-SELECT VERSION();              #调用并得到返回值
-
-#7.起别名
-/*
-①便于理解
-②如果要查询的字段有重名的情况，使用别名可以区分开来
-*/
-#方式一:用as
-SELECT 100%98 AS 结果;
-SELECT last_name AS 姓, first_name AS 名 FROM employees;
-
-#方式二:空格
-SELECT last_name 姓，first_name 名 FROM employees;
-#案例：查询salary，显示结果为out put
-SELECT salary AS &quot;out put&quot; FROM employees;
-
-不能：
-SELECT salary AS &quot;out put&quot; FROM employees;
-因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。
-
-
-#8.去重distinct
-
-#案例：查询员工表涉及到的所有部门编号
-SELECT DISTINCT department_id FROM employees;
-
-
-#9. +号的作用
-
-/*
-java中的+号：
-①运算符：两个操作数都为数值型
-②连接符：只要有一个操作数为字符串
-
-mysql中的+号：
-仅仅只有一个功能：运算符
-
-
-select 100+90；
-select &#39;123&#39;+90; 其中一方为字符型，会试图将字符型数值转换成数值型
-                  如果转换成功则继续加法运算
-select &#39;john&#39;+90; 如果转换失败，则字符型数组值转换成0；
-
-select null+10;只要其中一方为null，则结果为null
-*/
-
-使用concat进行连接
-null和别人拼接的时候都是null
-select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果
-#案例：查询员工名和姓连接成一个字段，并显示为 姓名
-SELECT CONCAT(last_name,first_name) AS 姓名 FROM employees;
-不能：
-SELECT last_name + first_name AS 姓名 FROM employees;
-
-#10.判断是否为空
-#commission_pct是否为空？为空返回what
-SELECT 
-    IFNULL(commission_pct, what) AS 奖金率,
-    commission_pct 
-FROM 
-    employees;</code></pre>
-<h3 id="3-2进阶2-条件查询"><a href="#3-2进阶2-条件查询" class="headerlink" title="3.2进阶2 - 条件查询"></a>3.2进阶2 - 条件查询</h3><pre><code>语法：
-    select
-        查询列表       第三步
-    from
-        表名           第一步
-    where
-        筛选条件;      第二步
-
-分类：
-    1.按条件表达式筛选
-
-    条件运算符: &gt;  &lt;  =    != or &lt;&gt;(不等于)    &gt;= &lt;=
-
-    2.按逻辑表达式筛选
-
-    逻辑运算符：   与&amp;&amp; 或|| 非!
-    sql推荐使用    and or not
-    作用：连接条件表达式
-    &amp;&amp; and 都1则1
-    || or 有1则1
-    ！ not 是0则1
-    3.模糊查询
-    like 
-    between and
-    in 
-    is null
-    is not null        </code></pre>
-<h3 id="3-2-1按照条件表达式查询"><a href="#3-2-1按照条件表达式查询" class="headerlink" title="3.2.1按照条件表达式查询"></a>3.2.1按照条件表达式查询</h3><pre><code>#案例1：查询工资&gt;12000的员工信息
-
-SELECT
-    *
-FROM
-    employees
-WHERE
-    salary &gt; 12000;
-
-#案例2：查询部门编号不等于90号的员工名和部门编号
-SELECT
-    last_name,
-    department_id
-FROM
-    employees
-WHERE
-    department_id != 90;        #最好用&lt;&gt;</code></pre>
-<h3 id="3-2-2按逻辑表达式筛选"><a href="#3-2-2按逻辑表达式筛选" class="headerlink" title="3.2.2按逻辑表达式筛选"></a>3.2.2按逻辑表达式筛选</h3><pre><code>#案例1：查询工资在10000到20000之间的员工名，工资和奖金
-
-SELECT
-    last_name,
-    salary,
-    commission_pct
-FROM
-    employees
-WHERE
-    salary &gt;= 10000 AND salary &lt;= 20000;
-
-#案例2：查询部门编号不在90-120之间，或者工资高于15000的员工信息
-SELECT
-    *
-FROM
-    employees
-WHERE
-    department_id &lt; 90 OR department_id &gt; 120 OR salary &gt; 15000;       
-WHERE
-    NOT(department_id &gt;= 90 AND department_id &lt;= 120) OR salary &gt; 15000;</code></pre>
-<h3 id="3-2-3模糊查询"><a href="#3-2-3模糊查询" class="headerlink" title="3.2.3模糊查询"></a>3.2.3模糊查询</h3><pre><code>/*
-# 1.like:
-①一般和通配符搭配使用
-    通配符：
-    % 任意多个字符，可以是0个
-    _ 任意单个字符
-
-*/
-#案例1：查询员工名中包含字符a的员工信息
-
-SELECT
-    *
-FROM
-    employees
-WHERE
-    last_name LIKE &#39;%a%&#39;;    
-%a%用于匹配，%代表通配符，代表任意个字符
-
-#案例2：查询员工名中第3个字符为n，第五个字符为l的员工名和工资
-SELECT
-    last_name,
-    salary
-FROM
-    employees
-WHERE
-    last_name LIKE &#39;__n_l%&#39;;
-
-#案例3：查询员工名中第二个字符为_的员工名（转义字符）    
-SELECT
-    last_name
-FROM 
-    employees
-WHERE      
-    last_name LIKE &#39;_\_%&#39;;    
-    last_name LIKE &#39;_a_%&#39; ESCAPE &#39;a&#39;;     #a随便取的，为的仅仅是说明a是转义，可以用￥等随意，只需要说明就行    
-#------------------------------------------------#
-#2. between and
-/*
-①使用between and可以提高语句的简洁度
-②包含临界值
-③两个临界值的位置不能调换，不会报错但效果不一样
-
-*/
-
-
-#案例1：查询员工编号在100到120之间的员工信息
-
-SELECT
-    *
-FROM
-    employees
-WHERE
-    employee_id BETWEEN 100 AND 120;
-#------------------------------------------------#    
-#3. in
-/*
-含义：用于判断某字段的值是否属于in列表中的某一项
-特点：
-    ①使用in提高语句简洁度
-    ②in列表的值类型必须统一或者兼容
-    ③不支持通配符，相当于等号
-*/
-#案例：查询员工的工种编号是 IT_PROT, AD_VP, AD_PRES中的一个的员工名和工种编号
-
-SELECT
-    last_name,
-    job_id
-FROM
-    employees
-WHERE
-    job_id=&#39;IT_PROT&#39; OR job_id=&#39;AD_VP&#39; OR job_id=&#39;AD_VP&#39;;
-方法二 - 用in：    
-WHERE
-    job_id IN (&#39;IT_PROT&#39; ,&#39;AD_VP&#39; , &#39;AD_VP&#39;);
-
-#------------------------------------------------#    
-#4. is null(is not null)
-/*
-=或者&lt;&gt;不能用于判断null值
-
-*/
-#案例1：查询没有奖金的员工名和奖金率
-SELECT
-    last_name,
-    commission_pct
-FROM
-    employees
-WHERE
-    commission_pct IS NULL;
-
-####安全等于  &lt;=&gt;  is null可以换成&lt;=&gt; null
-
-
-#案例1：查询没有奖金的员工名和奖金率
-SELECT
-    last_name,
-    commission_pct
-FROM
-    employees
-WHERE
-    commission_pct &lt;=&gt; NULL;
-
-#案例2：查询工资为12000的员工信息
-
-SELECT
-    last_name,
-    salary
-FROM
-    employees
-WHERE
-    salary &lt;=&gt; 12000;
-### 区别
-IS NULL ：仅仅可以判断NULL值
-&lt;=&gt;     ：既可以判断NULL值，又可以判断普通的数值。    
-
-##函数重提
- concat:拼接字符
-isnull:判断，如果是空值则返回1，不是则返回0
-ifnull:判断，如果是空值则返回一个给定值，不然则返回原本的值</code></pre>
-
+        <p>本篇是学习mysql的基础篇笔记</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/" data-id="ckguyib940001lkv78qxr1uqz" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/" data-id="ckguzfcll0001kkv7bbmfcx4y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
