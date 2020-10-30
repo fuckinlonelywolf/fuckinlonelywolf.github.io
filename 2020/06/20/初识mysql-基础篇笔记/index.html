@@ -395,74 +395,77 @@
 <li>每句命令要用分号结尾；</li>
 <li>每句命令根据需要，可以进行缩进 或换行；</li>
 <li>注释<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">单行注释：<span class="comment">#注释文字</span></span><br><span class="line">单行注释：-- 注释文字（注意空格）</span><br><span class="line">多行注释：/* 注释文字 */</span><br></pre></td></tr></table></figure>
-##<br>ctrl s是保存；选中之后F12格式化；</li>
+
+</li>
 </ol>
-<p>安装了navicat，导入girls和myemployees俩数据集<br>##</p>
+<p>ctrl s是保存；选中之后F12格式化；</p>
+<p>安装了navicat，导入girls和myemployees俩数据集</p>
 <h1 id="基础查询-DQL语言"><a href="#基础查询-DQL语言" class="headerlink" title="基础查询 DQL语言"></a>基础查询 DQL语言</h1><h2 id="进阶1"><a href="#进阶1" class="headerlink" title="进阶1"></a>进阶1</h2><p>先打开库</p>
-<pre><code>USE myemployees;</code></pre>
-<p>select 查询列表 from 表名</p>
-<pre><code>查询列表可以是：表中的字段、常量值、表达式、函数
-查询的结果是一个虚拟的表格</code></pre>
+<pre><code>USE myemployees;
+select 查询列表 from 表名</code></pre>
+<p>查询列表可以是：表中的字段、常量值、表达式、函数</p>
+<p>查询的结果是一个虚拟的表格</p>
 <p>1.查询表中的单个字段</p>
 <pre><code>SELECT last_name FROM employees;</code></pre>
 <p>2.查询表中的多个字段</p>
 <pre><code>SELECT last_name,salary,email FROM employees;</code></pre>
 <p>3.查询表中所有字段（双击左侧） </p>
-<pre><code>#方式一
-SELECT 
-  `department_id`,             #这个符号是着重号，用于说明是字段而不是关键字``
+<p>方式一</p>
+<pre><code>SELECT 
+  `department_id`, #这个符号是着重号，用于说明是字段而不是关键字``
   `department_name`,
   `manager_id`,
   `location_id` 
  FROM 
-  employees;
-#方式二
-SELECT * FROM employees ;</code></pre>
+  employees;</code></pre>
+<p>方式二</p>
+<pre><code>SELECT * FROM employees ;</code></pre>
 <p>4.查询常量值</p>
 <pre><code>SELECT 100;
-SELECT &#39;john&#39;;
-#（不区分字符和字符串）</code></pre>
+SELECT &#39;john&#39;;</code></pre>
+<p><strong>不区分字符和字符串</strong></p>
 <p>5.查询表达式</p>
 <pre><code>SELECT 100%98;                 #取余</code></pre>
 <p>6.查询函数</p>
 <pre><code>SELECT VERSION();              #调用并得到返回值</code></pre>
 <p>7.起别名</p>
-<pre><code>/*
-①便于理解
-②如果要查询的字段有重名的情况，使用别名可以区分开来
-*/
-#方式一:用as
-SELECT 100%98 AS 结果;
-SELECT last_name AS 姓, first_name AS 名 FROM employees;
-
-#方式二:空格
-SELECT last_name 姓，first_name 名 FROM employees;</code></pre>
+<ul>
+<li>便于理解</li>
+<li>如果要查询的字段有重名的情况，使用别名可以区分开来</li>
+</ul>
+<p>方式一:用as</p>
+<pre><code>SELECT 100%98 AS 结果;
+SELECT last_name AS 姓, first_name AS 名 FROM employees;</code></pre>
+<p>方式二:空格</p>
+<pre><code>SELECT last_name 姓，first_name 名 FROM employees;</code></pre>
 <p>案例：查询salary，显示结果为out put</p>
-<pre><code>SELECT salary AS &quot;out put&quot; FROM employees;
-
-不能：
-SELECT salary AS &quot;out put&quot; FROM employees;
-因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。</code></pre>
+<pre><code>SELECT salary AS &quot;out put&quot; FROM employees;</code></pre>
+<p>不能：</p>
+<pre><code>SELECT salary AS &quot;out put&quot; FROM employees;</code></pre>
+<p>因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。</p>
 <p>8.去重distinct</p>
 <p>案例：查询员工表涉及到的所有部门编号</p>
 <pre><code>SELECT DISTINCT department_id FROM employees;</code></pre>
 <ol start="9">
-<li><p>+号的作用</p>
-<p> /*<br> java中的+号：<br> ①运算符：两个操作数都为数值型<br> ②连接符：只要有一个操作数为字符串</p>
-<p> mysql中的+号：<br> 仅仅只有一个功能：运算符</p>
-</li>
+<li>+号的作用</li>
 </ol>
+<p>java中的+号：</p>
+<ul>
+<li>运算符：两个操作数都为数值型</li>
+<li>连接符：只要有一个操作数为字符串</li>
+</ul>
+<p>mysql中的+号：</p>
+<p>仅仅只有一个功能：运算符</p>
 <pre><code>select 100+90；
-select &#39;123&#39;+90; 其中一方为字符型，会试图将字符型数值转换成数值型
-                  如果转换成功则继续加法运算
-select &#39;john&#39;+90; 如果转换失败，则字符型数组值转换成0；
-
-select null+10;只要其中一方为null，则结果为null
-*/
-
-使用concat进行连接
-null和别人拼接的时候都是null
-select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果</code></pre>
+select &#39;123&#39;+90; </code></pre>
+<p>其中一方为字符型，会试图将字符型数值转换成数值型<br>如果转换成功则继续加法运算</p>
+<pre><code>select &#39;john&#39;+90; </code></pre>
+<p>如果转换失败，则字符型数组值转换成0；</p>
+<pre><code>select null+10;</code></pre>
+<p>只要其中一方为null，则结果为null</p>
+<p>null和别人拼接的时候都是null</p>
+<p>使用concat进行连接</p>
+<pre><code>select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果</code></pre>
 <p>案例：查询员工名和姓连接成一个字段，并显示为 姓名</p>
 <pre><code>SELECT CONCAT(last_name,first_name) AS 姓名 FROM employees;
 不能：
@@ -474,33 +477,29 @@ SELECT last_name + first_name AS 姓名 FROM employees;</code></pre>
     commission_pct 
 FROM 
     employees;</code></pre>
-<h2 id="进阶2-条件查询"><a href="#进阶2-条件查询" class="headerlink" title="进阶2 - 条件查询"></a>进阶2 - 条件查询</h2><pre><code>语法：
-    select
+<h2 id="进阶2-条件查询"><a href="#进阶2-条件查询" class="headerlink" title="进阶2 - 条件查询"></a>进阶2 - 条件查询</h2><p>语法：</p>
+<pre><code>    select
         查询列表       第三步
     from
         表名           第一步
     where
-        筛选条件;      第二步
-
-分类：
-    1.按条件表达式筛选
-
-    条件运算符: &gt;  &lt;  =    != or &lt;&gt;(不等于)    &gt;= &lt;=
-
-    2.按逻辑表达式筛选
-
-    逻辑运算符：   与&amp;&amp; 或|| 非!
-    sql推荐使用    and or not
-    作用：连接条件表达式
-    &amp;&amp; and 都1则1
-    || or 有1则1
-    ！ not 是0则1
-    3.模糊查询
-    like 
-    between and
-    in 
-    is null
-    is not null</code></pre>
+        筛选条件;      第二步</code></pre>
+<p>分类：</p>
+<p>1.按条件表达式筛选</p>
+<pre><code>条件运算符: &gt;  &lt;  =    != or &lt;&gt;(不等于)    &gt;= &lt;=</code></pre>
+<p>2.按逻辑表达式筛选</p>
+<pre><code>逻辑运算符：   与&amp;&amp; 或|| 非!
+sql推荐使用    and or not
+作用：连接条件表达式
+&amp;&amp; and 都1则1
+|| or 有1则1
+！ not 是0则1</code></pre>
+<p>3.模糊查询</p>
+<pre><code>like 
+between and
+in 
+is null
+is not null</code></pre>
 <h2 id="按照条件表达式查询"><a href="#按照条件表达式查询" class="headerlink" title="按照条件表达式查询"></a>按照条件表达式查询</h2><p>案例1：查询工资&gt;12000的员工信息</p>
 <pre><code>SELECT
     *
@@ -534,13 +533,12 @@ WHERE
     department_id &lt; 90 OR department_id &gt; 120 OR salary &gt; 15000;       
 WHERE
     NOT(department_id &gt;= 90 AND department_id &lt;= 120) OR salary &gt; 15000;</code></pre>
-<h2 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h2><pre><code>/*</code></pre>
-<h3 id="like"><a href="#like" class="headerlink" title="like:"></a>like:</h3><pre><code>①一般和通配符搭配使用
-    通配符：
-    % 任意多个字符，可以是0个
-    _ 任意单个字符
-
-*/</code></pre>
+<h2 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h2><h3 id="like"><a href="#like" class="headerlink" title="like:"></a>like:</h3><p>一般和通配符搭配使用</p>
+<p>通配符：</p>
+<ul>
+<li>% 任意多个字符，可以是0个</li>
+<li>_ 任意单个字符</li>
+</ul>
 <p>案例1：查询员工名中包含字符a的员工信息</p>
 <pre><code>SELECT
     *
@@ -564,29 +562,27 @@ FROM
     employees
 WHERE      
     last_name LIKE &#39;_\_%&#39;;    
-    last_name LIKE &#39;_a_%&#39; ESCAPE &#39;a&#39;;     #a随便取的，为的仅仅是说明a是转义，可以用￥等随意，只需要说明就行    
-#------------------------------------------------#</code></pre>
-<h3 id="between-and"><a href="#between-and" class="headerlink" title="between and"></a>between and</h3><pre><code>/*
-①使用between and可以提高语句的简洁度
-②包含临界值
-③两个临界值的位置不能调换，不会报错但效果不一样
-
-*/</code></pre>
+    last_name LIKE &#39;_a_%&#39; ESCAPE &#39;a&#39;;     </code></pre>
+<p><code>a</code>随便取的，为的仅仅是说明a是转义，可以用￥等随意，只需要说明就行    </p>
+<h3 id="between-and"><a href="#between-and" class="headerlink" title="between and"></a>between and</h3><ul>
+<li>使用between and可以提高语句的简洁度</li>
+<li>包含临界值</li>
+<li>两个临界值的位置不能调换，不会报错但效果不一样</li>
+</ul>
 <p>案例1：查询员工编号在100到120之间的员工信息</p>
 <pre><code>SELECT
     *
 FROM
     employees
 WHERE
-    employee_id BETWEEN 100 AND 120;
-#------------------------------------------------#    </code></pre>
-<h3 id="in"><a href="#in" class="headerlink" title="in"></a>in</h3><pre><code>/*
-含义：用于判断某字段的值是否属于in列表中的某一项
-特点：
-    ①使用in提高语句简洁度
-    ②in列表的值类型必须统一或者兼容
-    ③不支持通配符，相当于等号
-*/</code></pre>
+    employee_id BETWEEN 100 AND 120;</code></pre>
+<h3 id="in"><a href="#in" class="headerlink" title="in"></a>in</h3><p>含义：用于判断某字段的值是否属于in列表中的某一项</p>
+<p>特点：</p>
+<ul>
+<li>使用in提高语句简洁度</li>
+<li>in列表的值类型必须统一或者兼容</li>
+<li>不支持通配符，相当于等号</li>
+</ul>
 <p>案例：查询员工的工种编号是 IT_PROT, AD_VP, AD_PRES中的一个的员工名和工种编号</p>
 <pre><code>SELECT
     last_name,
@@ -611,9 +607,8 @@ WHERE
 FROM
     employees
 WHERE
-    commission_pct IS NULL;
-
-####安全等于  &lt;=&gt;  is null可以换成&lt;=&gt; null</code></pre>
+    commission_pct IS NULL;</code></pre>
+<p><strong>安全等于  &lt;=&gt;  is null可以换成&lt;=&gt; null</strong></p>
 <p>案例1：查询没有奖金的员工名和奖金率</p>
 <pre><code>SELECT
     last_name,
