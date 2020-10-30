@@ -353,23 +353,14 @@
 <li>ES</li>
 <li>Redis</li>
 </ul>
-<h2 id="MySQL数据库软件—配置"><a href="#MySQL数据库软件—配置" class="headerlink" title="MySQL数据库软件—配置"></a>MySQL数据库软件—配置</h2><h3 id="MySQL服务启动"><a href="#MySQL服务启动" class="headerlink" title="MySQL服务启动"></a>MySQL服务启动</h3><ol>
-<li><p>手动。  </p>
-</li>
-<li><p>cmd–&gt; services.msc 打开服务的窗口</p>
-</li>
-<li><p>使用管理员打开cmd：</p>
-<p> net start mysql: 启动mysql的服务<br> net stop mysql: 关闭mysql服务</p>
-</li>
-</ol>
+<h2 id="MySQL数据库软件—配置"><a href="#MySQL数据库软件—配置" class="headerlink" title="MySQL数据库软件—配置"></a>MySQL数据库软件—配置</h2><h3 id="MySQL服务启动"><a href="#MySQL服务启动" class="headerlink" title="MySQL服务启动"></a>MySQL服务启动</h3><p>手动</p>
+<p><code>cmd--&gt; services.msc</code> 打开服务的窗口</p>
+<p>使用管理员打开cmd：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net start mysql: 启动mysql的服务</span><br><span class="line">net stop mysql: 关闭mysql服务</span><br></pre></td></tr></table></figure>
+
 <h3 id="MySQL登录"><a href="#MySQL登录" class="headerlink" title="MySQL登录"></a>MySQL登录</h3><p>登陆前服务要启动</p>
-<ol>
-<li>root用户：command line client</li>
-<li>mysql -uroot -p密码</li>
-<li>mysql -hip -uroot -p连接目标的密码</li>
-<li>mysql –host=ip –user=root –password=连接目标的密码</li>
-<li>mysql -h主机名 -P端口号 -u用户名 -p密码（默认端口3306，用户root）</li>
-</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root用户：<span class="built_in">command</span> line client</span><br><span class="line">mysql -uroot -p密码</span><br><span class="line">mysql -hip -uroot -p连接目标的密码</span><br><span class="line">mysql --host=ip --user=root --password=连接目标的密码</span><br><span class="line">mysql -h主机名 -P端口号 -u用户名 -p密码（默认端口3306，用户root）</span><br></pre></td></tr></table></figure>
+
 <h3 id="MySQL退出"><a href="#MySQL退出" class="headerlink" title="MySQL退出"></a>MySQL退出</h3><ol>
 <li>exit</li>
 <li>quit</li>
