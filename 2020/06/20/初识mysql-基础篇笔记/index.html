@@ -35,7 +35,7 @@
 <meta property="article:modified_time" content="2020-06-28T15:24:56.000Z">
 <meta property="article:author" content="martini">
 <meta property="article:tag" content="mysql">
-<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="learn">
 <meta name="twitter:card" content="summary">
 
 
@@ -187,7 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">初识数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBMS%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">DBMS—数据库管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDBMS%E2%80%94%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">RDBMS—关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSQL%E2%80%94%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.2.</span> <span class="nav-text">NoSQL—非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E2%80%94%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">MySQL数据库软件—配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">MySQL服务启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">MySQL登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E9%80%80%E5%87%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">MySQL退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E5%92%8C%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%8C%BA"><span class="nav-number">1.2.4.</span> <span class="nav-text">常见命令和语法大区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.5.</span> <span class="nav-text">语法规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2-DQL%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">基础查询 DQL语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B61"><span class="nav-number">2.1.</span> <span class="nav-text">进阶1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B62-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.2.</span> <span class="nav-text">进阶2 - 条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.3.</span> <span class="nav-text">按照条件表达式查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%9B%E9%80%89"><span class="nav-number">2.4.</span> <span class="nav-text">按逻辑表达式筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.5.</span> <span class="nav-text">模糊查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#like"><span class="nav-number">2.5.1.</span> <span class="nav-text">like:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#between-and"><span class="nav-number">2.5.2.</span> <span class="nav-text">between and</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in"><span class="nav-number">2.5.3.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-null-is-not-null"><span class="nav-number">2.5.4.</span> <span class="nav-text">is null(is not null)</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">初识数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBMS%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">DBMS—数据库管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDBMS%E2%80%94%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">RDBMS—关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSQL%E2%80%94%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.2.</span> <span class="nav-text">NoSQL—非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E2%80%94%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">MySQL数据库软件—配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">MySQL服务启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">MySQL登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E9%80%80%E5%87%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">MySQL退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E5%92%8C%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%8C%BA"><span class="nav-number">1.2.4.</span> <span class="nav-text">常见命令和语法大区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%89%88%E6%9C%AC%EF%BC%9A"><span class="nav-number">1.2.5.</span> <span class="nav-text">查看服务器的版本：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.6.</span> <span class="nav-text">语法规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2-DQL%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">基础查询 DQL语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B61"><span class="nav-number">2.1.</span> <span class="nav-text">进阶1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B62-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.2.</span> <span class="nav-text">进阶2 - 条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.3.</span> <span class="nav-text">按照条件表达式查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%9B%E9%80%89"><span class="nav-number">2.4.</span> <span class="nav-text">按逻辑表达式筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.5.</span> <span class="nav-text">模糊查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#like"><span class="nav-number">2.5.1.</span> <span class="nav-text">like:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#between-and"><span class="nav-number">2.5.2.</span> <span class="nav-text">between and</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in"><span class="nav-number">2.5.3.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-null-is-not-null"><span class="nav-number">2.5.4.</span> <span class="nav-text">is null(is not null)</span></a></li></ol></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -318,7 +318,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">默认分类</span></a>
+          <a href="/categories/learning-notes/" itemprop="url" rel="index"><span itemprop="name">learning notes</span></a>
         </span>
     </span>
 
@@ -341,16 +341,24 @@
     <div class="post-body" itemprop="articleBody">
         <p>本篇是学习mysql的基础篇笔记</p>
 <a id="more"></a>
+
 <h1 id="初识数据库"><a href="#初识数据库" class="headerlink" title="初识数据库"></a>初识数据库</h1><h2 id="DBMS—数据库管理系统"><a href="#DBMS—数据库管理系统" class="headerlink" title="DBMS—数据库管理系统"></a>DBMS—数据库管理系统</h2><h3 id="RDBMS—关系型数据库"><a href="#RDBMS—关系型数据库" class="headerlink" title="RDBMS—关系型数据库"></a>RDBMS—关系型数据库</h3><ul>
-<li>Oracle</li>
-<li>MySQL</li>
-<li>MSSQL</li>
-<li>PG<h3 id="NoSQL—非关系型数据库"><a href="#NoSQL—非关系型数据库" class="headerlink" title="NoSQL—非关系型数据库"></a>NoSQL—非关系型数据库</h3></li>
-<li>MongoDB</li>
-<li>ES</li>
-<li>Redis<h2 id="MySQL数据库软件—配置"><a href="#MySQL数据库软件—配置" class="headerlink" title="MySQL数据库软件—配置"></a>MySQL数据库软件—配置</h2><h3 id="MySQL服务启动"><a href="#MySQL服务启动" class="headerlink" title="MySQL服务启动"></a>MySQL服务启动</h3></li>
+<li><p>Oracle</p>
+</li>
+<li><p>MySQL</p>
+</li>
+<li><p>MSSQL</p>
+</li>
+<li><p>PG</p>
+<h3 id="NoSQL—非关系型数据库"><a href="#NoSQL—非关系型数据库" class="headerlink" title="NoSQL—非关系型数据库"></a>NoSQL—非关系型数据库</h3></li>
+<li><p>MongoDB</p>
+</li>
+<li><p>ES</p>
+</li>
+<li><p>Redis</p>
+</li>
 </ul>
-<ol>
+<h2 id="MySQL数据库软件—配置"><a href="#MySQL数据库软件—配置" class="headerlink" title="MySQL数据库软件—配置"></a>MySQL数据库软件—配置</h2><h3 id="MySQL服务启动"><a href="#MySQL服务启动" class="headerlink" title="MySQL服务启动"></a>MySQL服务启动</h3><ol>
 <li><p>手动。  </p>
 </li>
 <li><p>cmd–&gt; services.msc 打开服务的窗口</p>
@@ -375,31 +383,32 @@
 <ol>
 <li>查看当前所有的数据库</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show database();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show database();</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>打开指定的库 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use 库名;                </span><br><span class="line">（只要用了use你就在那个库中了）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use 库名;                </span><br><span class="line">（只要用了use你就在那个库中了）</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li>查看当前库所有的表</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	show tables; </span><br><span class="line">```   </span><br><span class="line">     </span><br><span class="line">4. 查看其他库所有的表</span><br><span class="line"> </span><br><span class="line">``` bash</span><br><span class="line">	show tables from 库名;  </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	show tables; </span><br><span class="line">&#96;&#96;&#96;   </span><br><span class="line">     </span><br><span class="line">4. 查看其他库所有的表</span><br><span class="line"> </span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line">	show tables from 库名;  </span><br></pre></td></tr></table></figure>
 
 <ol start="5">
 <li>创建表</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	列名 列类型，</span><br><span class="line">	列名 列类型，</span><br><span class="line">	...</span><br><span class="line">)    </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	列名 列类型，</span><br><span class="line">	列名 列类型，</span><br><span class="line">	...</span><br><span class="line">)    </span><br></pre></td></tr></table></figure>
 
 <ol start="6">
-<li>查看表的结构  </li>
+<li><p>查看表的结构  </p>
+<p> desc 表名;            </p>
+</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	desc 表名;</span><br><span class="line">```               </span><br><span class="line"></span><br><span class="line"><span class="comment">### 查看服务器的版本：</span></span><br><span class="line"></span><br><span class="line">方式一：登录到mysql服务端</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">	select version();</span><br></pre></td></tr></table></figure>
-
+<h3 id="查看服务器的版本："><a href="#查看服务器的版本：" class="headerlink" title="查看服务器的版本："></a>查看服务器的版本：</h3><p>方式一：登录到mysql服务端</p>
+<pre><code>select version();</code></pre>
 <p>方式二：没有登录到mysql服务端</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql --version或mysql --V</span><br></pre></td></tr></table></figure>
-
+<pre><code>mysql --version或mysql --V</code></pre>
 <h3 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h3><ol>
 <li>不区分大小写，但建议关键字大写，表名列名小写；</li>
 <li>每句命令要用分号结尾；</li>
@@ -683,7 +692,7 @@ ifnull:判断，如果是空值则返回一个给定值，不然则返回原本�
 
           <div class="post-tags">
               <a href="/tags/mysql/" rel="tag"># mysql</a>
-              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+              <a href="/tags/learn/" rel="tag"># learn</a>
           </div>
 
         
@@ -773,6 +782,7 @@ ifnull:判断，如果是空值则返回一个给定值，不然则返回原本�
   </footer>
 
   
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
