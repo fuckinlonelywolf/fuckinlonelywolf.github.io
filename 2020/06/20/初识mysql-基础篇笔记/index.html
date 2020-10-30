@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"8.0.1","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="本篇是学习mysql的基础篇笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识mysql---基础篇笔记">
+<meta property="og:url" content="http://example.com/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="martini&#39;s blog">
+<meta property="og:description" content="本篇是学习mysql的基础篇笔记">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-20T14:30:27.000Z">
+<meta property="article:modified_time" content="2020-06-28T15:24:56.000Z">
+<meta property="article:author" content="martini">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>初识mysql---基础篇笔记 | martini's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="martini's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">martini's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">wings</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-DBMS%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">1.DBMS—数据库管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RDBMS%E2%80%94%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">RDBMS—关系型数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NoSQL%E2%80%94%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">NoSQL—非关系型数据库</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E2%80%94%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">2.MySQL数据库软件—配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 MySQL服务启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-MySQL%E7%99%BB%E5%BD%95"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2 MySQL登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-MySQL%E9%80%80%E5%87%BA"><span class="nav-number">2.0.3.</span> <span class="nav-text">2.2 MySQL退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E5%92%8C%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%8C%BA"><span class="nav-number">2.0.4.</span> <span class="nav-text">2.3 常见命令和语法大区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="nav-number">2.0.5.</span> <span class="nav-text">2.5 语法规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2-DQL%E8%AF%AD%E8%A8%80"><span class="nav-number">3.</span> <span class="nav-text">3.基础查询 DQL语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E8%BF%9B%E9%98%B61"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1进阶1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E8%BF%9B%E9%98%B62-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2进阶2 - 条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1%E6%8C%89%E7%85%A7%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.2.1按照条件表达式查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2%E6%8C%89%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%9B%E9%80%89"><span class="nav-number">3.0.4.</span> <span class="nav-text">3.2.2按逻辑表达式筛选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.0.5.</span> <span class="nav-text">3.2.3模糊查询</span></a></li></ol></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="martini"
+      src="/images/wxpay.jpg">
+  <p class="site-author-name" itemprop="name">martini</p>
+  <div class="site-description" itemprop="description">Ready for this?</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fuckinlonelywolf" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fuckinlonelywolf" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yueze98@qq.com" title="E-Mail → mailto:yueze98@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6039749759" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6039749759" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://klausvon.cn/" title="http:&#x2F;&#x2F;klausvon.cn" rel="noopener" target="_blank">klausvon</a>
+        </li>
+    </ul>
+  </div>
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/fuckinlonelywolf" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/wxpay.jpg">
+      <meta itemprop="name" content="martini">
+      <meta itemprop="description" content="Ready for this?">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="martini's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初识mysql---基础篇笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-06-20 22:30:27" itemprop="dateCreated datePublished" datetime="2020-06-20T22:30:27+08:00">2020-06-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-06-28 23:24:56" itemprop="dateModified" datetime="2020-06-28T23:24:56+08:00">2020-06-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">默认分类</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本篇是学习mysql的基础篇笔记</p>
+<a id="more"></a>
+
+<h1 id="1-DBMS—数据库管理系统"><a href="#1-DBMS—数据库管理系统" class="headerlink" title="1.DBMS—数据库管理系统"></a>1.DBMS—数据库管理系统</h1><h4 id="RDBMS—关系型数据库"><a href="#RDBMS—关系型数据库" class="headerlink" title="RDBMS—关系型数据库"></a>RDBMS—关系型数据库</h4><ul>
+<li>Oracle</li>
+<li>MySQL</li>
+<li>MSSQL</li>
+<li>PG<h4 id="NoSQL—非关系型数据库"><a href="#NoSQL—非关系型数据库" class="headerlink" title="NoSQL—非关系型数据库"></a>NoSQL—非关系型数据库</h4></li>
+<li>MongoDB</li>
+<li>ES</li>
+<li>Redis<h1 id="2-MySQL数据库软件—配置"><a href="#2-MySQL数据库软件—配置" class="headerlink" title="2.MySQL数据库软件—配置"></a>2.MySQL数据库软件—配置</h1><h3 id="2-1-MySQL服务启动"><a href="#2-1-MySQL服务启动" class="headerlink" title="2.1 MySQL服务启动"></a>2.1 MySQL服务启动</h3></li>
+</ul>
+<ol>
+<li><p>手动。  </p>
+</li>
+<li><p>cmd–&gt; services.msc 打开服务的窗口</p>
+</li>
+<li><p>使用管理员打开cmd：</p>
+<pre><code> net start mysql: 启动mysql的服务
+ net stop mysql: 关闭mysql服务</code></pre>
+<h3 id="2-2-MySQL登录"><a href="#2-2-MySQL登录" class="headerlink" title="2.2 MySQL登录"></a>2.2 MySQL登录</h3><p> 登陆前服务要启动</p>
+<ol>
+<li>root用户：command line client</li>
+<li>mysql -uroot -p密码</li>
+<li>mysql -hip -uroot -p连接目标的密码</li>
+<li>mysql –host=ip –user=root –password=连接目标的密码</li>
+<li>mysql -h主机名 -P端口号 -u用户名 -p密码（默认端口3306，用户root）<h3 id="2-2-MySQL退出"><a href="#2-2-MySQL退出" class="headerlink" title="2.2 MySQL退出"></a>2.2 MySQL退出</h3></li>
+<li>exit</li>
+<li>quit</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-3-常见命令和语法大区"><a href="#2-3-常见命令和语法大区" class="headerlink" title="2.3 常见命令和语法大区"></a>2.3 常见命令和语法大区</h3><p>别忘了分号啊</p>
+<ol>
+<li><p>查看当前所有的数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show database();</span><br></pre></td></tr></table></figure></li>
+<li><p>打开指定的库 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use 库名;                </span><br><span class="line">（只要用了use你就在那个库中了）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前库所有的表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	show tables; </span><br><span class="line">```   </span><br><span class="line">     </span><br><span class="line">4. 查看其他库所有的表</span><br><span class="line">``` bash</span><br><span class="line">	show tables from 库名;  </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	列名 列类型，</span><br><span class="line">	列名 列类型，</span><br><span class="line">	...</span><br><span class="line">)    </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看表的结构  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	desc 表名;</span><br><span class="line">```               </span><br><span class="line"><span class="comment">### 2.4 查看服务器的版本：</span></span><br><span class="line">方式一：登录到mysql服务端</span><br><span class="line">``` bash</span><br><span class="line">	select version();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>方式二：没有登录到mysql服务端</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql --version或mysql --V</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-语法规范"><a href="#2-5-语法规范" class="headerlink" title="2.5 语法规范"></a>2.5 语法规范</h3><ol>
+<li>不区分大小写，但建议关键字大写，表名列名小写；</li>
+<li>每句命令要用分号结尾；</li>
+<li>每句命令根据需要，可以进行缩进 或换行；</li>
+<li>注释<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">单行注释：<span class="comment">#注释文字</span></span><br><span class="line">单行注释：-- 注释文字（注意空格）</span><br><span class="line">多行注释：/* 注释文字 */</span><br></pre></td></tr></table></figure>
+##<br>ctrl s是保存；选中之后F12格式化；</li>
+</ol>
+<p>安装了navicat，导入girls和myemployees俩数据集<br>##</p>
+<h1 id="3-基础查询-DQL语言"><a href="#3-基础查询-DQL语言" class="headerlink" title="3.基础查询 DQL语言"></a>3.基础查询 DQL语言</h1><h3 id="3-1进阶1"><a href="#3-1进阶1" class="headerlink" title="3.1进阶1"></a>3.1进阶1</h3><pre><code>先打开库
+USE myemployees;
+
+# select 查询列表 from 表名
+查询列表可以是：表中的字段、常量值、表达式、函数
+查询的结果是一个虚拟的表格
+
+#1.查询表中的单个字段
+SELECT last_name FROM employees;
+
+#2.查询表中的多个字段
+SELECT last_name,salary,email FROM employees;
+
+#3.查询表中所有字段（双击左侧） 
+#方式一
+SELECT 
+  `department_id`,             #这个符号是着重号，用于说明是字段而不是关键字``
+  `department_name`,
+  `manager_id`,
+  `location_id` 
+ FROM 
+  employees;
+#方式二
+SELECT * FROM employees ;
+
+#4.查询常量值
+SELECT 100;
+SELECT &#39;john&#39;;
+#（不区分字符和字符串）
+
+#5.查询表达式
+SELECT 100%98;                 #取余
+
+#6.查询函数
+SELECT VERSION();              #调用并得到返回值
+
+#7.起别名
+/*
+①便于理解
+②如果要查询的字段有重名的情况，使用别名可以区分开来
+*/
+#方式一:用as
+SELECT 100%98 AS 结果;
+SELECT last_name AS 姓, first_name AS 名 FROM employees;
+
+#方式二:空格
+SELECT last_name 姓，first_name 名 FROM employees;
+#案例：查询salary，显示结果为out put
+SELECT salary AS &quot;out put&quot; FROM employees;
+
+不能：
+SELECT salary AS &quot;out put&quot; FROM employees;
+因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。
+
+
+#8.去重distinct
+
+#案例：查询员工表涉及到的所有部门编号
+SELECT DISTINCT department_id FROM employees;
+
+
+#9. +号的作用
+
+/*
+java中的+号：
+①运算符：两个操作数都为数值型
+②连接符：只要有一个操作数为字符串
+
+mysql中的+号：
+仅仅只有一个功能：运算符
+
+
+select 100+90；
+select &#39;123&#39;+90; 其中一方为字符型，会试图将字符型数值转换成数值型
+                  如果转换成功则继续加法运算
+select &#39;john&#39;+90; 如果转换失败，则字符型数组值转换成0；
+
+select null+10;只要其中一方为null，则结果为null
+*/
+
+使用concat进行连接
+null和别人拼接的时候都是null
+select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果
+#案例：查询员工名和姓连接成一个字段，并显示为 姓名
+SELECT CONCAT(last_name,first_name) AS 姓名 FROM employees;
+不能：
+SELECT last_name + first_name AS 姓名 FROM employees;
+
+#10.判断是否为空
+#commission_pct是否为空？为空返回what
+SELECT 
+    IFNULL(commission_pct, what) AS 奖金率,
+    commission_pct 
+FROM 
+    employees;</code></pre>
+<h3 id="3-2进阶2-条件查询"><a href="#3-2进阶2-条件查询" class="headerlink" title="3.2进阶2 - 条件查询"></a>3.2进阶2 - 条件查询</h3><pre><code>语法：
+    select
+        查询列表       第三步
+    from
+        表名           第一步
+    where
+        筛选条件;      第二步
+
+分类：
+    1.按条件表达式筛选
+
+    条件运算符: &gt;  &lt;  =    != or &lt;&gt;(不等于)    &gt;= &lt;=
+
+    2.按逻辑表达式筛选
+
+    逻辑运算符：   与&amp;&amp; 或|| 非!
+    sql推荐使用    and or not
+    作用：连接条件表达式
+    &amp;&amp; and 都1则1
+    || or 有1则1
+    ！ not 是0则1
+    3.模糊查询
+    like 
+    between and
+    in 
+    is null
+    is not null        </code></pre>
+<h3 id="3-2-1按照条件表达式查询"><a href="#3-2-1按照条件表达式查询" class="headerlink" title="3.2.1按照条件表达式查询"></a>3.2.1按照条件表达式查询</h3><pre><code>#案例1：查询工资&gt;12000的员工信息
+
+SELECT
+    *
+FROM
+    employees
+WHERE
+    salary &gt; 12000;
+
+#案例2：查询部门编号不等于90号的员工名和部门编号
+SELECT
+    last_name,
+    department_id
+FROM
+    employees
+WHERE
+    department_id != 90;        #最好用&lt;&gt;</code></pre>
+<h3 id="3-2-2按逻辑表达式筛选"><a href="#3-2-2按逻辑表达式筛选" class="headerlink" title="3.2.2按逻辑表达式筛选"></a>3.2.2按逻辑表达式筛选</h3><pre><code>#案例1：查询工资在10000到20000之间的员工名，工资和奖金
+
+SELECT
+    last_name,
+    salary,
+    commission_pct
+FROM
+    employees
+WHERE
+    salary &gt;= 10000 AND salary &lt;= 20000;
+
+#案例2：查询部门编号不在90-120之间，或者工资高于15000的员工信息
+SELECT
+    *
+FROM
+    employees
+WHERE
+    department_id &lt; 90 OR department_id &gt; 120 OR salary &gt; 15000;       
+WHERE
+    NOT(department_id &gt;= 90 AND department_id &lt;= 120) OR salary &gt; 15000;</code></pre>
+<h3 id="3-2-3模糊查询"><a href="#3-2-3模糊查询" class="headerlink" title="3.2.3模糊查询"></a>3.2.3模糊查询</h3><pre><code>/*
+# 1.like:
+①一般和通配符搭配使用
+    通配符：
+    % 任意多个字符，可以是0个
+    _ 任意单个字符
+
+*/
+#案例1：查询员工名中包含字符a的员工信息
+
+SELECT
+    *
+FROM
+    employees
+WHERE
+    last_name LIKE &#39;%a%&#39;;    
+%a%用于匹配，%代表通配符，代表任意个字符
+
+#案例2：查询员工名中第3个字符为n，第五个字符为l的员工名和工资
+SELECT
+    last_name,
+    salary
+FROM
+    employees
+WHERE
+    last_name LIKE &#39;__n_l%&#39;;
+
+#案例3：查询员工名中第二个字符为_的员工名（转义字符）    
+SELECT
+    last_name
+FROM 
+    employees
+WHERE      
+    last_name LIKE &#39;_\_%&#39;;    
+    last_name LIKE &#39;_a_%&#39; ESCAPE &#39;a&#39;;     #a随便取的，为的仅仅是说明a是转义，可以用￥等随意，只需要说明就行    
+#------------------------------------------------#
+#2. between and
+/*
+①使用between and可以提高语句的简洁度
+②包含临界值
+③两个临界值的位置不能调换，不会报错但效果不一样
+
+*/
+
+
+#案例1：查询员工编号在100到120之间的员工信息
+
+SELECT
+    *
+FROM
+    employees
+WHERE
+    employee_id BETWEEN 100 AND 120;
+#------------------------------------------------#    
+#3. in
+/*
+含义：用于判断某字段的值是否属于in列表中的某一项
+特点：
+    ①使用in提高语句简洁度
+    ②in列表的值类型必须统一或者兼容
+    ③不支持通配符，相当于等号
+*/
+#案例：查询员工的工种编号是 IT_PROT, AD_VP, AD_PRES中的一个的员工名和工种编号
+
+SELECT
+    last_name,
+    job_id
+FROM
+    employees
+WHERE
+    job_id=&#39;IT_PROT&#39; OR job_id=&#39;AD_VP&#39; OR job_id=&#39;AD_VP&#39;;
+方法二 - 用in：    
+WHERE
+    job_id IN (&#39;IT_PROT&#39; ,&#39;AD_VP&#39; , &#39;AD_VP&#39;);
+
+#------------------------------------------------#    
+#4. is null(is not null)
+/*
+=或者&lt;&gt;不能用于判断null值
+
+*/
+#案例1：查询没有奖金的员工名和奖金率
+SELECT
+    last_name,
+    commission_pct
+FROM
+    employees
+WHERE
+    commission_pct IS NULL;
+
+####安全等于  &lt;=&gt;  is null可以换成&lt;=&gt; null
+
+
+#案例1：查询没有奖金的员工名和奖金率
+SELECT
+    last_name,
+    commission_pct
+FROM
+    employees
+WHERE
+    commission_pct &lt;=&gt; NULL;
+
+#案例2：查询工资为12000的员工信息
+
+SELECT
+    last_name,
+    salary
+FROM
+    employees
+WHERE
+    salary &lt;=&gt; 12000;
+### 区别
+IS NULL ：仅仅可以判断NULL值
+&lt;=&gt;     ：既可以判断NULL值，又可以判断普通的数值。    
+
+##函数重提
+ concat:拼接字符
+isnull:判断，如果是空值则返回1，不是则返回0
+ifnull:判断，如果是空值则返回一个给定值，不然则返回原本的值</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wxpay.jpg" alt="martini WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/29/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">martini</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
