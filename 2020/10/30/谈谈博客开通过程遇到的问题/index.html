@@ -23,7 +23,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"8.0.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
   <meta name="description" content="过去和现在：本篇是搭建博客时踩过的坑">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2020/10/31/BUK5CD.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/10/31/BUMZPU.png">
 <meta property="article:published_time" content="2020-10-30T08:40:12.000Z">
-<meta property="article:modified_time" content="2020-10-31T03:29:18.845Z">
+<meta property="article:modified_time" content="2020-10-31T03:56:05.900Z">
 <meta property="article:author" content="martini">
 <meta property="article:tag" content="learn">
 <meta property="article:tag" content="hexo">
@@ -322,7 +322,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-10-31 11:29:18" itemprop="dateModified" datetime="2020-10-31T11:29:18+08:00">2020-10-31</time>
+        <time title="Modified: 2020-10-31 11:56:05" itemprop="dateModified" datetime="2020-10-31T11:56:05+08:00">2020-10-31</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -349,7 +349,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.4k</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -399,11 +399,11 @@
 <li>hexo g</li>
 <li>hexo d</li>
 </ul>
-<h2 id="默认布局"><a href="#默认布局" class="headerlink" title="默认布局"></a>默认布局</h2><p>它其实默认使用的是post这个布局，也就是在source文件夹下的_post里面。</p>
-<p>Hexo 有三种默认布局：post、page 和 draft，它们分别对应不同的路径，而您自定义的其他布局和 post 相同，都将储存到 source/_posts 文件夹。</p>
+<h2 id="默认布局"><a href="#默认布局" class="headerlink" title="默认布局"></a>默认布局</h2><p>默认用post布局。</p>
+<p>Hexo 有三种默认布局：<code>post</code>、<code>page</code>和<code>draft</code>，他们分别对应不同的路径，都将储存到<code>source/_posts</code>文件夹。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 
-<h1 id="CR-CRLF"><a href="#CR-CRLF" class="headerlink" title="CR CRLF"></a>CR CRLF</h1><p>在不知道改了什么的设置之后，<code>git</code>总是给一堆警告说：</p>
+<h1 id="CR-CRLF"><a href="#CR-CRLF" class="headerlink" title="CR CRLF"></a>CR CRLF</h1><p>改了<code>_config.yml</code>之后，<code>git</code>总是给一堆警告说：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">warning:LF will be replaced by CRLF in XXXX</span><br></pre></td></tr></table></figure>
 
 <p>我们知道如果是python的话，就可以加上如下代码：</p>
@@ -424,6 +424,8 @@
 <h1 id="Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed"><a href="#Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed" class="headerlink" title="Failed to connect to github.com port 443:connection timed out, error: spawn failed"></a>Failed to connect to github.com port 443:connection timed out, error: spawn failed</h1><p>我出现这个问题的原因是改动了<code>_config.yml</code>的<code>symbols_count_time:</code>，都设置成<code>true</code>就好了，但是他会在主页下面也出现统计字数和时长，</p>
 <p>详见<a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-word-counter">官方文档</a></p>
 <p><code>awl</code>：几个字算一个词儿<br><code>wpm = 275</code>：一分钟读275个词儿</p>
+<p>我就想知道下面这个<code>theme</code>的配置里，第三个为啥是false，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -443,23 +445,6 @@
         <span>WeChat Pay</span>
       </div>
 
-  </div>
-</div>
-
-          <div class="followme">
-  <span>Welcome to my other publishing channels</span>
-
-  <div class="social-list">
-
-      <div class="social-item">
-        <a target="_blank" class="social-link" href="/atom.xml">
-          <span class="icon">
-            <i class="fa fa-rss"></i>
-          </span>
-
-          <span class="label">RSS</span>
-        </a>
-      </div>
   </div>
 </div>
 
