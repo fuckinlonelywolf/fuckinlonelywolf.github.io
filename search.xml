@@ -21,77 +21,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>谈谈博客开通过程遇到的问题</title>
-    <url>/2020/10/30/%E8%B0%88%E8%B0%88%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>过去和现在：本篇是搭建博客时踩过的坑</p>
-<a id="more"></a>
-
-<h1 id="初识Hexo"><a href="#初识Hexo" class="headerlink" title="初识Hexo"></a>初识Hexo</h1><h2 id="文件介绍"><a href="#文件介绍" class="headerlink" title="文件介绍"></a>文件介绍</h2><ul>
-<li>node_modules: 依赖包</li>
-<li>public：存放生成的页面</li>
-<li>scaffolds：生成文章的一些模板</li>
-<li>source：用来存放你的文章</li>
-<li>themes：主题</li>
-<li>_config.yml: 博客的配置文件</li>
-</ul>
-<h2 id="现在来介绍常用的Hexo-命令"><a href="#现在来介绍常用的Hexo-命令" class="headerlink" title="现在来介绍常用的Hexo 命令"></a>现在来介绍常用的Hexo 命令</h2><ul>
-<li>npm install hexo -g #安装Hexo</li>
-<li>npm update hexo -g #升级</li>
-<li>hexo init #初始化博客</li>
-<li>hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</li>
-<li>hexo server -s #静态模式</li>
-<li>hexo server -p 5000 #更改端口</li>
-<li>hexo server -i 192.168.1.1 #自定义 IP</li>
-<li>hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</li>
-</ul>
-<h2 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h2><ul>
-<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
-<li>hexo g == hexo generate #生成</li>
-<li>hexo s == hexo server #启动服务预览</li>
-<li>hexo d == hexo deploy #部署</li>
-</ul>
-<h2 id="写完后输入"><a href="#写完后输入" class="headerlink" title="写完后输入"></a>写完后输入</h2><ul>
-<li>hexo clean</li>
-<li>hexo g</li>
-<li>hexo d</li>
-</ul>
-<h2 id="默认布局"><a href="#默认布局" class="headerlink" title="默认布局"></a>默认布局</h2><p>默认用post布局。</p>
-<p>Hexo 有三种默认布局：<code>post</code>、<code>page</code>和<code>draft</code>，他们分别对应不同的路径，都将储存到<code>source/_posts</code>文件夹。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="CR-CRLF"><a href="#CR-CRLF" class="headerlink" title="CR CRLF"></a>CR CRLF</h1><p>改了<code>_config.yml</code>之后，<code>git</code>总是给一堆警告说：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">warning:LF will be replaced by CRLF in XXXX</span><br></pre></td></tr></table></figure>
-
-<p>我们知道如果是python的话，就可以加上如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import warnings</span><br><span class="line">warnings.filterwarnings(&#39;ignore&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>百度了一下发现windows下的解决办法是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
-
-<p>就是说我们改的时候弄进去了LF，而git是要都是CRLF的，所以git就警告我们一下.</p>
-<p>所以眼不见心不烦..</p>
-<h1 id="在华为云上布置Hexo"><a href="#在华为云上布置Hexo" class="headerlink" title="在华为云上布置Hexo"></a>在华为云上布置Hexo</h1><h2 id="域名过户"><a href="#域名过户" class="headerlink" title="域名过户"></a>域名过户</h2><p>需要先设置一个用户信息的模板，工作日审核很快的，然后是域名过户，用到通过审核的那个模板，审核也很快，我大概总共用了一天，这期间就在github.io上测试改动的结果，也不耽误。</p>
-<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>然后就是域名解析了。百度好像结果很少，我一开始是参考<a href="https://zhuanlan.zhihu.com/p/26625249">鱼佬都点赞的博文!</a>搭建的，解析后先输入了github的IP，是A类，然后再创建CNAME就不行，说有冲突，一开始以为是和默认的NS类冲突了，仔细读了一下发现是和自己刚建的A类冲突，于是乎删了github的IP先。</p>
-<p>我的步骤：</p>
-<h3 id="创建CNAME"><a href="#创建CNAME" class="headerlink" title="创建CNAME"></a>创建CNAME</h3><p><a href="https://imgchr.com/i/BUK5CD"><img src="https://s1.ax1x.com/2020/10/31/BUK5CD.png" alt="BUK5CD.png"></a></p>
-<h3 id="github的IP"><a href="#github的IP" class="headerlink" title="github的IP"></a>github的IP</h3><p>这里要用github最新的IP，不然没用几分钟就404，给你发邮件让你再改。</p>
-<p><a href="https://imgchr.com/i/BUMZPU"><img src="https://s1.ax1x.com/2020/10/31/BUMZPU.png" alt="BUMZPU.png"></a></p>
-<p>华为云这边就没问题了，剩下两步跟参考博文一样。</p>
-<h1 id="Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed"><a href="#Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed" class="headerlink" title="Failed to connect to github.com port 443:connection timed out, error: spawn failed"></a>Failed to connect to github.com port 443:connection timed out, error: spawn failed</h1><p>我出现这个问题的原因是改动了<code>_config.yml</code>的<code>symbols_count_time:</code>，都设置成<code>true</code>就好了，但是他会在主页下面也出现统计字数和时长，</p>
-<p>详见<a href="https://github.com/next-theme/hexo-word-counter">官方文档</a></p>
-<p><code>awl</code>：几个字算一个词儿<br><code>wpm = 275</code>：一分钟读275个词儿</p>
-<p>我想知道下面这个<code>theme</code>的配置里，第三个为啥是false，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>learning notes</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>初识mysql---基础篇笔记</title>
     <url>/2020/06/20/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>本篇是学习mysql的基础篇笔记</p>
@@ -181,24 +110,51 @@ SELECT &#39;john&#39;;</code></pre>
 <li>如果要查询的字段有重名的情况，使用别名可以区分开来</li>
 </ul>
 <p>方式一:用as</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	SELECT 100%98 AS 结果;</span><br><span class="line">	SELECT last_name AS 姓, first_name AS 名 FROM employees;</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line"></span><br><span class="line">方式二:空格</span><br><span class="line"></span><br><span class="line">	SELECT last_name 姓，first_name 名 FROM employees;</span><br><span class="line"></span><br><span class="line">案例：查询salary，显示结果为out put</span><br><span class="line"></span><br><span class="line">	SELECT salary AS &quot;out put&quot; FROM employees;</span><br><span class="line"></span><br><span class="line">不能：</span><br><span class="line"></span><br><span class="line">	SELECT salary AS &quot;out put&quot; FROM employees;</span><br><span class="line"></span><br><span class="line">因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">8.去重distinct</span><br><span class="line">	</span><br><span class="line">案例：查询员工表涉及到的所有部门编号</span><br><span class="line"></span><br><span class="line">	SELECT DISTINCT department_id FROM employees;</span><br><span class="line"></span><br><span class="line">9.+号的作用</span><br><span class="line"></span><br><span class="line">java中的+号：</span><br><span class="line"></span><br><span class="line">- 运算符：两个操作数都为数值型</span><br><span class="line">- 连接符：只要有一个操作数为字符串</span><br><span class="line">	</span><br><span class="line">mysql中的+号：</span><br><span class="line"></span><br><span class="line">仅仅只有一个功能：运算符</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	select 100+90；</span><br><span class="line">	select &#39;123&#39;+90; </span><br><span class="line"></span><br><span class="line">其中一方为字符型，会试图将字符型数值转换成数值型</span><br><span class="line">如果转换成功则继续加法运算</span><br><span class="line"></span><br><span class="line">	select &#39;john&#39;+90; </span><br><span class="line"></span><br><span class="line">如果转换失败，则字符型数组值转换成0；</span><br><span class="line">	</span><br><span class="line">	select null+10;</span><br><span class="line"></span><br><span class="line">只要其中一方为null，则结果为null</span><br><span class="line"></span><br><span class="line">null和别人拼接的时候都是null</span><br><span class="line"></span><br><span class="line">使用concat进行连接</span><br><span class="line"></span><br><span class="line">	select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果</span><br><span class="line"></span><br><span class="line">案例：查询员工名和姓连接成一个字段，并显示为 姓名</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT CONCAT(last_name,first_name) AS 姓名 FROM employees;
-不能：
-SELECT last_name + first_name AS 姓名 FROM employees;</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">10.判断是否为空</span><br><span class="line"></span><br><span class="line">&#96;commission_pct&#96;是否为空？为空返回what</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT 
-    IFNULL(commission_pct, what) AS 奖金率,
-    commission_pct 
-FROM 
-    employees;</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 进阶2 - 条件查询</span><br><span class="line"></span><br><span class="line">语法：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>select
-    查询列表       第三步
-from
-    表名           第一步
-where
-    筛选条件;      第二步</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">分类：</span><br><span class="line"></span><br><span class="line">1.按条件表达式筛选</span><br><span class="line">		</span><br><span class="line">	条件运算符: &gt;  &lt;  &#x3D;    !&#x3D; or &lt;&gt;(不等于)    &gt;&#x3D; &lt;&#x3D;</span><br><span class="line">		</span><br><span class="line">2.按逻辑表达式筛选</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line">	逻辑运算符：   与&amp;&amp; 或|| 非!</span><br><span class="line">	sql推荐使用    and or not</span><br><span class="line">	作用：连接条件表达式</span><br><span class="line">	&amp;&amp; and 都1则1</span><br><span class="line">	|| or 有1则1</span><br><span class="line">	！ not 是0则1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 100%98 AS 结果;</span><br><span class="line">SELECT last_name AS 姓, first_name AS 名 FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>方式二:空格</p>
+<pre><code>SELECT last_name 姓，first_name 名 FROM employees;</code></pre>
+<p>案例：查询salary，显示结果为out put</p>
+<pre><code>SELECT salary AS &quot;out put&quot; FROM employees;</code></pre>
+<p>不能：</p>
+<pre><code>SELECT salary AS &quot;out put&quot; FROM employees;</code></pre>
+<p>因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。</p>
+<p>8.去重distinct</p>
+<p>案例：查询员工表涉及到的所有部门编号</p>
+<pre><code>SELECT DISTINCT department_id FROM employees;</code></pre>
+<p>9.+号的作用</p>
+<p>java中的+号：</p>
+<ul>
+<li>运算符：两个操作数都为数值型</li>
+<li>连接符：只要有一个操作数为字符串</li>
+</ul>
+<p>mysql中的+号：</p>
+<p>仅仅只有一个功能：运算符</p>
+<pre><code>select 100+90；
+select &#39;123&#39;+90; </code></pre>
+<p>其中一方为字符型，会试图将字符型数值转换成数值型<br>如果转换成功则继续加法运算</p>
+<pre><code>select &#39;john&#39;+90; </code></pre>
+<p>如果转换失败，则字符型数组值转换成0；</p>
+<pre><code>select null+10;</code></pre>
+<p>只要其中一方为null，则结果为null</p>
+<p>null和别人拼接的时候都是null</p>
+<p>使用concat进行连接</p>
+<pre><code>select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果</code></pre>
+<p>案例：查询员工名和姓连接成一个字段，并显示为 姓名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT CONCAT(last_name,first_name) AS 姓名 FROM employees;</span><br><span class="line">不能：</span><br><span class="line">SELECT last_name + first_name AS 姓名 FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>10.判断是否为空</p>
+<p><code>commission_pct</code>是否为空？为空返回what</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT </span><br><span class="line">	IFNULL(commission_pct, what) AS 奖金率,</span><br><span class="line">	commission_pct </span><br><span class="line">FROM </span><br><span class="line">	employees;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进阶2-条件查询"><a href="#进阶2-条件查询" class="headerlink" title="进阶2 - 条件查询"></a>进阶2 - 条件查询</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select</span><br><span class="line">	查询列表       第三步</span><br><span class="line">from</span><br><span class="line">	表名           第一步</span><br><span class="line">where</span><br><span class="line">	筛选条件;      第二步</span><br></pre></td></tr></table></figure>
+
+<p>分类：</p>
+<p>1.按条件表达式筛选</p>
+<pre><code>条件运算符: &gt;  &lt;  =    != or &lt;&gt;(不等于)    &gt;= &lt;=</code></pre>
+<p>2.按逻辑表达式筛选</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">逻辑运算符：   与&amp;&amp; 或|| 非!</span><br><span class="line">sql推荐使用    and or not</span><br><span class="line">作用：连接条件表达式</span><br><span class="line">&amp;&amp; and 都1则1</span><br><span class="line">|| or 有1则1</span><br><span class="line">！ not 是0则1</span><br></pre></td></tr></table></figure>
 
 <p>3.模糊查询</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">like </span><br><span class="line">between and</span><br><span class="line">in </span><br><span class="line">is null</span><br><span class="line">is not null</span><br></pre></td></tr></table></figure>
@@ -238,56 +194,112 @@ where
 <li>两个临界值的位置不能调换，不会报错但效果不一样</li>
 </ul>
 <p>案例1：查询员工编号在100到120之间的员工信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	SELECT</span><br><span class="line">		*</span><br><span class="line">	FROM</span><br><span class="line">		employees</span><br><span class="line">	WHERE</span><br><span class="line">		employee_id BETWEEN 100 AND 120;</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line"></span><br><span class="line">### in</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">含义：用于判断某字段的值是否属于in列表中的某一项</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line"></span><br><span class="line">- 使用in提高语句简洁度</span><br><span class="line">- in列表的值类型必须统一或者兼容</span><br><span class="line">- 不支持通配符，相当于等号</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">案例：查询员工的工种编号是 IT_PROT, AD_VP, AD_PRES中的一个的员工名和工种编号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT
-    last_name,
-    job_id
-FROM
-    employees
-WHERE
-    job_id=&#39;IT_PROT&#39; OR job_id=&#39;AD_VP&#39; OR job_id=&#39;AD_VP&#39;;
-方法二 - 用in：    
-WHERE
-    job_id IN (&#39;IT_PROT&#39; ,&#39;AD_VP&#39; , &#39;AD_VP&#39;);</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### is null(is not null)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**&#x3D;或者&lt;&gt;不能用于判断null值**</span><br><span class="line">	</span><br><span class="line">案例1：查询没有奖金的员工名和奖金率</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT
-    last_name,
-    commission_pct
-FROM
-    employees
-WHERE
-    commission_pct IS NULL;</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**安全等于  &lt;&#x3D;&gt;  is null可以换成&lt;&#x3D;&gt; null**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">案例1：查询没有奖金的员工名和奖金率</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT
-    last_name,
-    commission_pct
-FROM
-    employees
-WHERE
-    commission_pct &lt;=&gt; NULL;</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">案例2：查询工资为12000的员工信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT
-    last_name,
-    salary
-FROM
-    employees
-WHERE
-    salary &lt;=&gt; 12000;</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">区别</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>IS NULL ：仅仅可以判断NULL值
-&lt;=&gt;     ：既可以判断NULL值，又可以判断普通的数值。    </code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">函数重提</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code> concat:拼接字符
-isnull:判断，如果是空值则返回1，不是则返回0
-ifnull:判断，如果是空值则返回一个给定值，不然则返回原本的值</code></pre>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	*</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	employee_id BETWEEN 100 AND 120;</span><br></pre></td></tr></table></figure>
+
+<h3 id="in"><a href="#in" class="headerlink" title="in"></a>in</h3><p>含义：用于判断某字段的值是否属于in列表中的某一项</p>
+<p>特点：</p>
+<ul>
+<li>使用in提高语句简洁度</li>
+<li>in列表的值类型必须统一或者兼容</li>
+<li>不支持通配符，相当于等号</li>
+</ul>
+<p>案例：查询员工的工种编号是 IT_PROT, AD_VP, AD_PRES中的一个的员工名和工种编号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	last_name,</span><br><span class="line">	job_id</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	job_id&#x3D;&#39;IT_PROT&#39; OR job_id&#x3D;&#39;AD_VP&#39; OR job_id&#x3D;&#39;AD_VP&#39;;</span><br><span class="line">方法二 - 用in：	</span><br><span class="line">WHERE</span><br><span class="line">	job_id IN (&#39;IT_PROT&#39; ,&#39;AD_VP&#39; , &#39;AD_VP&#39;);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="is-null-is-not-null"><a href="#is-null-is-not-null" class="headerlink" title="is null(is not null)"></a>is null(is not null)</h3><p><strong>=或者&lt;&gt;不能用于判断null值</strong></p>
+<p>案例1：查询没有奖金的员工名和奖金率</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	last_name,</span><br><span class="line">	commission_pct</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	commission_pct IS NULL;</span><br></pre></td></tr></table></figure>
+
+<p><strong>安全等于  &lt;=&gt;  is null可以换成&lt;=&gt; null</strong></p>
+<p>案例1：查询没有奖金的员工名和奖金率</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	last_name,</span><br><span class="line">	commission_pct</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	commission_pct &lt;&#x3D;&gt; NULL;</span><br></pre></td></tr></table></figure>
+
+<p>案例2：查询工资为12000的员工信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	last_name,</span><br><span class="line">	salary</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	salary &lt;&#x3D;&gt; 12000;</span><br></pre></td></tr></table></figure>
+
+<p>区别</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IS NULL ：仅仅可以判断NULL值</span><br><span class="line">&lt;&#x3D;&gt;     ：既可以判断NULL值，又可以判断普通的数值。	</span><br></pre></td></tr></table></figure>
+
+<p>函数重提</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	concat:拼接字符</span><br><span class="line">isnull:判断，如果是空值则返回1，不是则返回0</span><br><span class="line">ifnull:判断，如果是空值则返回一个给定值，不然则返回原本的值</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>learning notes</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>learn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>谈谈博客开通过程遇到的问题</title>
+    <url>/2020/10/30/%E8%B0%88%E8%B0%88%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>过去和现在：本篇是搭建博客时踩过的坑</p>
+<a id="more"></a>
+
+<h1 id="初识Hexo"><a href="#初识Hexo" class="headerlink" title="初识Hexo"></a>初识Hexo</h1><h2 id="文件介绍"><a href="#文件介绍" class="headerlink" title="文件介绍"></a>文件介绍</h2><ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li>_config.yml: 博客的配置文件</li>
+</ul>
+<h2 id="现在来介绍常用的Hexo-命令"><a href="#现在来介绍常用的Hexo-命令" class="headerlink" title="现在来介绍常用的Hexo 命令"></a>现在来介绍常用的Hexo 命令</h2><ul>
+<li>npm install hexo -g #安装Hexo</li>
+<li>npm update hexo -g #升级</li>
+<li>hexo init #初始化博客</li>
+<li>hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</li>
+<li>hexo server -s #静态模式</li>
+<li>hexo server -p 5000 #更改端口</li>
+<li>hexo server -i 192.168.1.1 #自定义 IP</li>
+<li>hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</li>
+</ul>
+<h2 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h2><ul>
+<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
+<li>hexo g == hexo generate #生成</li>
+<li>hexo s == hexo server #启动服务预览</li>
+<li>hexo d == hexo deploy #部署</li>
+</ul>
+<h2 id="写完后输入"><a href="#写完后输入" class="headerlink" title="写完后输入"></a>写完后输入</h2><ul>
+<li>hexo clean</li>
+<li>hexo g</li>
+<li>hexo d</li>
+</ul>
+<h2 id="默认布局"><a href="#默认布局" class="headerlink" title="默认布局"></a>默认布局</h2><p>默认用post布局。</p>
+<p>Hexo 有三种默认布局：<code>post</code>、<code>page</code>和<code>draft</code>，他们分别对应不同的路径，都将储存到<code>source/_posts</code>文件夹。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="CR-CRLF"><a href="#CR-CRLF" class="headerlink" title="CR CRLF"></a>CR CRLF</h1><p>改了<code>_config.yml</code>之后，<code>git</code>总是给一堆警告说：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">warning:LF will be replaced by CRLF in XXXX</span><br></pre></td></tr></table></figure>
+
+<p>我们知道如果是python的话，就可以加上如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import warnings</span><br><span class="line">warnings.filterwarnings(&#39;ignore&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>百度了一下发现windows下的解决办法是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
+
+<p>就是说我们改的时候弄进去了LF，而git是要都是CRLF的，所以git就警告我们一下.</p>
+<p>所以眼不见心不烦..</p>
+<h1 id="在华为云上布置Hexo"><a href="#在华为云上布置Hexo" class="headerlink" title="在华为云上布置Hexo"></a>在华为云上布置Hexo</h1><h2 id="域名过户"><a href="#域名过户" class="headerlink" title="域名过户"></a>域名过户</h2><p>需要先设置一个用户信息的模板，工作日审核很快的，然后是域名过户，用到通过审核的那个模板，审核也很快，我大概总共用了一天，这期间就在github.io上测试改动的结果，也不耽误。</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>然后就是域名解析了。百度好像结果很少，我一开始是参考<a href="https://zhuanlan.zhihu.com/p/26625249">鱼佬都点赞的博文!</a>搭建的，解析后先输入了github的IP，是A类，然后再创建CNAME就不行，说有冲突，一开始以为是和默认的NS类冲突了，仔细读了一下发现是和自己刚建的A类冲突，于是乎删了github的IP先。</p>
+<p>我的步骤：</p>
+<h3 id="创建CNAME"><a href="#创建CNAME" class="headerlink" title="创建CNAME"></a>创建CNAME</h3><p><img src="https://s1.ax1x.com/2020/10/31/BUK5CD.png" alt="BUK5CD.png"></p>
+<h3 id="github的IP"><a href="#github的IP" class="headerlink" title="github的IP"></a>github的IP</h3><p>这里要用github最新的IP，不然没用几分钟就404，给你发邮件让你再改。</p>
+<p><img src="https://s1.ax1x.com/2020/10/31/BUMZPU.png" alt="BUMZPU.png"></p>
+<p>华为云这边就没问题了，剩下两步跟参考博文一样。</p>
+<h1 id="Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed"><a href="#Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed" class="headerlink" title="Failed to connect to github.com port 443:connection timed out, error: spawn failed"></a>Failed to connect to github.com port 443:connection timed out, error: spawn failed</h1><p>我出现这个问题的原因是改动了<code>_config.yml</code>的<code>symbols_count_time:</code>，都设置成<code>true</code>就好了，但是他会在主页下面也出现统计字数和时长，</p>
+<p>详见<a href="https://github.com/next-theme/hexo-word-counter">官方文档</a></p>
+<p><code>awl</code>：几个字算一个词儿<br><code>wpm = 275</code>：一分钟读275个词儿</p>
+<p>我想知道下面这个<code>theme</code>的配置里，第三个为啥是false，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>learning notes</category>
       </categories>
       <tags>
         <tag>learn</tag>
-        <tag>mysql</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>

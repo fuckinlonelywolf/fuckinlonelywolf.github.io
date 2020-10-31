@@ -37,8 +37,8 @@
 <meta property="article:published_time" content="2020-06-20T14:30:27.000Z">
 <meta property="article:modified_time" content="2020-06-28T15:24:56.000Z">
 <meta property="article:author" content="martini">
-<meta property="article:tag" content="learn">
 <meta property="article:tag" content="mysql">
+<meta property="article:tag" content="learn">
 <meta name="twitter:card" content="summary">
 
 
@@ -223,7 +223,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">初识数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBMS%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">DBMS—数据库管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDBMS%E2%80%94%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">RDBMS—关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSQL%E2%80%94%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.2.</span> <span class="nav-text">NoSQL—非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E2%80%94%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">MySQL数据库软件—配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">MySQL服务启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">MySQL登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E9%80%80%E5%87%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">MySQL退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E5%92%8C%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%8C%BA"><span class="nav-number">1.2.4.</span> <span class="nav-text">常见命令和语法大区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">1.2.5.</span> <span class="nav-text">查看服务器的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.6.</span> <span class="nav-text">语法规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2-DQL%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">基础查询 DQL语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B61"><span class="nav-number">2.1.</span> <span class="nav-text">进阶1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.2.</span> <span class="nav-text">按照条件表达式查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%9B%E9%80%89"><span class="nav-number">2.3.</span> <span class="nav-text">按逻辑表达式筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.4.</span> <span class="nav-text">模糊查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#like"><span class="nav-number">2.4.1.</span> <span class="nav-text">like:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#between-and"><span class="nav-number">2.4.2.</span> <span class="nav-text">between and</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">初识数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBMS%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">DBMS—数据库管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDBMS%E2%80%94%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">RDBMS—关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSQL%E2%80%94%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.2.</span> <span class="nav-text">NoSQL—非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E2%80%94%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">MySQL数据库软件—配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">MySQL服务启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">MySQL登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E9%80%80%E5%87%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">MySQL退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E5%92%8C%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%8C%BA"><span class="nav-number">1.2.4.</span> <span class="nav-text">常见命令和语法大区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">1.2.5.</span> <span class="nav-text">查看服务器的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.6.</span> <span class="nav-text">语法规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2-DQL%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">基础查询 DQL语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B61"><span class="nav-number">2.1.</span> <span class="nav-text">进阶1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B62-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.2.</span> <span class="nav-text">进阶2 - 条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.3.</span> <span class="nav-text">按照条件表达式查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%9B%E9%80%89"><span class="nav-number">2.4.</span> <span class="nav-text">按逻辑表达式筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.5.</span> <span class="nav-text">模糊查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#like"><span class="nav-number">2.5.1.</span> <span class="nav-text">like:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#between-and"><span class="nav-number">2.5.2.</span> <span class="nav-text">between and</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in"><span class="nav-number">2.5.3.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-null-is-not-null"><span class="nav-number">2.5.4.</span> <span class="nav-text">is null(is not null)</span></a></li></ol></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -375,7 +375,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>4.6k</span>
+      <span>4.4k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -480,24 +480,51 @@ SELECT &#39;john&#39;;</code></pre>
 <li>如果要查询的字段有重名的情况，使用别名可以区分开来</li>
 </ul>
 <p>方式一:用as</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">	SELECT 100%98 AS 结果;</span><br><span class="line">	SELECT last_name AS 姓, first_name AS 名 FROM employees;</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line"></span><br><span class="line">方式二:空格</span><br><span class="line"></span><br><span class="line">	SELECT last_name 姓，first_name 名 FROM employees;</span><br><span class="line"></span><br><span class="line">案例：查询salary，显示结果为out put</span><br><span class="line"></span><br><span class="line">	SELECT salary AS &quot;out put&quot; FROM employees;</span><br><span class="line"></span><br><span class="line">不能：</span><br><span class="line"></span><br><span class="line">	SELECT salary AS &quot;out put&quot; FROM employees;</span><br><span class="line"></span><br><span class="line">因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">8.去重distinct</span><br><span class="line">	</span><br><span class="line">案例：查询员工表涉及到的所有部门编号</span><br><span class="line"></span><br><span class="line">	SELECT DISTINCT department_id FROM employees;</span><br><span class="line"></span><br><span class="line">9.+号的作用</span><br><span class="line"></span><br><span class="line">java中的+号：</span><br><span class="line"></span><br><span class="line">- 运算符：两个操作数都为数值型</span><br><span class="line">- 连接符：只要有一个操作数为字符串</span><br><span class="line">	</span><br><span class="line">mysql中的+号：</span><br><span class="line"></span><br><span class="line">仅仅只有一个功能：运算符</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	select 100+90；</span><br><span class="line">	select &#39;123&#39;+90; </span><br><span class="line"></span><br><span class="line">其中一方为字符型，会试图将字符型数值转换成数值型</span><br><span class="line">如果转换成功则继续加法运算</span><br><span class="line"></span><br><span class="line">	select &#39;john&#39;+90; </span><br><span class="line"></span><br><span class="line">如果转换失败，则字符型数组值转换成0；</span><br><span class="line">	</span><br><span class="line">	select null+10;</span><br><span class="line"></span><br><span class="line">只要其中一方为null，则结果为null</span><br><span class="line"></span><br><span class="line">null和别人拼接的时候都是null</span><br><span class="line"></span><br><span class="line">使用concat进行连接</span><br><span class="line"></span><br><span class="line">	select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果</span><br><span class="line"></span><br><span class="line">案例：查询员工名和姓连接成一个字段，并显示为 姓名</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT CONCAT(last_name,first_name) AS 姓名 FROM employees;
-不能：
-SELECT last_name + first_name AS 姓名 FROM employees;</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">10.判断是否为空</span><br><span class="line"></span><br><span class="line">&#96;commission_pct&#96;是否为空？为空返回what</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT 
-    IFNULL(commission_pct, what) AS 奖金率,
-    commission_pct 
-FROM 
-    employees;</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 进阶2 - 条件查询</span><br><span class="line"></span><br><span class="line">语法：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>select
-    查询列表       第三步
-from
-    表名           第一步
-where
-    筛选条件;      第二步</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">分类：</span><br><span class="line"></span><br><span class="line">1.按条件表达式筛选</span><br><span class="line">		</span><br><span class="line">	条件运算符: &gt;  &lt;  &#x3D;    !&#x3D; or &lt;&gt;(不等于)    &gt;&#x3D; &lt;&#x3D;</span><br><span class="line">		</span><br><span class="line">2.按逻辑表达式筛选</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line">	逻辑运算符：   与&amp;&amp; 或|| 非!</span><br><span class="line">	sql推荐使用    and or not</span><br><span class="line">	作用：连接条件表达式</span><br><span class="line">	&amp;&amp; and 都1则1</span><br><span class="line">	|| or 有1则1</span><br><span class="line">	！ not 是0则1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 100%98 AS 结果;</span><br><span class="line">SELECT last_name AS 姓, first_name AS 名 FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>方式二:空格</p>
+<pre><code>SELECT last_name 姓，first_name 名 FROM employees;</code></pre>
+<p>案例：查询salary，显示结果为out put</p>
+<pre><code>SELECT salary AS &quot;out put&quot; FROM employees;</code></pre>
+<p>不能：</p>
+<pre><code>SELECT salary AS &quot;out put&quot; FROM employees;</code></pre>
+<p>因为有特殊符号的时候就用双引号引起来，单引号也行的，建议双引号。</p>
+<p>8.去重distinct</p>
+<p>案例：查询员工表涉及到的所有部门编号</p>
+<pre><code>SELECT DISTINCT department_id FROM employees;</code></pre>
+<p>9.+号的作用</p>
+<p>java中的+号：</p>
+<ul>
+<li>运算符：两个操作数都为数值型</li>
+<li>连接符：只要有一个操作数为字符串</li>
+</ul>
+<p>mysql中的+号：</p>
+<p>仅仅只有一个功能：运算符</p>
+<pre><code>select 100+90；
+select &#39;123&#39;+90; </code></pre>
+<p>其中一方为字符型，会试图将字符型数值转换成数值型<br>如果转换成功则继续加法运算</p>
+<pre><code>select &#39;john&#39;+90; </code></pre>
+<p>如果转换失败，则字符型数组值转换成0；</p>
+<pre><code>select null+10;</code></pre>
+<p>只要其中一方为null，则结果为null</p>
+<p>null和别人拼接的时候都是null</p>
+<p>使用concat进行连接</p>
+<pre><code>select concat(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) AS 结果</code></pre>
+<p>案例：查询员工名和姓连接成一个字段，并显示为 姓名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT CONCAT(last_name,first_name) AS 姓名 FROM employees;</span><br><span class="line">不能：</span><br><span class="line">SELECT last_name + first_name AS 姓名 FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>10.判断是否为空</p>
+<p><code>commission_pct</code>是否为空？为空返回what</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">	IFNULL(commission_pct, what) AS 奖金率,</span><br><span class="line">	commission_pct </span><br><span class="line">FROM </span><br><span class="line">	employees;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进阶2-条件查询"><a href="#进阶2-条件查询" class="headerlink" title="进阶2 - 条件查询"></a>进阶2 - 条件查询</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select</span><br><span class="line">	查询列表       第三步</span><br><span class="line">from</span><br><span class="line">	表名           第一步</span><br><span class="line">where</span><br><span class="line">	筛选条件;      第二步</span><br></pre></td></tr></table></figure>
+
+<p>分类：</p>
+<p>1.按条件表达式筛选</p>
+<pre><code>条件运算符: &gt;  &lt;  =    != or &lt;&gt;(不等于)    &gt;= &lt;=</code></pre>
+<p>2.按逻辑表达式筛选</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">逻辑运算符：   与&amp;&amp; 或|| 非!</span><br><span class="line">sql推荐使用    and or not</span><br><span class="line">作用：连接条件表达式</span><br><span class="line">&amp;&amp; and 都1则1</span><br><span class="line">|| or 有1则1</span><br><span class="line">！ not 是0则1</span><br></pre></td></tr></table></figure>
 
 <p>3.模糊查询</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">like </span><br><span class="line">between and</span><br><span class="line">in </span><br><span class="line">is null</span><br><span class="line">is not null</span><br></pre></td></tr></table></figure>
@@ -537,50 +564,35 @@ where
 <li>两个临界值的位置不能调换，不会报错但效果不一样</li>
 </ul>
 <p>案例1：查询员工编号在100到120之间的员工信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">	SELECT</span><br><span class="line">		*</span><br><span class="line">	FROM</span><br><span class="line">		employees</span><br><span class="line">	WHERE</span><br><span class="line">		employee_id BETWEEN 100 AND 120;</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line"></span><br><span class="line">### in</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">含义：用于判断某字段的值是否属于in列表中的某一项</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line"></span><br><span class="line">- 使用in提高语句简洁度</span><br><span class="line">- in列表的值类型必须统一或者兼容</span><br><span class="line">- 不支持通配符，相当于等号</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">案例：查询员工的工种编号是 IT_PROT, AD_VP, AD_PRES中的一个的员工名和工种编号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT
-    last_name,
-    job_id
-FROM
-    employees
-WHERE
-    job_id=&#39;IT_PROT&#39; OR job_id=&#39;AD_VP&#39; OR job_id=&#39;AD_VP&#39;;
-方法二 - 用in：    
-WHERE
-    job_id IN (&#39;IT_PROT&#39; ,&#39;AD_VP&#39; , &#39;AD_VP&#39;);</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### is null(is not null)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**&#x3D;或者&lt;&gt;不能用于判断null值**</span><br><span class="line">	</span><br><span class="line">案例1：查询没有奖金的员工名和奖金率</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT
-    last_name,
-    commission_pct
-FROM
-    employees
-WHERE
-    commission_pct IS NULL;</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**安全等于  &lt;&#x3D;&gt;  is null可以换成&lt;&#x3D;&gt; null**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">案例1：查询没有奖金的员工名和奖金率</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT
-    last_name,
-    commission_pct
-FROM
-    employees
-WHERE
-    commission_pct &lt;=&gt; NULL;</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">案例2：查询工资为12000的员工信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>SELECT
-    last_name,
-    salary
-FROM
-    employees
-WHERE
-    salary &lt;=&gt; 12000;</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">区别</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>IS NULL ：仅仅可以判断NULL值
-&lt;=&gt;     ：既可以判断NULL值，又可以判断普通的数值。    </code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">函数重提</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code> concat:拼接字符
-isnull:判断，如果是空值则返回1，不是则返回0
-ifnull:判断，如果是空值则返回一个给定值，不然则返回原本的值</code></pre>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	*</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	employee_id BETWEEN 100 AND 120;</span><br></pre></td></tr></table></figure>
 
+<h3 id="in"><a href="#in" class="headerlink" title="in"></a>in</h3><p>含义：用于判断某字段的值是否属于in列表中的某一项</p>
+<p>特点：</p>
+<ul>
+<li>使用in提高语句简洁度</li>
+<li>in列表的值类型必须统一或者兼容</li>
+<li>不支持通配符，相当于等号</li>
+</ul>
+<p>案例：查询员工的工种编号是 IT_PROT, AD_VP, AD_PRES中的一个的员工名和工种编号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	last_name,</span><br><span class="line">	job_id</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	job_id&#x3D;&#39;IT_PROT&#39; OR job_id&#x3D;&#39;AD_VP&#39; OR job_id&#x3D;&#39;AD_VP&#39;;</span><br><span class="line">方法二 - 用in：	</span><br><span class="line">WHERE</span><br><span class="line">	job_id IN (&#39;IT_PROT&#39; ,&#39;AD_VP&#39; , &#39;AD_VP&#39;);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="is-null-is-not-null"><a href="#is-null-is-not-null" class="headerlink" title="is null(is not null)"></a>is null(is not null)</h3><p><strong>=或者&lt;&gt;不能用于判断null值</strong></p>
+<p>案例1：查询没有奖金的员工名和奖金率</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	last_name,</span><br><span class="line">	commission_pct</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	commission_pct IS NULL;</span><br></pre></td></tr></table></figure>
+
+<p><strong>安全等于  &lt;=&gt;  is null可以换成&lt;=&gt; null</strong></p>
+<p>案例1：查询没有奖金的员工名和奖金率</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	last_name,</span><br><span class="line">	commission_pct</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	commission_pct &lt;&#x3D;&gt; NULL;</span><br></pre></td></tr></table></figure>
+
+<p>案例2：查询工资为12000的员工信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	last_name,</span><br><span class="line">	salary</span><br><span class="line">FROM</span><br><span class="line">	employees</span><br><span class="line">WHERE</span><br><span class="line">	salary &lt;&#x3D;&gt; 12000;</span><br></pre></td></tr></table></figure>
+
+<p>区别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IS NULL ：仅仅可以判断NULL值</span><br><span class="line">&lt;&#x3D;&gt;     ：既可以判断NULL值，又可以判断普通的数值。	</span><br></pre></td></tr></table></figure>
+
+<p>函数重提</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	concat:拼接字符</span><br><span class="line">isnull:判断，如果是空值则返回1，不是则返回0</span><br><span class="line">ifnull:判断，如果是空值则返回一个给定值，不然则返回原本的值</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -603,8 +615,8 @@ ifnull:判断，如果是空值则返回一个给定值，不然则返回原本�
 </div>
 
           <div class="post-tags">
-              <a href="/tags/learn/" rel="tag"># learn</a>
               <a href="/tags/mysql/" rel="tag"># mysql</a>
+              <a href="/tags/learn/" rel="tag"># learn</a>
           </div>
 
         
