@@ -67,9 +67,9 @@
     <category term="learning notes" scheme="http://example.com/categories/learning-notes/"/>
     
     
-    <category term="learn" scheme="http://example.com/tags/learn/"/>
-    
     <category term="mysql" scheme="http://example.com/tags/mysql/"/>
+    
+    <category term="learn" scheme="http://example.com/tags/learn/"/>
     
   </entry>
   
