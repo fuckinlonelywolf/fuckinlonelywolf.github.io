@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"8.0.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false}};
+  </script>
+
+  <meta name="description" content="本篇是学习MySQL的基础篇习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识MySQL---基础篇习题">
+<meta property="og:url" content="http://example.com/2020/06/10/%E5%88%9D%E8%AF%86MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%A0%E9%A2%98/index.html">
+<meta property="og:site_name" content="martini&#39;s blog">
+<meta property="og:description" content="本篇是学习MySQL的基础篇习题">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-10T09:17:51.000Z">
+<meta property="article:modified_time" content="2020-11-01T13:37:07.876Z">
+<meta property="article:author" content="martini">
+<meta property="article:tag" content="learn">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/06/10/%E5%88%9D%E8%AF%86MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%A0%E9%A2%98/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>初识MySQL---基础篇习题 | martini's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="martini's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">martini's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">wings</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%B2%A1%E6%9C%89%E5%A5%96%E9%87%91%EF%BC%8C%E4%B8%94%E5%B7%A5%E8%B5%84%E5%B0%8F%E4%BA%8E18000%E7%9A%84salary-last-name"><span class="nav-number">1.</span> <span class="nav-text">查询没有奖金，且工资小于18000的salary, last_name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2employees%E8%A1%A8%E4%B8%AD%EF%BC%8Cjob-id%E4%B8%8D%E4%B8%BA%E2%80%99IT%E2%80%99%E6%88%96%E8%80%85%E5%B7%A5%E8%B5%84%E4%B8%BA12000%E7%9A%84%E5%91%98%E5%B7%A5%E4%BF%A1%E6%81%AF"><span class="nav-number">2.</span> <span class="nav-text">查询employees表中，job_id不为’IT’或者工资为12000的员工信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bdepartments%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">查看departments表的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E9%83%A8%E9%97%A8departments%E8%A1%A8%E4%B8%AD%E6%B6%89%E5%8F%8A%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BD%8D%E7%BD%AE%E7%BC%96%E5%8F%B7"><span class="nav-number">4.</span> <span class="nav-text">查询部门departments表中涉及到了哪些位置编号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%91%98%E5%B7%A5%E7%9A%84%E5%A7%93%E5%90%8D%E5%92%8C%E9%83%A8%E9%97%A8%E5%8F%B7%E7%9A%84%E5%B9%B4%E8%96%AA%EF%BC%8C%E6%8C%89%E5%B9%B4%E8%96%AA%E9%99%8D%E5%BA%8F%EF%BC%8C%E6%8C%89%E5%A7%93%E5%90%8D%E5%8D%87%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">查询员工的姓名和部门号的年薪，按年薪降序，按姓名升序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%B7%A5%E8%B5%84%E4%B8%8D%E5%9C%A88000%E5%92%8C17000%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84%E5%A7%93%E5%90%8D%E5%92%8C%E5%B7%A5%E8%B5%84%EF%BC%8C%E6%8C%89%E5%B7%A5%E8%B5%84%E9%99%8D%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">选择工资不在8000和17000的员工的姓名和工资，按工资降序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E9%82%AE%E7%AE%B1%E4%B8%AD%E5%8C%85%E5%90%ABe%E7%9A%84%E5%91%98%E5%B7%A5%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%B9%B6%E5%85%88%E6%8C%89%E7%85%A7%E9%82%AE%E7%AE%B1%E7%9A%84%E5%AD%97%E8%8A%82%E6%95%B0%E9%99%8D%E5%BA%8F%EF%BC%8C%E5%86%8D%E6%8C%89%E7%85%A7%E9%83%A8%E9%97%A8%E5%8F%B7%E5%8D%87%E5%BA%8F%E3%80%82"><span class="nav-number">7.</span> <span class="nav-text">查询邮箱中包含e的员工信息，并先按照邮箱的字节数降序，再按照部门号升序。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%EF%BC%8C-%E6%97%A5%E6%9C%9F-%E6%97%B6%E9%97%B4"><span class="nav-number">8.</span> <span class="nav-text">显示系统时间， 日期+时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%91%98%E5%B7%A5%E5%8F%B7%E3%80%81%E5%A7%93%E5%90%8D%E3%80%81%E5%B7%A5%E8%B5%84%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%B7%A5%E8%B5%84%E6%8F%90%E9%AB%98%E7%99%BE%E5%88%86%E4%B9%8B20-%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%8C%E5%91%BD%E5%90%8D%E4%B8%BAnew-salary"><span class="nav-number">9.</span> <span class="nav-text">查询员工号、姓名、工资，以及工资提高百分之20%后的结果，命名为new salary</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E5%91%98%E5%B7%A5%E7%9A%84%E5%A7%93%E5%90%8D%E6%8C%89%E7%85%A7%E9%A6%96%E5%AD%97%E6%AF%8D%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%B9%B6%E5%86%99%E5%87%BA%E5%A7%93%E5%90%8D%E7%9A%84%E9%95%BF%E5%BA%A6-length"><span class="nav-number">10.</span> <span class="nav-text">将员工的姓名按照首字母排序，并写出姓名的长度 length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%9A%E4%B8%80%E4%B8%AA%E6%9F%A5%E8%AF%A2%EF%BC%8C%E6%98%BE%E7%A4%BA%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%95%88%E6%9E%9C%EF%BC%9A-lt-last-name-gt-earns-lt-salary-gt-monthly-but-wants-lt-salary-3-gt"><span class="nav-number">11.</span> <span class="nav-text">做一个查询，显示下面的效果：&lt;last_name&gt; earns &lt;salary&gt; monthly but wants &lt;salary*3&gt;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8case-when"><span class="nav-number">12.</span> <span class="nav-text">使用case-when</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%85%AC%E5%8F%B8%E5%91%98%E5%B7%A5%E5%B7%A5%E8%B5%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E3%80%81%E6%9C%80%E5%B0%8F%E5%80%BC%E3%80%81%E5%B9%B3%E5%9D%87%E5%80%BC%E3%80%81%E6%80%BB%E5%92%8C"><span class="nav-number">13.</span> <span class="nav-text">查询公司员工工资的最大值、最小值、平均值、总和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%91%98%E5%B7%A5%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%A5%E8%81%8C%E6%97%B6%E9%97%B4%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%A5%E8%81%8C%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%B7%AE%E5%A4%A9%E6%95%B0%EF%BC%88difference%EF%BC%89"><span class="nav-number">14.</span> <span class="nav-text">查询员工表中的最大入职时间和最小入职时间的相差天数（difference）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E9%83%A8%E9%97%A8%E7%BC%96%E5%8F%B7%E4%B8%BA90%E7%9A%84%E5%91%98%E5%B7%A5%E4%B8%AA%E6%95%B0"><span class="nav-number">15.</span> <span class="nav-text">查询部门编号为90的员工个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%90%84job-id%E7%9A%84%E5%91%98%E5%B7%A5%E5%B7%A5%E8%B5%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E3%80%81%E6%9C%80%E5%B0%8F%E5%80%BC%E3%80%81%E5%B9%B3%E5%9D%87%E5%80%BC%E3%80%81%E6%80%BB%E5%92%8C%EF%BC%8C%E5%B9%B6%E6%8C%89%E7%85%A7job-id%E5%8D%87%E5%BA%8F"><span class="nav-number">16.</span> <span class="nav-text">查询各job_id的员工工资的最大值、最小值、平均值、总和，并按照job_id升序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%91%98%E5%B7%A5%E6%9C%80%E9%AB%98%E5%B7%A5%E8%B5%84%E5%92%8C%E6%9C%80%E4%BD%8E%E5%B7%A5%E8%B5%84%E7%9A%84%E5%B7%AE%E8%B7%9D%EF%BC%88difference%EF%BC%89"><span class="nav-number">17.</span> <span class="nav-text">查询员工最高工资和最低工资的差距（difference）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%90%84%E4%B8%AA%E7%AE%A1%E7%90%86%E8%80%85%E6%89%8B%E4%B8%8B%E5%91%98%E5%B7%A5%E7%9A%84%E6%9C%80%E4%BD%8E%E5%B7%A5%E8%B5%84%EF%BC%8C%E5%85%B6%E4%B8%AD%E6%9C%80%E4%BD%8E%E5%B7%A5%E8%B5%84%E4%B8%8D%E8%83%BD%E4%BD%8E%E4%BA%8E6000%EF%BC%8C-%E6%B2%A1%E6%9C%89%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E5%91%98%E5%B7%A5%E4%B8%8D%E8%AE%A1%E7%AE%97%E5%9C%A8%E5%86%85"><span class="nav-number">18.</span> <span class="nav-text">查询各个管理者手下员工的最低工资，其中最低工资不能低于6000， 没有管理者的员工不计算在内</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E9%83%A8%E9%97%A8%E7%9A%84%E7%BC%96%E5%8F%B7%EF%BC%8C%E5%91%98%E5%B7%A5%E6%95%B0%E9%87%8F%E5%92%8C%E5%B7%A5%E8%B5%84%E5%B9%B3%E5%9D%87%E5%80%BC%EF%BC%8C%E5%B9%B6%E6%8C%89%E7%85%A7%E5%B9%B3%E5%9D%87%E5%B7%A5%E8%B5%84%E9%99%8D%E5%BA%8F"><span class="nav-number">19.</span> <span class="nav-text">查询所有部门的编号，员工数量和工资平均值，并按照平均工资降序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%85%B7%E6%9C%89%E5%90%84%E4%B8%AAjob-id%E7%9A%84%E5%91%98%E5%B7%A5%E4%BA%BA%E6%95%B0"><span class="nav-number">20.</span> <span class="nav-text">选择具有各个job_id的员工人数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%91%98%E5%B7%A5%E8%A1%A8%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%A5%E8%B5%84%E3%80%81%E5%B7%A5%E8%B5%84%E5%B9%B3%E5%9D%87%E5%80%BC"><span class="nav-number">21.</span> <span class="nav-text">显示员工表的最大工资、工资平均值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%91%98%E5%B7%A5%E8%A1%A8%E7%9A%84employee-id-job-id-last-name%EF%BC%8C%E6%8C%89%E7%85%A7department-id%E9%99%8D%E5%BA%8F%EF%BC%8Csalary%E5%8D%87%E5%BA%8F"><span class="nav-number">22.</span> <span class="nav-text">查询员工表的employee_id, job_id, last_name，按照department_id降序，salary升序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%91%98%E5%B7%A5%E8%A1%A8%E7%9A%84job-id%E4%B8%AD%E5%8C%85%E5%90%ABa%E5%92%8Ce%E7%9A%84%EF%BC%8C%E5%B9%B6%E4%B8%94a%E5%9C%A8e%E5%89%8D%E9%9D%A2"><span class="nav-number">23.</span> <span class="nav-text">查询员工表的job_id中包含a和e的，并且a在e前面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%A2%98"><span class="nav-number">24.</span> <span class="nav-text">无题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E5%91%98%E5%B7%A5%E7%9A%84%E5%A7%93%E5%90%8D%E3%80%81%E9%83%A8%E9%97%A8%E5%8F%B7%E5%92%8C%E9%83%A8%E9%97%A8%E5%90%8D%E7%A7%B0"><span class="nav-number">25.</span> <span class="nav-text">显示所有员工的姓名、部门号和部门名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A290%E5%8F%B7%E9%83%A8%E9%97%A8%E5%91%98%E5%B7%A5%E7%9A%84job-id%E5%92%8C90%E5%8F%B7%E9%83%A8%E9%97%A8%E7%9A%84location-id"><span class="nav-number">26.</span> <span class="nav-text">查询90号部门员工的job_id和90号部门的location_id</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%89%80%E6%9C%89%E6%9C%89%E5%A5%96%E9%87%91%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84last-name-department-name-location-id-city"><span class="nav-number">27.</span> <span class="nav-text">选择所有有奖金的员工的last_name,department_name,location_id,city</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9city%E5%9C%A8Toronto%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84last-name-job-id-department-id-department-name"><span class="nav-number">28.</span> <span class="nav-text">选择city在Toronto工作的员工的last_name,job_id,department_id,department_name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%AF%8F%E4%B8%AA%E5%B7%A5%E7%A7%8D%EF%BC%8C%E6%AF%8F%E4%B8%AA%E9%83%A8%E9%97%A8%E7%9A%84%E9%83%A8%E9%97%A8%E5%90%8D%E3%80%81%E5%B7%A5%E7%A7%8D%E5%90%8D%E5%92%8C%E6%9C%80%E4%BD%8E%E5%B7%A5%E8%B5%84"><span class="nav-number">29.</span> <span class="nav-text">查询每个工种，每个部门的部门名、工种名和最低工资</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%AF%8F%E4%B8%AA%E5%9B%BD%E5%AE%B6%E4%B8%8B%E7%9A%84%E9%83%A8%E9%97%A8%E4%B8%AA%E6%95%B0%E5%A4%A7%E4%BA%8E2%E7%9A%84%E5%9B%BD%E5%AE%B6%E7%BC%96%E5%8F%B7"><span class="nav-number">30.</span> <span class="nav-text">查询每个国家下的部门个数大于2的国家编号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8C%87%E5%AE%9A%E5%91%98%E5%B7%A5%E7%9A%84%E5%A7%93%E5%90%8D%E3%80%81%E5%91%98%E5%B7%A5%E5%8F%B7%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%BB%96%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E5%A7%93%E5%90%8D%E5%92%8C%E5%91%98%E5%B7%A5%E5%8F%B7"><span class="nav-number">31.</span> <span class="nav-text">选择指定员工的姓名、员工号，以及他的管理者的姓名和员工号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%BC%96%E5%8F%B7-gt-3%E7%9A%84%E5%A5%B3%E7%A5%9E%E7%9A%84%E7%94%B7%E6%9C%8B%E5%8F%8B%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9C%89%E5%88%99%E5%88%97%E5%87%BA%E8%AF%A6%E7%BB%86%E7%9A%84%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%EF%BC%8C%E5%88%99%E7%94%A8null%E5%A1%AB%E5%85%85"><span class="nav-number">32.</span> <span class="nav-text">查询编号&gt;3的女神的男朋友信息，如果有则列出详细的信息，如果没有，则用null填充</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%93%AA%E4%B8%AA%E5%9F%8E%E5%B8%82%E6%B2%A1%E6%9C%89%E9%83%A8%E9%97%A8"><span class="nav-number">33.</span> <span class="nav-text">查询哪个城市没有部门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E9%83%A8%E9%97%A8%E5%90%8D%E7%A7%B0%E4%B8%BASAL%E6%88%96IT%E7%9A%84%E5%91%98%E5%B7%A5%E4%BF%A1%E6%81%AF"><span class="nav-number">34.</span> <span class="nav-text">查询部门名称为SAL或IT的员工信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%92%8CZlotkey%E7%9B%B8%E5%90%8C%E9%83%A8%E9%97%A8%E7%9A%84%E5%91%98%E5%B7%A5%E5%A7%93%E5%90%8D%E5%92%8C%E5%B7%A5%E8%B5%84"><span class="nav-number">35.</span> <span class="nav-text">查询和Zlotkey相同部门的员工姓名和工资</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%B7%A5%E8%B5%84%E6%AF%94%E5%85%AC%E5%8F%B8%E5%B9%B3%E5%9D%87%E5%B7%A5%E8%B5%84%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84%E5%91%98%E5%B7%A5%E5%8F%B7%EF%BC%8C%E5%A7%93%E5%90%8D%EF%BC%8C%E5%B7%A5%E8%B5%84"><span class="nav-number">36.</span> <span class="nav-text">查询工资比公司平均工资高的员工的员工号，姓名，工资</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%90%84%E9%83%A8%E9%97%A8%E4%B8%AD%E5%B7%A5%E8%B5%84%E6%AF%94%E6%9C%AC%E9%83%A8%E9%97%A8%E5%B9%B3%E5%9D%87%E5%B7%A5%E8%B5%84%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E5%8F%B7%EF%BC%8C%E5%A7%93%E5%90%8D%EF%BC%8C%E5%B7%A5%E8%B5%84"><span class="nav-number">37.</span> <span class="nav-text">查询各部门中工资比本部门平均工资高的员工号，姓名，工资</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%92%8C%E5%A7%93%E5%90%8D%E4%B8%AD%E5%8C%85%E5%90%AB-%E5%AD%97%E6%AF%8Du%E7%9A%84%E5%91%98%E5%B7%A5-%E5%9C%A8%E7%9B%B8%E5%90%8C%E9%83%A8%E9%97%A8%E7%9A%84%E5%91%98%E5%B7%A5-%E7%9A%84%E5%91%98%E5%B7%A5%E5%8F%B7%E5%92%8C%E5%A7%93%E5%90%8D"><span class="nav-number">38.</span> <span class="nav-text">查询和姓名中包含 字母u的员工 在相同部门的员工 的员工号和姓名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%9C%A8%E9%83%A8%E9%97%A8%E7%9A%84location-id%E4%B8%BA1700%E7%9A%84%E9%83%A8%E9%97%A8%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84%E5%91%98%E5%B7%A5%E5%8F%B7"><span class="nav-number">39.</span> <span class="nav-text">查询在部门的location_id为1700的部门工作的员工的员工号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%AE%A1%E7%90%86%E8%80%85%E6%98%AFk-ing%E7%9A%84%E5%91%98%E5%B7%A5%E5%A7%93%E5%90%8D%E5%92%8C%E5%B7%A5%E8%B5%84"><span class="nav-number">40.</span> <span class="nav-text">查询管理者是k_ing的员工姓名和工资</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%B7%A5%E8%B5%84%E6%9C%80%E9%AB%98%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84%E5%A7%93%E5%90%8D%EF%BC%8C%E8%A6%81%E6%B1%82first%E5%92%8Clast-name%E6%98%BE%E7%A4%BA%E4%B8%BA%E4%B8%80%E5%88%97%EF%BC%8C%E5%88%97%E5%90%8D%E4%B8%BA%E5%A7%93%E5%90%8D"><span class="nav-number">41.</span> <span class="nav-text">查询工资最高的员工的姓名，要求first和last_name显示为一列，列名为姓名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E5%AD%A6%E5%91%98%E7%9A%84%E9%82%AE%E7%AE%B1%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D"><span class="nav-number">42.</span> <span class="nav-text">查询所有学员的邮箱的用户名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%94%B7%E7%94%9F%E5%92%8C%E5%A5%B3%E7%94%9F%E7%9A%84%E4%B8%AA%E6%95%B0"><span class="nav-number">43.</span> <span class="nav-text">查询男生和女生的个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%B9%B4%E9%BE%84-gt-18%E5%B2%81%E7%9A%84%E6%89%80%E6%9C%89%E5%AD%A6%E7%94%9F%E7%9A%84%E5%A7%93%E5%90%8D%E5%92%8C%E5%B9%B4%E7%BA%A7%E5%90%8D%E7%A7%B0"><span class="nav-number">44.</span> <span class="nav-text">查询年龄&gt;18岁的所有学生的姓名和年级名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%93%AA%E4%B8%AA%E5%B9%B4%E7%BA%AA%E7%9A%84%E5%AD%A6%E7%94%9F%E6%9C%80%E5%B0%8F%E5%B9%B4%E9%BE%84-gt-20%E5%B2%81"><span class="nav-number">45.</span> <span class="nav-text">查询哪个年纪的学生最小年龄&gt;20岁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E8%88%AC%E7%9A%84%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="nav-number">46.</span> <span class="nav-text">总结一般的查询语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E4%BB%A5%E4%B8%8B%E8%84%9A%E6%9C%AC%E5%88%9B%E5%BB%BA%E8%A1%A8my-employees"><span class="nav-number">47.</span> <span class="nav-text">运行以下脚本创建表my_employees</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%A1%A8my-employees%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">48.</span> <span class="nav-text">显示表my_employees的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E8%A1%A8my-employees%E4%B8%AD%E6%8F%92%E5%85%A5%E4%BB%A5%E4%B8%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">49.</span> <span class="nav-text">向表my_employees中插入以下数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E8%A1%A8users%E4%B8%AD%E6%8F%92%E5%85%A5%E4%BB%A5%E4%B8%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">50.</span> <span class="nav-text">向表users中插入以下数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%863%E5%8F%B7%E5%91%98%E5%B7%A5%E7%9A%84last-name%E4%BF%AE%E6%94%B9%E4%B8%BA%E2%80%9Cdrelxer%E2%80%9D"><span class="nav-number">51.</span> <span class="nav-text">将3号员工的last_name修改为“drelxer”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E6%89%80%E6%9C%89%E5%B7%A5%E8%B5%84%E5%B0%91%E4%B8%8E900%E7%9A%84%E5%91%98%E5%B7%A5%E7%9A%84%E5%B7%A5%E8%B5%84%E4%BF%AE%E6%94%B9%E4%B8%BA1000"><span class="nav-number">52.</span> <span class="nav-text">将所有工资少与900的员工的工资修改为1000</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86userid%E4%B8%BAbbiri%E7%9A%84user%E8%A1%A8%E5%92%8Cmy-employees%E8%A1%A8%E7%9A%84%E8%AE%B0%E5%BD%95%E5%85%A8%E9%83%A8%E5%88%A0%E9%99%A4"><span class="nav-number">53.</span> <span class="nav-text">将userid为bbiri的user表和my_employees表的记录全部删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">54.</span> <span class="nav-text">删除所有的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%89%80%E5%81%9A%E7%9A%84%E4%BF%AE%E6%AD%A3"><span class="nav-number">55.</span> <span class="nav-text">检查所做的修正</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E7%A9%BA%E8%A1%A8my-employees"><span class="nav-number">56.</span> <span class="nav-text">清空表my_employees</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8dept1"><span class="nav-number">57.</span> <span class="nav-text">创建表dept1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E8%A1%A8department%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5%E6%96%B0%E8%A1%A8dept2"><span class="nav-number">58.</span> <span class="nav-text">将表department中的数据插入新表dept2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8emp5"><span class="nav-number">59.</span> <span class="nav-text">创建表emp5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E5%88%97last-name%E7%9A%84%E9%95%BF%E5%BA%A6%E5%A2%9E%E5%8A%A0%E5%88%B050"><span class="nav-number">60.</span> <span class="nav-text">将列last_name的长度增加到50</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E8%A1%A8employees%E5%88%9B%E5%BB%BAemployees2"><span class="nav-number">61.</span> <span class="nav-text">根据表employees创建employees2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8emp5"><span class="nav-number">62.</span> <span class="nav-text">删除表emp5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E8%A1%A8employees%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%BAemp5"><span class="nav-number">63.</span> <span class="nav-text">将表employees重命名为emp5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E8%A1%A8emp5%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%88%97test-column%EF%BC%8C%E5%B9%B6%E6%A3%80%E6%9F%A5%E6%89%80%E5%81%9A%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">64.</span> <span class="nav-text">在表emp5中添加新列test_column，并检查所做的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%88%A0%E9%99%A4%E8%A1%A8emp5%E4%B8%AD%E7%9A%84%E5%88%97dept-id"><span class="nav-number">65.</span> <span class="nav-text">直接删除表emp5中的列dept_id</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E8%A1%A8emp2%E7%9A%84id%E5%88%97%E4%B8%AD%E6%B7%BB%E5%8A%A0PRIMARY-KEY%E7%BA%A6%E6%9D%9F%EF%BC%88my-emp-id-pk%EF%BC%89"><span class="nav-number">66.</span> <span class="nav-text">向表emp2的id列中添加PRIMARY KEY约束（my_emp_id_pk）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E8%A1%A8dep2%E7%9A%84id%E5%88%97%E4%B8%AD%E6%B7%BB%E5%8A%A0PRIMARY-KEY%E7%BA%A6%E6%9D%9F%EF%BC%88my-dep-id-pk%EF%BC%89"><span class="nav-number">67.</span> <span class="nav-text">向表dep2的id列中添加PRIMARY KEY约束（my_dep_id_pk）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E8%A1%A8emp2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%88%97dept-id%EF%BC%8C%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%9A%E4%B9%89FOREIGN-KEY%E7%BA%A6%E6%9D%9F%EF%BC%8C%E4%B8%8E%E4%B9%8B%E7%9B%B8%E5%85%B3%E8%81%94%E7%9A%84%E5%88%97%E6%98%AFdept2%E8%A1%A8%E4%B8%AD%E7%9A%84id%E5%88%97"><span class="nav-number">68.</span> <span class="nav-text">向表emp2中添加列dept_id，并在其中定义FOREIGN KEY约束，与之相关联的列是dept2表中的id列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BEemp-v1%EF%BC%8C%E8%A6%81%E6%B1%82%E6%9F%A5%E8%AF%A2%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E4%BB%A5%E2%80%9D011%E2%80%9D%E5%BC%80%E5%A4%B4%E7%9A%84%E5%91%98%E5%B7%A5%E5%A7%93%E5%90%8D%E5%92%8C%E5%B7%A5%E8%B5%84%E3%80%81%E9%82%AE%E7%AE%B1"><span class="nav-number">69.</span> <span class="nav-text">创建视图emp_v1，要求查询电话号码以”011”开头的员工姓名和工资、邮箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BEemp-v2%EF%BC%8C%E8%A6%81%E6%B1%82%E6%9F%A5%E8%AF%A2%E9%83%A8%E9%97%A8%E7%9A%84%E6%9C%80%E9%AB%98%E5%B7%A5%E8%B5%84%E9%AB%98%E4%BA%8E12000%E7%9A%84%E9%83%A8%E9%97%A8%E4%BF%A1%E6%81%AF"><span class="nav-number">70.</span> <span class="nav-text">创建视图emp_v2，要求查询部门的最高工资高于12000的部门信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%A2%98-1"><span class="nav-number">71.</span> <span class="nav-text">无题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E4%BA%8B%E5%8A%A1%EF%BC%8C%E5%90%91%E8%A1%A8%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%80%E8%A1%8C%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%B9%B6%E7%BB%93%E6%9D%9F"><span class="nav-number">72.</span> <span class="nav-text">开启事务，向表中插入一行数据，并结束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E6%9F%A5%E8%AF%A2%E4%BB%B7%E6%A0%BC%E5%A4%A7%E4%BA%8E100%E7%9A%84%E4%B9%A6%E5%90%8D%E5%92%8C%E7%B1%BB%E5%9E%8B%E5%90%8D"><span class="nav-number">73.</span> <span class="nav-text">创建视图，实现查询价格大于100的书名和类型名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%A7%86%E5%9B%BE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E6%9F%A5%E8%AF%A2%E4%BB%B7%E6%A0%BC%E5%9C%A890-120%E4%B9%8B%E9%97%B4%E7%9A%84%E4%B9%A6%E5%90%8D%E5%92%8C%E4%BB%B7%E6%A0%BC"><span class="nav-number">74.</span> <span class="nav-text">修改视图，实现查询价格在90-120之间的书名和价格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%88%9A%E6%89%8D%E5%BB%BA%E7%9A%84%E8%A7%86%E5%9B%BE"><span class="nav-number">75.</span> <span class="nav-text">删除刚才建的视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E5%AE%9E%E7%8E%B0%E4%BC%A0%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%EF%BC%8C%E6%8F%92%E5%85%A5%E5%88%B0admin%E8%A1%A8%E4%B8%AD"><span class="nav-number">76.</span> <span class="nav-text">创建存储过程实现传入用户名和密码，插入到admin表中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E5%AE%9E%E7%8E%B0%E4%BC%A0%E5%85%A5%E5%A5%B3%E7%A5%9E%E7%BC%96%E5%8F%B7%EF%BC%8C%E8%BF%94%E5%9B%9E%E5%A5%B3%E7%A5%9E%E5%90%8D%E7%A7%B0%E5%92%8C%E5%A5%B3%E7%A5%9E%E7%94%B5%E8%AF%9D"><span class="nav-number">77.</span> <span class="nav-text">创建存储过程实现传入女神编号，返回女神名称和女神电话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E6%88%96%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E4%BC%A0%E5%85%A5%E4%B8%A4%E4%B8%AA%E5%A5%B3%E7%A5%9E%E7%94%9F%E6%97%A5%EF%BC%8C%E8%BF%94%E5%9B%9E%E5%A4%A7%E5%B0%8F"><span class="nav-number">78.</span> <span class="nav-text">创建存储过程或函数实现传入两个女神生日，返回大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BC%A0%E5%85%A5%E4%B8%A4%E4%B8%AAfloat%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%BA%8C%E8%80%85%E4%B9%8B%E5%92%8C"><span class="nav-number">79.</span> <span class="nav-text">创建函数，实现传入两个float，返回二者之和</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="martini"
+      src="/images/head3.jpg">
+  <p class="site-author-name" itemprop="name">martini</p>
+  <div class="site-description" itemprop="description">Ready for this?</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://www.kaggle.com/" title="Kaggle → https:&#x2F;&#x2F;www.kaggle.com&#x2F;" rel="noopener" target="_blank"><i class="fab fa-kaggle fa-fw"></i>Kaggle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yueze98@qq.com" title="E-Mail → mailto:yueze98@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6039749759" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6039749759" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://klausvon.cn/" title="http:&#x2F;&#x2F;klausvon.cn" rel="noopener" target="_blank">klausvon</a>
+        </li>
+    </ul>
+  </div>
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/fuckinlonelywolf" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/06/10/%E5%88%9D%E8%AF%86MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%A0%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head3.jpg">
+      <meta itemprop="name" content="martini">
+      <meta itemprop="description" content="Ready for this?">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="martini's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初识MySQL---基础篇习题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-06-10 17:17:51" itemprop="dateCreated datePublished" datetime="2020-06-10T17:17:51+08:00">2020-06-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-01 21:37:07" itemprop="dateModified" datetime="2020-11-01T21:37:07+08:00">2020-11-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/learning-notes/" itemprop="url" rel="index"><span itemprop="name">learning notes</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>10 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本篇是学习MySQL的基础篇习题</p>
+<a id="more"></a>
+
+
+
+<h4 id="查询没有奖金，且工资小于18000的salary-last-name"><a href="#查询没有奖金，且工资小于18000的salary-last-name" class="headerlink" title="查询没有奖金，且工资小于18000的salary, last_name"></a>查询没有奖金，且工资小于18000的salary, last_name</h4><pre><code>SELECT
+    last_name,
+    salary 
+FROM
+    employees 
+WHERE
+    commission_pct IS NULL 
+    AND salary &lt; 18000;</code></pre>
+<h4 id="查询employees表中，job-id不为’IT’或者工资为12000的员工信息"><a href="#查询employees表中，job-id不为’IT’或者工资为12000的员工信息" class="headerlink" title="查询employees表中，job_id不为’IT’或者工资为12000的员工信息"></a>查询employees表中，job_id不为’IT’或者工资为12000的员工信息</h4><pre><code>SELECT
+    * 
+FROM
+    employees 
+WHERE
+    job_id &lt;&gt; &#39;IT&#39; 
+    OR salary = 12000;</code></pre>
+<h4 id="查看departments表的结构"><a href="#查看departments表的结构" class="headerlink" title="查看departments表的结构"></a>查看departments表的结构</h4><pre><code>desc departments</code></pre>
+<h4 id="查询部门departments表中涉及到了哪些位置编号"><a href="#查询部门departments表中涉及到了哪些位置编号" class="headerlink" title="查询部门departments表中涉及到了哪些位置编号"></a>查询部门departments表中涉及到了哪些位置编号</h4><p>结合上一题，有个字段是location_id，查它。</p>
+<pre><code>SELECT DISTINCT
+    location_id 
+FROM
+    departments;</code></pre>
+<h4 id="查询员工的姓名和部门号的年薪，按年薪降序，按姓名升序"><a href="#查询员工的姓名和部门号的年薪，按年薪降序，按姓名升序" class="headerlink" title="查询员工的姓名和部门号的年薪，按年薪降序，按姓名升序"></a>查询员工的姓名和部门号的年薪，按年薪降序，按姓名升序</h4><pre><code>SELECT
+    last_name,
+    department_id,
+    salary * 12 * (1+IFNULL( commission_pct, 0 )) 年薪 
+FROM
+    employees 
+ORDER BY
+    年薪 DESC,
+    last_name ASC</code></pre>
+<h4 id="选择工资不在8000和17000的员工的姓名和工资，按工资降序"><a href="#选择工资不在8000和17000的员工的姓名和工资，按工资降序" class="headerlink" title="选择工资不在8000和17000的员工的姓名和工资，按工资降序"></a>选择工资不在8000和17000的员工的姓名和工资，按工资降序</h4><pre><code>SELECT
+    last_name,
+    salary 
+FROM
+    employees 
+WHERE
+    salary NOT BETWEEN 8000 
+    AND 17000 
+ORDER BY
+    salary DESC;</code></pre>
+<h4 id="查询邮箱中包含e的员工信息，并先按照邮箱的字节数降序，再按照部门号升序。"><a href="#查询邮箱中包含e的员工信息，并先按照邮箱的字节数降序，再按照部门号升序。" class="headerlink" title="查询邮箱中包含e的员工信息，并先按照邮箱的字节数降序，再按照部门号升序。"></a>查询邮箱中包含e的员工信息，并先按照邮箱的字节数降序，再按照部门号升序。</h4><pre><code>SELECT
+    * 
+FROM
+    employees 
+WHERE
+    email LIKE &#39;%e%&#39; 
+ORDER BY
+    LENGTH( email ) DESC,
+    department_id ASC;</code></pre>
+<h4 id="显示系统时间，-日期-时间"><a href="#显示系统时间，-日期-时间" class="headerlink" title="显示系统时间， 日期+时间"></a>显示系统时间， 日期+时间</h4><pre><code>SELECT
+    NOW();</code></pre>
+<h4 id="查询员工号、姓名、工资，以及工资提高百分之20-后的结果，命名为new-salary"><a href="#查询员工号、姓名、工资，以及工资提高百分之20-后的结果，命名为new-salary" class="headerlink" title="查询员工号、姓名、工资，以及工资提高百分之20%后的结果，命名为new salary"></a>查询员工号、姓名、工资，以及工资提高百分之20%后的结果，命名为<code>new salary</code></h4><pre><code>SELECT employee_id, last_name, salary, salary *( 1+0.2 ) AS &#39;new salary&#39; 
+FROM
+    employees;</code></pre>
+<h4 id="将员工的姓名按照首字母排序，并写出姓名的长度-length"><a href="#将员工的姓名按照首字母排序，并写出姓名的长度-length" class="headerlink" title="将员工的姓名按照首字母排序，并写出姓名的长度 length"></a>将员工的姓名按照首字母排序，并写出姓名的长度<code> length</code></h4><pre><code>SELECT
+    last_name,
+    LENGTH( last_name ),
+    SUBSTR( last_name, 1, 1 ) AS 首字母 
+FROM
+    employees 
+ORDER BY
+    首字母;</code></pre>
+<h4 id="做一个查询，显示下面的效果：-lt-last-name-gt-earns-lt-salary-gt-monthly-but-wants-lt-salary-3-gt"><a href="#做一个查询，显示下面的效果：-lt-last-name-gt-earns-lt-salary-gt-monthly-but-wants-lt-salary-3-gt" class="headerlink" title="做一个查询，显示下面的效果：&lt;last_name&gt; earns &lt;salary&gt; monthly but wants &lt;salary*3&gt;"></a>做一个查询，显示下面的效果：<code>&lt;last_name&gt; earns &lt;salary&gt; monthly but wants &lt;salary*3&gt;</code></h4><pre><code>SELECT
+    CONCAT( last_name, &#39; earns &#39;, salary, &#39; monthly but wants &#39;, salary * 3 ) 
+FROM
+    employees;</code></pre>
+<h4 id="使用case-when"><a href="#使用case-when" class="headerlink" title="使用case-when"></a>使用<code>case-when</code></h4><p>完成条件如下</p>
+<pre><code>|   job   |  grade |
+| AD_PRES |    A   |   
+| ST_MAN  |    B   |   
+| IT_PROG |    C   |
+| SA_REP  |    D   |   
+| ST_CLERK|    E   | </code></pre>
+<p>产生下面的结果</p>
+<pre><code>last_name  job_id  grade
+king        AD_PRES A</code></pre>
+<p>代码如下：</p>
+<pre><code>SELECT
+    last_name,
+    job_id,
+CASE
+        job_id 
+        WHEN &#39;AD_PRES&#39; THEN
+        &#39;A&#39; 
+        WHEN &#39;ST_MAN&#39; THEN
+        &#39;B&#39; 
+        WHEN &#39;IT_PROG&#39; THEN
+        &#39;C&#39; 
+        WHEN &#39;SA_REP&#39; THEN
+        &#39;D&#39; 
+        WHEN &#39;ST_CLERK&#39; THEN
+        &#39;E&#39; ELSE &#39;无&#39; 
+    END AS GRADE 
+FROM
+    employees;</code></pre>
+<h4 id="查询公司员工工资的最大值、最小值、平均值、总和"><a href="#查询公司员工工资的最大值、最小值、平均值、总和" class="headerlink" title="查询公司员工工资的最大值、最小值、平均值、总和"></a>查询公司员工工资的最大值、最小值、平均值、总和</h4><pre><code>SELECT
+    MAX( salary ),
+    MIN( salary ),
+    AVG( salary ),
+    SUM( salary ) 
+FROM
+    employees;</code></pre>
+<h4 id="查询员工表中的最大入职时间和最小入职时间的相差天数（difference）"><a href="#查询员工表中的最大入职时间和最小入职时间的相差天数（difference）" class="headerlink" title="查询员工表中的最大入职时间和最小入职时间的相差天数（difference）"></a>查询员工表中的最大入职时间和最小入职时间的相差天数（difference）</h4><pre><code>#用到一个新函数：`datediff `求两个日期之间的天数
+SELECT
+    DATEDIFF(
+        MAX( hiredate ),
+    MIN( hiredate )) diff 
+FROM
+    employees;</code></pre>
+<h4 id="查询部门编号为90的员工个数"><a href="#查询部门编号为90的员工个数" class="headerlink" title="查询部门编号为90的员工个数"></a>查询部门编号为90的员工个数</h4><pre><code>SELECT
+    COUNT(*) 
+FROM
+    employees 
+WHERE
+    department_id = 90;</code></pre>
+<h4 id="查询各job-id的员工工资的最大值、最小值、平均值、总和，并按照job-id升序"><a href="#查询各job-id的员工工资的最大值、最小值、平均值、总和，并按照job-id升序" class="headerlink" title="查询各job_id的员工工资的最大值、最小值、平均值、总和，并按照job_id升序"></a>查询各<code>job_id</code>的员工工资的最大值、最小值、平均值、总和，并按照<code>job_id</code>升序</h4><pre><code>SELECT
+    MAX( salary ),
+    MIN( salary ),
+    AVG( salary ),
+    SUM( salary ) 
+FROM
+    employees 
+GROUP BY
+    job_id 
+ORDER BY
+    job_id ASC;</code></pre>
+<h4 id="查询员工最高工资和最低工资的差距（difference）"><a href="#查询员工最高工资和最低工资的差距（difference）" class="headerlink" title="查询员工最高工资和最低工资的差距（difference）"></a>查询员工最高工资和最低工资的差距（difference）</h4><pre><code>SELECT
+    (
+    MAX( salary )- MIN( salary )) AS difference 
+FROM
+    employees;</code></pre>
+<h4 id="查询各个管理者手下员工的最低工资，其中最低工资不能低于6000，-没有管理者的员工不计算在内"><a href="#查询各个管理者手下员工的最低工资，其中最低工资不能低于6000，-没有管理者的员工不计算在内" class="headerlink" title="查询各个管理者手下员工的最低工资，其中最低工资不能低于6000， 没有管理者的员工不计算在内"></a>查询各个管理者手下员工的最低工资，其中最低工资不能低于6000， 没有管理者的员工不计算在内</h4><pre><code>SELECT
+    manager_id,
+    MIN( salary ) AS m 
+FROM
+    employees 
+WHERE
+    manager_id 
+GROUP BY
+    manager_id 
+HAVING
+    m &gt;= 6000;</code></pre>
+<h4 id="查询所有部门的编号，员工数量和工资平均值，并按照平均工资降序"><a href="#查询所有部门的编号，员工数量和工资平均值，并按照平均工资降序" class="headerlink" title="查询所有部门的编号，员工数量和工资平均值，并按照平均工资降序"></a>查询所有部门的编号，员工数量和工资平均值，并按照平均工资降序</h4><pre><code>SELECT
+    department_id,
+    COUNT(*),
+    AVG( salary ) AS a 
+FROM
+    employees 
+GROUP BY
+    department_id 
+ORDER BY
+    a DESC;</code></pre>
+<h4 id="选择具有各个job-id的员工人数"><a href="#选择具有各个job-id的员工人数" class="headerlink" title="选择具有各个job_id的员工人数"></a>选择具有各个<code>job_id</code>的员工人数</h4><pre><code>SELECT
+    job_id,
+    count(*) 
+FROM
+    employees 
+GROUP BY
+    job_id;</code></pre>
+<h4 id="显示员工表的最大工资、工资平均值"><a href="#显示员工表的最大工资、工资平均值" class="headerlink" title="显示员工表的最大工资、工资平均值"></a>显示员工表的最大工资、工资平均值</h4><pre><code>SELECT
+    MAX( salary ),
+    AVG( salary ) 
+FROM
+    employees;</code></pre>
+<h4 id="查询员工表的employee-id-job-id-last-name，按照department-id降序，salary升序"><a href="#查询员工表的employee-id-job-id-last-name，按照department-id降序，salary升序" class="headerlink" title="查询员工表的employee_id, job_id, last_name，按照department_id降序，salary升序"></a>查询员工表的<code>employee_id, job_id, last_name</code>，按照<code>department_id</code>降序，<code>salary</code>升序</h4><pre><code>SELECT
+    employee_id, job_id, last_name
+FROM
+    employees
+    ORDER BY
+    department_id DESC, salary ASC;</code></pre>
+<h4 id="查询员工表的job-id中包含a和e的，并且a在e前面"><a href="#查询员工表的job-id中包含a和e的，并且a在e前面" class="headerlink" title="查询员工表的job_id中包含a和e的，并且a在e前面"></a>查询员工表的<code>job_id</code>中包含<code>a</code>和<code>e</code>的，并且<code>a</code>在<code>e</code>前面</h4><pre><code>SELECT
+    job_id 
+FROM
+    employees 
+WHERE
+    job_id LIKE &#39;%a%e%&#39;;</code></pre>
+<h4 id="无题"><a href="#无题" class="headerlink" title="无题"></a>无题</h4><p>题目要求：</p>
+<pre><code>已知表student，里面有id学号，name,gradeID年级编号
+已知表grade, 里面有id年级编号，name年级名
+已知表result,里面有id,score,sutdentNo学号
+要求查询姓名、年级名、成绩</code></pre>
+<p>代码：</p>
+<pre><code>SELECT
+    s.NAME,
+    g.NAME,
+    r.score 
+FROM
+    student s,
+    grade g,
+    result r 
+WHERE
+    s.id = r.studentNo 
+    AND s.gradeID = g.id;</code></pre>
+<h4 id="显示所有员工的姓名、部门号和部门名称"><a href="#显示所有员工的姓名、部门号和部门名称" class="headerlink" title="显示所有员工的姓名、部门号和部门名称"></a>显示所有员工的姓名、部门号和部门名称</h4><pre><code>SELECT
+    e.last_name,
+    e.department_id,
+    d.department_name 
+FROM
+    departments d,
+    employees e 
+WHERE
+    d.department_id = e.department_id;</code></pre>
+<h4 id="查询90号部门员工的job-id和90号部门的location-id"><a href="#查询90号部门员工的job-id和90号部门的location-id" class="headerlink" title="查询90号部门员工的job_id和90号部门的location_id"></a>查询90号部门员工的<code>job_id</code>和90号部门的<code>location_id</code></h4><pre><code>SELECT
+    e.job_id,
+    d.location_id 
+FROM
+    employees e,
+    departments d 
+WHERE
+    e.department_id = d.department_id 
+    AND d.department_id = 90;</code></pre>
+<h4 id="选择所有有奖金的员工的last-name-department-name-location-id-city"><a href="#选择所有有奖金的员工的last-name-department-name-location-id-city" class="headerlink" title="选择所有有奖金的员工的last_name,department_name,location_id,city"></a>选择所有有奖金的员工的<code>last_name,department_name,location_id,city</code></h4><pre><code>SELECT
+    e.last_name,
+    d.department_name,
+    d.location_id,
+    l.city 
+FROM
+    departments d,
+    employees e,
+    locations l 
+WHERE
+    d.department_id = e.department_id 
+    AND d.location_id = l.location_id 
+    AND e.commission_pct IS NOT NULL;</code></pre>
+<h4 id="选择city在Toronto工作的员工的last-name-job-id-department-id-department-name"><a href="#选择city在Toronto工作的员工的last-name-job-id-department-id-department-name" class="headerlink" title="选择city在Toronto工作的员工的last_name,job_id,department_id,department_name"></a>选择<code>city</code>在<code>Toronto</code>工作的员工的<code>last_name,job_id,department_id,department_name</code></h4><pre><code>SELECT
+    e.last_name,
+    e.job_id,
+    d.department_id,
+    d.department_name 
+FROM
+    departments d,
+    employees e,
+    locations l 
+WHERE
+    d.department_id = e.department_id 
+    AND l.city = &#39;Toronto&#39; 
+    AND d.location_id = l.location_id;</code></pre>
+<h4 id="查询每个工种，每个部门的部门名、工种名和最低工资"><a href="#查询每个工种，每个部门的部门名、工种名和最低工资" class="headerlink" title="查询每个工种，每个部门的部门名、工种名和最低工资"></a>查询每个工种，每个部门的部门名、工种名和最低工资</h4><pre><code>SELECT
+    department_name,
+    job_title,
+    MIN( salary ) &#39;最低工资&#39; 
+FROM
+    employees e,
+    departments d,
+    jobs j 
+WHERE
+    e.department_id = d.department_id 
+    AND e.job_id = j.job_id 
+GROUP BY
+    department_name,
+    job_title;</code></pre>
+<h4 id="查询每个国家下的部门个数大于2的国家编号"><a href="#查询每个国家下的部门个数大于2的国家编号" class="headerlink" title="查询每个国家下的部门个数大于2的国家编号"></a>查询每个国家下的部门个数大于2的国家编号</h4><pre><code>#有一点点难
+SELECT
+    country_id,
+    count(*) 
+FROM
+    departments d,
+    locations l 
+WHERE
+    l.location_id = d.location_id 
+GROUP BY
+    country_id 
+HAVING
+    count(*)&gt; 2;</code></pre>
+<h4 id="选择指定员工的姓名、员工号，以及他的管理者的姓名和员工号"><a href="#选择指定员工的姓名、员工号，以及他的管理者的姓名和员工号" class="headerlink" title="选择指定员工的姓名、员工号，以及他的管理者的姓名和员工号"></a>选择指定员工的姓名、员工号，以及他的管理者的姓名和员工号</h4><pre><code>结果类似下面的格式：
+employees    Emp#    manager Mgr#
+kochhar     101        king    100</code></pre>
+<p>代码如下：<br>自连接，有一点点绕</p>
+<pre><code>SELECT
+    e.last_name employees,
+    e.employee_id &#39;Emp#&#39;,
+    m.last_name manager,
+    m.manager_id &#39;Mgr#&#39; 
+FROM
+    employees e, #自己的员工表
+    employees m  #自己的管理表
+WHERE
+    e.manager_id = m.employee_id;</code></pre>
+<h4 id="查询编号-gt-3的女神的男朋友信息，如果有则列出详细的信息，如果没有，则用null填充"><a href="#查询编号-gt-3的女神的男朋友信息，如果有则列出详细的信息，如果没有，则用null填充" class="headerlink" title="查询编号&gt;3的女神的男朋友信息，如果有则列出详细的信息，如果没有，则用null填充"></a>查询编号&gt;3的女神的男朋友信息，如果有则列出详细的信息，如果没有，则用<code>null</code>填充</h4><pre><code>SELECT
+    be.id,
+    be.NAME,
+    bo.* 
+FROM
+    beauty be
+    LEFT JOIN boys bo ON be.boyfriend_id = bo.id 
+WHERE
+    be.id &gt; 3;</code></pre>
+<h4 id="查询哪个城市没有部门"><a href="#查询哪个城市没有部门" class="headerlink" title="查询哪个城市没有部门"></a>查询哪个城市没有部门</h4><pre><code>SELECT
+    city,
+    department_name 
+FROM
+    locations l
+    LEFT JOIN departments d ON l.location_id = d.location_id 
+WHERE
+    department_name IS NULL;</code></pre>
+<h4 id="查询部门名称为SAL或IT的员工信息"><a href="#查询部门名称为SAL或IT的员工信息" class="headerlink" title="查询部门名称为SAL或IT的员工信息"></a>查询部门名称为<code>SAL</code>或<code>IT</code>的员工信息</h4><pre><code>SELECT
+    e.*,
+    department_name 
+FROM
+    employees e
+    LEFT JOIN departments d ON e.department_id = d.department_id 
+WHERE
+    department_name IN ( &#39;SAL&#39;, &#39;IT&#39; );</code></pre>
+<h4 id="查询和Zlotkey相同部门的员工姓名和工资"><a href="#查询和Zlotkey相同部门的员工姓名和工资" class="headerlink" title="查询和Zlotkey相同部门的员工姓名和工资"></a>查询和<code>Zlotkey</code>相同部门的员工姓名和工资</h4><pre><code>SELECT
+    last_name,
+    salary 
+FROM
+    employees 
+WHERE
+    department_id IN ( SELECT department_id FROM employees WHERE last_name = &#39;Zlotkey&#39; );</code></pre>
+<h4 id="查询工资比公司平均工资高的员工的员工号，姓名，工资"><a href="#查询工资比公司平均工资高的员工的员工号，姓名，工资" class="headerlink" title="查询工资比公司平均工资高的员工的员工号，姓名，工资"></a>查询工资比公司平均工资高的员工的员工号，姓名，工资</h4><pre><code>SELECT
+    employee_id,
+    last_name,
+    salary 
+FROM
+    employees 
+WHERE
+    salary &gt; ( SELECT AVG( salary ) FROM employees );</code></pre>
+<h4 id="查询各部门中工资比本部门平均工资高的员工号，姓名，工资"><a href="#查询各部门中工资比本部门平均工资高的员工号，姓名，工资" class="headerlink" title="查询各部门中工资比本部门平均工资高的员工号，姓名，工资"></a>查询各部门中工资比本部门平均工资高的员工号，姓名，工资</h4><p>这题有点难，我的话不分步反应不过来</p>
+<pre><code>#1.各部门的平均工资：
+SELECT
+    department_id,
+    AVG( salary ) 
+FROM
+    employees 
+GROUP BY
+    department_id;
+#2.加一个连接查，用department_id连接两个表：
+SELECT
+    employee_id,
+    last_name,
+    salary,
+    e.department_id 
+FROM
+    employees e
+    LEFT JOIN ( SELECT department_id, AVG( salary ) ag_sal FROM employees GROUP BY department_id ) d ON e.department_id = d.department_id 
+WHERE
+    e.salary &gt; d.ag_sal;</code></pre>
+<h4 id="查询和姓名中包含-字母u的员工-在相同部门的员工-的员工号和姓名"><a href="#查询和姓名中包含-字母u的员工-在相同部门的员工-的员工号和姓名" class="headerlink" title="查询和姓名中包含 字母u的员工 在相同部门的员工 的员工号和姓名"></a>查询和姓名中包含 字母<code>u</code>的员工 在相同部门的员工 的员工号和姓名</h4><pre><code>#1.上一个会做，这个就也还行，先查字母u的员工：
+SELECT
+    employee_id,
+    last_name 
+FROM
+    employees 
+WHERE
+    last_name LIKE &#39;%u%&#39;;
+#2.和上面这个在一个部门的员工：
+SELECT
+    employee_id,
+    last_name 
+FROM
+    employees 
+WHERE
+    department_id IN ( SELECT department_id FROM employees WHERE last_name LIKE &#39;%u%&#39; );</code></pre>
+<h4 id="查询在部门的location-id为1700的部门工作的员工的员工号"><a href="#查询在部门的location-id为1700的部门工作的员工的员工号" class="headerlink" title="查询在部门的location_id为1700的部门工作的员工的员工号"></a>查询在部门的<code>location_id</code>为1700的部门工作的员工的员工号</h4><pre><code>SELECT
+    employee_id 
+FROM
+    employees 
+WHERE
+    department_id IN ( SELECT department_id FROM departments WHERE location_id = 1700 );</code></pre>
+<h4 id="查询管理者是k-ing的员工姓名和工资"><a href="#查询管理者是k-ing的员工姓名和工资" class="headerlink" title="查询管理者是k_ing的员工姓名和工资"></a>查询管理者是<code>k_ing</code>的员工姓名和工资</h4><pre><code>SELECT
+    last_name,
+    salary 
+FROM
+    employees 
+WHERE
+    manager_id IN ( SELECT employee_id FROM employees WHERE last_name = &#39;K_ing&#39; );</code></pre>
+<h4 id="查询工资最高的员工的姓名，要求first和last-name显示为一列，列名为姓名"><a href="#查询工资最高的员工的姓名，要求first和last-name显示为一列，列名为姓名" class="headerlink" title="查询工资最高的员工的姓名，要求first和last_name显示为一列，列名为姓名"></a>查询工资最高的员工的姓名，要求first和last_name显示为一列，列名为姓名</h4><pre><code>SELECT
+    CONCAT( first_name, last_name ) &#39;姓名&#39;,
+    salary 
+FROM
+    employees 
+WHERE
+    salary = ( SELECT MAX( salary ) FROM employees );
+
+
+已知表stuinfo                    已知表age
+id        学号                    id            年级编号
+name    姓名                    gradeName    年级名称
+email    邮箱
+gradeID    年级编号
+sex        性别
+age        年龄</code></pre>
+<h4 id="查询所有学员的邮箱的用户名"><a href="#查询所有学员的邮箱的用户名" class="headerlink" title="查询所有学员的邮箱的用户名"></a>查询所有学员的邮箱的用户名</h4><pre><code>#即查询@前的字符
+SELECT
+    SUBSTR( email, 1, INSTR( email, &#39;@&#39; )- 1 ) &#39;用户名&#39; 
+FROM
+    stuinfo;</code></pre>
+<h4 id="查询男生和女生的个数"><a href="#查询男生和女生的个数" class="headerlink" title="查询男生和女生的个数"></a>查询男生和女生的个数</h4><pre><code>SELECT
+    sex,
+    COUNT(*) 
+FROM
+    stuinfo 
+GROUP BY
+    sex;</code></pre>
+<h4 id="查询年龄-gt-18岁的所有学生的姓名和年级名称"><a href="#查询年龄-gt-18岁的所有学生的姓名和年级名称" class="headerlink" title="查询年龄&gt;18岁的所有学生的姓名和年级名称"></a>查询年龄&gt;18岁的所有学生的姓名和年级名称</h4><pre><code>SELECT
+    name,
+    gradeName 
+FROM
+    stuinfo s
+    INNER JOIN grade g ON s.gradeId = g.id 
+WHERE
+    age &gt; 18;</code></pre>
+<h4 id="查询哪个年纪的学生最小年龄-gt-20岁"><a href="#查询哪个年纪的学生最小年龄-gt-20岁" class="headerlink" title="查询哪个年纪的学生最小年龄&gt;20岁"></a>查询哪个年纪的学生最小年龄&gt;20岁</h4><pre><code>SELECT
+    MIN( age ),
+    gradeid 
+FROM
+    stuinfo 
+GROUP BY
+    gradeid 
+HAVING
+    MIN( age )&gt; 20;</code></pre>
+<h4 id="总结一般的查询语句"><a href="#总结一般的查询语句" class="headerlink" title="总结一般的查询语句"></a>总结一般的查询语句</h4><pre><code>select 查询列表
+from 表
+连接类型 join 表2
+on 连接条件
+where 筛选条件
+group by 分组列表
+having 分组后的筛选
+order by 排序列表
+limit 偏移、条目数    </code></pre>
+<h4 id="运行以下脚本创建表my-employees"><a href="#运行以下脚本创建表my-employees" class="headerlink" title="运行以下脚本创建表my_employees"></a>运行以下脚本创建表my_employees</h4><pre><code>USE myemployees;
+CREATE TABLE my_employees (
+    id INT ( 10 ),
+    first_name VARCHAR ( 10 ),
+    last_name VARCHAR ( 10 ),
+    userid VARCHAR ( 10 ),
+salary DOUBLE ( 10, 2 ));
+CREATE TABLE users ( id INT, userid VARCHAR ( 10 ), department_id INT );</code></pre>
+<h4 id="显示表my-employees的结构"><a href="#显示表my-employees的结构" class="headerlink" title="显示表my_employees的结构"></a>显示表my_employees的结构</h4><pre><code>desc my_employees;</code></pre>
+<h4 id="向表my-employees中插入以下数据"><a href="#向表my-employees中插入以下数据" class="headerlink" title="向表my_employees中插入以下数据"></a>向表my_employees中插入以下数据</h4><pre><code>#方式一：
+INSERT INTO my_employees
+VALUES
+    ( 1, &#39;patel&#39;, &#39;ralph&#39;, &#39;rpatel&#39;, 895 ),
+    ( 2, &#39;dancs&#39;, &#39;betty&#39;, &#39;bdancs&#39;, 860 ),
+    ( 3, &#39;biri&#39;, &#39;ben&#39;, &#39;bbiri&#39;, 1100 ),
+    ( 4, &#39;newman&#39;, &#39;chad&#39;, &#39;cnewman&#39;, 750 ),
+    ( 5, &#39;ropeburn&#39;, &#39;audrey&#39;, &#39;aropebur&#39;, 1550 );
+#方式二：
+INSERT INTO my_employees SELECT
+1,
+&#39;patel&#39;,
+&#39;ralph&#39;,
+&#39;rpatel&#39;,
+895 UNION
+SELECT
+    2,
+    &#39;dancs&#39;,
+    &#39;betty&#39;,
+    &#39;bdancs&#39;,
+    860 UNION
+SELECT
+    3,
+    &#39;biri&#39;,
+    &#39;ben&#39;,
+    &#39;bbiri&#39;,
+    1100 UNION
+SELECT
+    4,
+    &#39;newman&#39;,
+    &#39;chad&#39;,
+    &#39;cnewman&#39;,
+    750 UNION
+SELECT
+    5,
+    &#39;ropeburn&#39;,
+    &#39;audrey&#39;,
+    &#39;aropebur&#39;,
+    1550;</code></pre>
+<h4 id="向表users中插入以下数据"><a href="#向表users中插入以下数据" class="headerlink" title="向表users中插入以下数据"></a>向表users中插入以下数据</h4><pre><code>INSERT INTO users
+VALUES
+    ( 1, &#39;rpatel&#39;, 10 ),
+    ( 2, &#39;bdancs&#39;, 10 ),
+    ( 3, &#39;bbiri&#39;, 20 ),
+    ( 4, &#39;cnewman&#39;, 30 ),
+    ( 5, &#39;aropebur&#39;, 40 );</code></pre>
+<h4 id="将3号员工的last-name修改为“drelxer”"><a href="#将3号员工的last-name修改为“drelxer”" class="headerlink" title="将3号员工的last_name修改为“drelxer”"></a>将3号员工的last_name修改为“drelxer”</h4><pre><code>UPDATE my_employees 
+SET last_name = &quot;drelxer&quot; 
+WHERE
+    id = 3;</code></pre>
+<h4 id="将所有工资少与900的员工的工资修改为1000"><a href="#将所有工资少与900的员工的工资修改为1000" class="headerlink" title="将所有工资少与900的员工的工资修改为1000"></a>将所有工资少与900的员工的工资修改为1000</h4><pre><code>UPDATE my_employees 
+SET salary = 1000 
+WHERE
+    salary &lt; 900;</code></pre>
+<h4 id="将userid为bbiri的user表和my-employees表的记录全部删除"><a href="#将userid为bbiri的user表和my-employees表的记录全部删除" class="headerlink" title="将userid为bbiri的user表和my_employees表的记录全部删除"></a>将userid为bbiri的user表和my_employees表的记录全部删除</h4><pre><code>DELETE u,
+e 
+FROM
+    users u
+    JOIN my_employees e ON u.userid = e.userid 
+WHERE
+    u.userid = &quot;bbiri&quot;;</code></pre>
+<h4 id="删除所有的数据"><a href="#删除所有的数据" class="headerlink" title="删除所有的数据"></a>删除所有的数据</h4><pre><code>DELETE 
+FROM    
+    my_employees;
+DELETE 
+FROM
+    users;</code></pre>
+<h4 id="检查所做的修正"><a href="#检查所做的修正" class="headerlink" title="检查所做的修正"></a>检查所做的修正</h4><pre><code>SELECT
+    * 
+FROM
+    my_employees;
+SELECT
+    * 
+FROM
+    users;</code></pre>
+<h4 id="清空表my-employees"><a href="#清空表my-employees" class="headerlink" title="清空表my_employees"></a>清空表my_employees</h4><pre><code>TRUNCATE TABLE my_employees;</code></pre>
+<h4 id="创建表dept1"><a href="#创建表dept1" class="headerlink" title="创建表dept1"></a>创建表dept1</h4><pre><code>name null type
+id        int(7)
+name    varchar(25)</code></pre>
+<p>代码：</p>
+<pre><code>CREATE TABLE dept1 (
+id INT ( 7 ),
+NAME VARCHAR ( 25 ));</code></pre>
+<h4 id="将表department中的数据插入新表dept2"><a href="#将表department中的数据插入新表dept2" class="headerlink" title="将表department中的数据插入新表dept2"></a>将表department中的数据插入新表dept2</h4><pre><code>CREATE TABLE dept2 SELECT
+department_id,
+department_name 
+FROM
+    myemployees.departments;    </code></pre>
+<h4 id="创建表emp5"><a href="#创建表emp5" class="headerlink" title="创建表emp5"></a>创建表emp5</h4><pre><code>CREATE TABLE emp5 (
+    id INT ( 7 ),
+    first_name VARCHAR ( 25 ),
+last_name VARCHAR ( 25 ),
+dept_id INT ( 7 ));</code></pre>
+<h4 id="将列last-name的长度增加到50"><a href="#将列last-name的长度增加到50" class="headerlink" title="将列last_name的长度增加到50"></a>将列last_name的长度增加到50</h4><pre><code>ALTER TABLE emp5 MODIFY COLUMN last_name VARCHAR ( 50 );</code></pre>
+<h4 id="根据表employees创建employees2"><a href="#根据表employees创建employees2" class="headerlink" title="根据表employees创建employees2"></a>根据表employees创建employees2</h4><pre><code>CREATE TABLE employees2 LIKE myemployees.employees;</code></pre>
+<h4 id="删除表emp5"><a href="#删除表emp5" class="headerlink" title="删除表emp5"></a>删除表emp5</h4><pre><code>DROP TABLE
+IF
+    EXISTS emp5;</code></pre>
+<h4 id="将表employees重命名为emp5"><a href="#将表employees重命名为emp5" class="headerlink" title="将表employees重命名为emp5"></a>将表employees重命名为emp5</h4><pre><code>ALTER TABLE employees RENAME TO emp5;</code></pre>
+<h4 id="在表emp5中添加新列test-column，并检查所做的操作"><a href="#在表emp5中添加新列test-column，并检查所做的操作" class="headerlink" title="在表emp5中添加新列test_column，并检查所做的操作"></a>在表emp5中添加新列test_column，并检查所做的操作</h4><pre><code>ALTER TABLE emp5 ADD COLUMN test_column INT;</code></pre>
+<h4 id="直接删除表emp5中的列dept-id"><a href="#直接删除表emp5中的列dept-id" class="headerlink" title="直接删除表emp5中的列dept_id"></a>直接删除表emp5中的列dept_id</h4><pre><code>ALTER TABLE emp5 DROP COLUMN dept_id;</code></pre>
+<h4 id="向表emp2的id列中添加PRIMARY-KEY约束（my-emp-id-pk）"><a href="#向表emp2的id列中添加PRIMARY-KEY约束（my-emp-id-pk）" class="headerlink" title="向表emp2的id列中添加PRIMARY KEY约束（my_emp_id_pk）"></a>向表emp2的id列中添加PRIMARY KEY约束（my_emp_id_pk）</h4><pre><code>ALTER TABLE emp2 MODIFY COLUMN id intprimary KEY;#不支持起名字
+ALTER TABLE emp2 ADD constrain my_emp_id_pk PRIMARY KEY;#但是主键起了名字也白搭</code></pre>
+<h4 id="向表dep2的id列中添加PRIMARY-KEY约束（my-dep-id-pk）"><a href="#向表dep2的id列中添加PRIMARY-KEY约束（my-dep-id-pk）" class="headerlink" title="向表dep2的id列中添加PRIMARY KEY约束（my_dep_id_pk）"></a>向表dep2的id列中添加PRIMARY KEY约束（my_dep_id_pk）</h4><pre><code>ALTER TABLE dep2 ADD constrain my_dep_id_pk PRIMARY KEY;#同上</code></pre>
+<h4 id="向表emp2中添加列dept-id，并在其中定义FOREIGN-KEY约束，与之相关联的列是dept2表中的id列"><a href="#向表emp2中添加列dept-id，并在其中定义FOREIGN-KEY约束，与之相关联的列是dept2表中的id列" class="headerlink" title="向表emp2中添加列dept_id，并在其中定义FOREIGN KEY约束，与之相关联的列是dept2表中的id列"></a>向表emp2中添加列dept_id，并在其中定义FOREIGN KEY约束，与之相关联的列是dept2表中的id列</h4><pre><code>ALTER TABLE emp2 ADD COLUMN dept_id INT;
+ALTER TABLE emp2 ADD cpmstraint fk_emp2_dept2 FOREIGN KEY ( dept_id ) REFERENCES dept2 ( id );
+
+位置                支持的约束类型         是否可以起约束名
+列级约束：列的后面                 都支持                不可以
+表级约束：所有列的下面     默认和非空不支持            可以</code></pre>
+<h4 id="创建视图emp-v1，要求查询电话号码以”011”开头的员工姓名和工资、邮箱"><a href="#创建视图emp-v1，要求查询电话号码以”011”开头的员工姓名和工资、邮箱" class="headerlink" title="创建视图emp_v1，要求查询电话号码以”011”开头的员工姓名和工资、邮箱"></a>创建视图emp_v1，要求查询电话号码以”011”开头的员工姓名和工资、邮箱</h4><pre><code>CREATE 
+    OR REPLACE VIEW emp_v1 AS SELECT
+    last_name,
+    salary,
+    email 
+FROM
+    employees 
+WHERE
+    phone_number LIKE &#39;011%&#39;;</code></pre>
+<h4 id="创建视图emp-v2，要求查询部门的最高工资高于12000的部门信息"><a href="#创建视图emp-v2，要求查询部门的最高工资高于12000的部门信息" class="headerlink" title="创建视图emp_v2，要求查询部门的最高工资高于12000的部门信息"></a>创建视图emp_v2，要求查询部门的最高工资高于12000的部门信息</h4><pre><code>#1. 视图方法：
+CREATE 
+    OR REPLACE VIEW emp_v2 AS SELECT
+    max( salary ) mx_sal,
+    department_id 
+FROM
+    employees 
+GROUP BY
+    department_id 
+HAVING
+    max( salary )&gt; 12000;
+
+#
+SELECT
+    d.*,
+    m.mx_sal 
+FROM
+    departments d
+    JOIN emp_v2 m ON m.department_id = d.department_id;
+#2. 子查询方法：
+SELECT
+    d.*,
+    m.mx_sal 
+FROM
+    departments d
+    JOIN ( SELECT max( salary ) mx_sal, department_id FROM employees GROUP BY department_id HAVING max( salary )&gt; 12000 ) m ON m.department_id = d.department_id;</code></pre>
+<h4 id="无题-1"><a href="#无题-1" class="headerlink" title="无题"></a>无题</h4><p>创建表Book表，字段如下：</p>
+<pre><code>bid 整型，要求主键
+bname 字符型，要求设置唯一键，并非空
+price 浮点型，要求有默认值10
+btypeID 类型编号，要求引用bookType表的id字段</code></pre>
+<p>已知booktype表(不用创建)，字段如下：</p>
+<pre><code>id
+name
+
+#代码:
+CREATE TABLE Book (
+    bid INT PRIMARY KEY,
+    bname VARCHAR ( 20 ) UNIQUE NOT NULL,
+    price FLOAT DEFAULT 10,
+    btypeId INT,
+FOREIGN KEY ( btypeId ),
+REFERENCES bookType ( id ));</code></pre>
+<h4 id="开启事务，向表中插入一行数据，并结束"><a href="#开启事务，向表中插入一行数据，并结束" class="headerlink" title="开启事务，向表中插入一行数据，并结束"></a>开启事务，向表中插入一行数据，并结束</h4><pre><code>SET autocommit = 0;
+INSERT INTO book ( bid, bname, price, btypeId )
+VALUES
+    (
+    1,
+    &#39;小李飞刀&#39;， 100，1)</code></pre>
+<h4 id="创建视图，实现查询价格大于100的书名和类型名"><a href="#创建视图，实现查询价格大于100的书名和类型名" class="headerlink" title="创建视图，实现查询价格大于100的书名和类型名"></a>创建视图，实现查询价格大于100的书名和类型名</h4><pre><code>CREATE VIEW myv1 AS SELECT
+bname,
+NAME 
+FROM
+    book b
+    JOIN bookType t ON b.btype = t.id 
+WHERE
+    price &gt; 100;</code></pre>
+<h4 id="修改视图，实现查询价格在90-120之间的书名和价格"><a href="#修改视图，实现查询价格在90-120之间的书名和价格" class="headerlink" title="修改视图，实现查询价格在90-120之间的书名和价格"></a>修改视图，实现查询价格在90-120之间的书名和价格</h4><pre><code>CREATE 
+    OR REPLACE VIEW myv1 AS SELECT
+    bname,
+    price 
+FROM
+    book 
+WHERE
+    price BETWEEN 90 
+    AND 120;</code></pre>
+<h4 id="删除刚才建的视图"><a href="#删除刚才建的视图" class="headerlink" title="删除刚才建的视图"></a>删除刚才建的视图</h4><pre><code>DROP VIEW myv1;</code></pre>
+<h4 id="创建存储过程实现传入用户名和密码，插入到admin表中"><a href="#创建存储过程实现传入用户名和密码，插入到admin表中" class="headerlink" title="创建存储过程实现传入用户名和密码，插入到admin表中"></a>创建存储过程实现传入用户名和密码，插入到admin表中</h4><pre><code>CREATE PROCEDURE test_pro1 (
+    IN username VARCHAR ( 20 ),
+    IN loginPwd VARCHAR ( 20 )) BEGIN
+    INSERT INTO admin ( admin.username, PASSWORD )
+    VALUES
+        ( username, loginpwd );
+
+END </code></pre>
+<h4 id="创建存储过程实现传入女神编号，返回女神名称和女神电话"><a href="#创建存储过程实现传入女神编号，返回女神名称和女神电话" class="headerlink" title="创建存储过程实现传入女神编号，返回女神名称和女神电话"></a>创建存储过程实现传入女神编号，返回女神名称和女神电话</h4><pre><code>CREATE PROCEDURE test_pro2 (
+    IN id INT,
+    OUT NAME VARCHAR ( 20 ),
+    OUT PHONE VARCHAR ( 20 )) BEGIN
+    SELECT
+        b.NAME,
+        b.phone INTO NAME,
+        phone 
+    FROM
+        beauty b 
+    WHERE
+        b.id = id;
+
+END</code></pre>
+<h4 id="创建存储过程或函数实现传入两个女神生日，返回大小"><a href="#创建存储过程或函数实现传入两个女神生日，返回大小" class="headerlink" title="创建存储过程或函数实现传入两个女神生日，返回大小"></a>创建存储过程或函数实现传入两个女神生日，返回大小</h4><pre><code>CREATE PROCEDURE test_pro3 ( IN birth1 datetime, IN birth2 datetime, OUT result INT ) BEGIN
+    SELECT
+        datediff( birth1, birth2 ) INTO result;
+
+END
+CALL test_pro3(&#39;1998-1-1&#39;,now(),@result)
+SELECT @result</code></pre>
+<h4 id="创建函数，实现传入两个float，返回二者之和"><a href="#创建函数，实现传入两个float，返回二者之和" class="headerlink" title="创建函数，实现传入两个float，返回二者之和"></a>创建函数，实现传入两个float，返回二者之和</h4><pre><code>CREATE FUNCTION test_fun1 ( num1 FLOAT, num2 FLOAT ) RETURNS FLOAT BEGIN
+    DECLARE
+        SUM FLOAT DEFAULT 0;
+
+    SET SUM = num1 + num2;
+    RETURN SUM;
+
+END SELECT
+    test_fun1 ( 1, 2 )</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wxpay.jpg" alt="martini WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/learn/" rel="tag"># learn</a>
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/06/08/%E5%88%9D%E8%AF%86MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/" rel="prev" title="初识MySQL---基础篇笔记">
+                  <i class="fa fa-chevron-left"></i> 初识MySQL---基础篇笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/29/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">martini</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">61k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">56 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
