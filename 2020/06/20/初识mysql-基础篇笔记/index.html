@@ -37,8 +37,8 @@
 <meta property="article:published_time" content="2020-06-20T14:30:27.000Z">
 <meta property="article:modified_time" content="2020-06-28T15:24:56.000Z">
 <meta property="article:author" content="martini">
-<meta property="article:tag" content="mysql">
 <meta property="article:tag" content="learn">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
 
 
@@ -223,7 +223,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">初识数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBMS%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">DBMS—数据库管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDBMS%E2%80%94%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">RDBMS—关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSQL%E2%80%94%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.2.</span> <span class="nav-text">NoSQL—非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E2%80%94%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">MySQL数据库软件—配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">MySQL服务启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">MySQL登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E9%80%80%E5%87%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">MySQL退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E5%92%8C%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%8C%BA"><span class="nav-number">1.2.4.</span> <span class="nav-text">常见命令和语法大区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">1.2.5.</span> <span class="nav-text">查看服务器的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.6.</span> <span class="nav-text">语法规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2-DQL%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">基础查询 DQL语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B61"><span class="nav-number">2.1.</span> <span class="nav-text">进阶1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B62-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.2.</span> <span class="nav-text">进阶2 - 条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.3.</span> <span class="nav-text">按照条件表达式查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%9B%E9%80%89"><span class="nav-number">2.4.</span> <span class="nav-text">按逻辑表达式筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.5.</span> <span class="nav-text">模糊查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#like"><span class="nav-number">2.5.1.</span> <span class="nav-text">like:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#between-and"><span class="nav-number">2.5.2.</span> <span class="nav-text">between and</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in"><span class="nav-number">2.5.3.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-null-is-not-null"><span class="nav-number">2.5.4.</span> <span class="nav-text">is null(is not null)</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">初识数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBMS%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">DBMS—数据库管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDBMS%E2%80%94%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">RDBMS—关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSQL%E2%80%94%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.2.</span> <span class="nav-text">NoSQL—非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E2%80%94%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">MySQL数据库软件—配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">MySQL服务启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">MySQL登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E9%80%80%E5%87%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">MySQL退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E5%92%8C%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%8C%BA"><span class="nav-number">1.2.4.</span> <span class="nav-text">常见命令和语法大区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">1.2.5.</span> <span class="nav-text">查看服务器的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.6.</span> <span class="nav-text">语法规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2-DQL%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">基础查询 DQL语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B61"><span class="nav-number">2.1.</span> <span class="nav-text">进阶1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B62-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.2.</span> <span class="nav-text">进阶2 - 条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.3.</span> <span class="nav-text">按照条件表达式查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%9B%E9%80%89"><span class="nav-number">2.4.</span> <span class="nav-text">按逻辑表达式筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.5.</span> <span class="nav-text">模糊查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#like"><span class="nav-number">2.5.1.</span> <span class="nav-text">like:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#between-and"><span class="nav-number">2.5.2.</span> <span class="nav-text">between and</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in"><span class="nav-number">2.5.3.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-null-is-not-null"><span class="nav-number">2.5.4.</span> <span class="nav-text">is null(is not null)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.6.</span> <span class="nav-text">排序查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0"><span class="nav-number">2.7.</span> <span class="nav-text">常见函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%87%BD%E6%95%B0"><span class="nav-number">2.8.</span> <span class="nav-text">字符函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%87%BD%E6%95%B0-1"><span class="nav-number">2.9.</span> <span class="nav-text">字符函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#count%E5%87%BD%E6%95%B0%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.9.1.</span> <span class="nav-text">count函数的详细介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C%E5%88%86%E7%BB%84%E5%87%BD%E6%95%B0%E4%B8%80%E5%90%8C%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5%E6%9C%89%E9%99%90%E5%88%B6"><span class="nav-number">2.9.2.</span> <span class="nav-text">和分组函数一同查询的字段有限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E8%BF%9B%E9%98%B6%E4%BA%94-%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.9.3.</span> <span class="nav-text">3.5 进阶五 - 分组查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E8%BF%9B%E9%98%B6%E5%85%AD-%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.9.4.</span> <span class="nav-text">3.6 进阶六 - 连接查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-6-sql92%E6%A0%87%E5%87%86"><span class="nav-number">2.9.5.</span> <span class="nav-text">3.4.6 sql92标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-6-sql99%E6%A0%87%E5%87%86"><span class="nav-number">2.9.6.</span> <span class="nav-text">3.4.6 sql99标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-%E8%BF%9B%E9%98%B6%E4%B8%83-%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.9.7.</span> <span class="nav-text">3.7 进阶七 - 子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-1-%E8%BF%9B%E9%98%B6%E4%B8%83-%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%881%EF%BC%89where%E6%88%96having%E5%90%8E%E9%9D%A2"><span class="nav-number">2.9.8.</span> <span class="nav-text">3.7.1 进阶七 - 子查询（1）where或having后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-2-%E8%BF%9B%E9%98%B6%E4%B8%83-%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%882%EF%BC%89select%E5%90%8E%E9%9D%A2"><span class="nav-number">2.9.9.</span> <span class="nav-text">3.7.2 进阶七 - 子查询（2）select后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-3-%E8%BF%9B%E9%98%B6%E4%B8%83-%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%883%EF%BC%89from%E5%90%8E%E9%9D%A2"><span class="nav-number">2.9.10.</span> <span class="nav-text">3.7.3 进阶七 - 子查询（3）from后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-4-%E8%BF%9B%E9%98%B6%E4%B8%83-%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%884%EF%BC%89exists%E5%90%8E%E9%9D%A2"><span class="nav-number">2.9.11.</span> <span class="nav-text">3.7.4 进阶七 - 子查询（4）exists后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-%E8%BF%9B%E9%98%B6%E5%85%AB-%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.9.12.</span> <span class="nav-text">3.8 进阶八 - 分页查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-%E8%BF%9B%E9%98%B6%E4%B9%9D-%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.9.13.</span> <span class="nav-text">3.8 进阶九 - 联合查询</span></a></li></ol></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -378,14 +378,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>4.4k</span>
+      <span>24k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>4 mins.</span>
+      <span>22 mins.</span>
     </span>
 </div>
 
@@ -596,6 +596,1383 @@ select &#39;123&#39;+90; </code></pre>
 
 <p>函数重提</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	concat:拼接字符</span><br><span class="line">isnull:判断，如果是空值则返回1，不是则返回0</span><br><span class="line">ifnull:判断，如果是空值则返回一个给定值，不然则返回原本的值</span><br></pre></td></tr></table></figure>
+
+<h2 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h2><p>引入：</p>
+<pre><code>select * from employees;</code></pre>
+<p>语法：</p>
+<pre><code>SELECT 查询列表
+from 表
+[where 筛选条件]
+order by 排序列表 [asc|desc]</code></pre>
+<p>特点：</p>
+<pre><code>1、asc代表升序，desc代表降序，默认不写是升序
+2、order by子句中可以支持单个字段、多个字段、表达式、函数、别名
+3、order by子句一般是放在查询语句的最后面，limit子句除外    </code></pre>
+<p>案例1：查询员工信息，要求工资从高到低排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#从高到低是降序哈</span><br><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	employees </span><br><span class="line">ORDER BY</span><br><span class="line">	salary DESC;</span><br><span class="line">#升序</span><br><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	employees </span><br><span class="line">ORDER BY</span><br><span class="line">	salary ASC;</span><br></pre></td></tr></table></figure>
+
+<p>案例2：查询部门编号&gt;=90的员工信息，按入职时间的先后进行排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	employees </span><br><span class="line">WHERE</span><br><span class="line">	department_id &gt;&#x3D; 90 </span><br><span class="line">ORDER BY</span><br><span class="line">	hiredate ASC;</span><br></pre></td></tr></table></figure>
+
+<p>案例3：按年薪高低显示员工的信息和年薪[按表达式排序]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	*,</span><br><span class="line">	salary * 12 *(</span><br><span class="line">	1+IFNULL ( commission_pct, 0 )) AS 年薪 </span><br><span class="line">FROM</span><br><span class="line">	employees </span><br><span class="line">ORDER BY</span><br><span class="line">	salary * 12 *(</span><br><span class="line">	1+IFNULL ( commission_pct, 0 )) DESC;</span><br></pre></td></tr></table></figure>
+
+<p>案例4：按年薪高低显示员工的信息和年薪[按别名排序]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	*,</span><br><span class="line">	salary * 12 *(</span><br><span class="line">	1+IFNULL ( commission_pct, 0 )) AS 年薪 </span><br><span class="line">FROM</span><br><span class="line">	employees </span><br><span class="line">ORDER BY</span><br><span class="line">	年薪 DESC;</span><br></pre></td></tr></table></figure>
+
+<p>案例5：按姓名的长度显示员工的姓名和工资[按函数排序]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	LENGTH( last_name ) AS 字节长度,</span><br><span class="line">	last_name,</span><br><span class="line">	salary </span><br><span class="line">FROM</span><br><span class="line">	employees </span><br><span class="line">ORDER BY</span><br><span class="line">	LENGTH( last_name ) DESC;</span><br></pre></td></tr></table></figure>
+
+<p>案例6：查询员工信息，要求先按工资升序，再按员工编号降序 [按多个字段排序]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	employees </span><br><span class="line">ORDER BY</span><br><span class="line">	salary ASC,</span><br><span class="line">	employee_id DESC;</span><br><span class="line">#整体按工资排序，工资相同时，按员工编号降序</span><br></pre></td></tr></table></figure>
+<h2 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h2><p>概念：</p>
+<p>将一组逻辑语句封装在方法体中，对外暴露方法名</p>
+<p>好处：</p>
+<p>1、隐藏了实现细节<br>2、提高代码的重用性</p>
+<p>调用：</p>
+<p>select 函数名(实参列表) [from 表(根据需要)];</p>
+<p>特点：</p>
+<p>①叫什么（函数名）<br>②干什么（功能）</p>
+<p>分类：</p>
+<p>1、单行函数（字符函数，数学函数，日期函数，其他函数，流程控制函数）<br>如concat、length、ifnull等</p>
+<p>2、分组函数<br>功能：做统计使用，又称为统计函数、聚合函数、组函数</p>
+<p>常见函数：</p>
+<ul>
+<li><p>字符函数:</p>
+<p>  length：获取字节长度<br>  concat：连接<br>  substr：截取子串<br>  instr：获取字串第一次出现的索引<br>  trim：去掉前后空格<br>  upper：变大写<br>  lower：变小写<br>  lpad：左填充<br>  rpad：右填充<br>  replace：替换</p>
+</li>
+<li><p>数学函数： </p>
+<p>  round：四舍五入<br>  ceil：向上取整<br>  floor：向下取整<br>  truncate：截断<br>  mod：去模<br>  rand：获取随机数，返回0 - 1之间的小数</p>
+</li>
+<li><p>日期函数：</p>
+<p>  now：当前日期+时间<br>  curdate：返回当前日期<br>  curtime：返回当前时间<br>  monthname：以英文姓氏返回月<br>  year：年<br>  month：月<br>  day：日<br>  hour：小时<br>  minute：分钟<br>  second：秒<br>  datediff：两个日期之间的差的天数<br>  str_to_date：将字符转换成日期<br>  date_format：将日期转换成字符</p>
+</li>
+<li><p>其他函数：</p>
+<p>  version：当前服务器的版本<br>  database：当前打开的数据库<br>  user：当前用户<br>  password(‘字符’)：返回该字符的密码形式<br>  md5(‘字符’)：返回该字符的md5加密格式</p>
+</li>
+<li><p>控制函数: </p>
+<p>  ①if（条件表达式，表达式1，表达式2）<br>  如果条件表达式成立，则执行表达式1，不然则执行表达式2</p>
+<p>  ②case：情况1<br>  case 变量或表达式或字段<br>  when 常量1 then 值1<br>  when 常量2 then 值2<br>  ……<br>  else 值n<br>  end</p>
+<p>  ③case：情况2<br>  case<br>  when 条件1 then 值1<br>  when 条件2 then 值2<br>  ……<br>  else 值n<br>  end</p>
+</li>
+</ul>
+<p><strong>show variables like ‘%char%’</strong></p>
+<p>utf8编码的汉字一个汉字是3个字节，gbk编码的汉字一个汉字是2个字节，英文都是1个字节</p>
+<h2 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h2><ol>
+<li>length 获取参数值的字节个数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	LENGTH( &#39;john&#39; );</span><br><span class="line">SELECT</span><br><span class="line">	LENGTH( &#39;张三丰hahaha&#39; );	</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>concat 拼接字符串（用下划线拼接）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	CONCAT( last_name, &#39;_&#39;, first_name ) </span><br><span class="line">FROM</span><br><span class="line">	employees;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>upper,lower</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	UPPER( &#39;john&#39; );#变大写</span><br><span class="line">SELECT</span><br><span class="line">	LOWER( &#39;JOHN&#39; );#变小写</span><br><span class="line"></span><br><span class="line">#示例：将姓变大写，名变小写，拼接</span><br><span class="line"></span><br><span class="line">SELECT</span><br><span class="line">	CONCAT(</span><br><span class="line">		UPPER( last_name ),</span><br><span class="line">	LOWER( first_name )) AS 姓名 </span><br><span class="line">FROM</span><br><span class="line">	employees;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>substr、 substring</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#注意索引从1开始，下语句输出:</span><br><span class="line">							|out_put|</span><br><span class="line">							|和李四|</span><br><span class="line">#截取从 指定索引处 后面 所有字符</span><br><span class="line">SELECT</span><br><span class="line">	SUBSTR( &#39;张三和李四&#39;, 3 ) out_put;</span><br><span class="line">             1 2 3 4 5</span><br><span class="line"></span><br><span class="line">#截取从 指定索引处 指定字符长度的 字符</span><br><span class="line">#下面语句输出：</span><br><span class="line">							|out_put|</span><br><span class="line">							|张三|</span><br><span class="line">SELECT</span><br><span class="line">	SUBSTR( &#39;张三和李四&#39;, 1, 2 ) out_put;	</span><br></pre></td></tr></table></figure>
+
+<p>案例：姓名中首字符大写，其他字符小写，用_拼接，显示出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	CONCAT(</span><br><span class="line">		UPPER(</span><br><span class="line">		SUBSTR( last_name, 1, 1 )),</span><br><span class="line">		&#39;_&#39;,</span><br><span class="line">		LOWER(</span><br><span class="line">		SUBSTR( last_name, 2 ))) output </span><br><span class="line">FROM</span><br><span class="line">	employees;	</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>instr</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#返回 子串的 起始索引，找不到返回0</span><br><span class="line">#下例返回7</span><br><span class="line"></span><br><span class="line">SELECT</span><br><span class="line">	INSTR( &#39;杨不悔爱上了殷六侠&#39;, &#39;殷六侠&#39; ) AS out_put	</span><br><span class="line">			1 2 3 4 5 67</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>trim 去掉首尾(空格不一定)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#输出 张翠山</span><br><span class="line">SELECT</span><br><span class="line">	LENGTH(</span><br><span class="line">	TRIM( &#39;    张翠山      &#39; )) AS out_put;</span><br><span class="line"></span><br><span class="line">#输出 张aaaa翠山</span><br><span class="line">SELECT</span><br><span class="line">	TRIM( &#39;a&#39; FROM &#39;aaaa张aaaa翠山aaaaaaaa&#39; ) AS out_put;	</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>lpad  用 指定的字符 实现 左填充 指定长度，不够才填， 够了就保留</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#输出*******殷素素</span><br><span class="line">SELECT</span><br><span class="line">	LPAD( &#39;殷素素&#39;, 10, &#39;*&#39; ) AS out_put;</span><br><span class="line"></span><br><span class="line">#输出：殷素</span><br><span class="line">SELECT</span><br><span class="line">	LPAD( &#39;殷素素&#39;, 2, &#39;*&#39; ) AS out_put;</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>rpad  用指定的字符实现右填充指定长度</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#输出：殷素素ababababa</span><br><span class="line">SELECT</span><br><span class="line">	RPAD( &#39;殷素素&#39;, 12, &#39;ab&#39; ) AS out_put;</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>replace 替换</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT REPLACE</span><br><span class="line">	( &#39;张无忌爱上了周芷若&#39;, &#39;周芷若&#39;, &#39;赵敏&#39; ) AS out_put;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符函数-1"><a href="#字符函数-1" class="headerlink" title="字符函数"></a>字符函数</h2><p>round四舍五入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	SELECT</span><br><span class="line">		ROUND( 1.65 );#2</span><br><span class="line">	SELECT</span><br><span class="line">		ROUND(- 1.45 );#-1</span><br><span class="line">	SELECT</span><br><span class="line">		ROUND( 1.567, 2 );#1.57,小数点后保留2位</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line"></span><br><span class="line">ceil向上取整(返回&gt;&#x3D;该参数的最小整数)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    CEIL(- 1.02 );#-1
+SELECT
+    CEIL( 1.00 );#1
+SELECT
+    CEIL( 1.02 );#2</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">floor 向下取整，返回&lt;&#x3D;该参数的最大整数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    FLOOR(- 9.99 );#-10</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">truncate 截断</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT TRUNCATE
+    ( 1.65, 1 );#1.6;保留一位小数的意思</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mod 取余</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>#计算原理：
+mod(a,b) : a - a/b * b
+mod(-10,-3) : -10-(-10)/(-3)*(-3)=-1;
+
+#举例：
+SELECT MOD
+    ( 10,- 3 );#1</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## 日期函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>now:返回当前系统日期加时间
+SELECT
+    NOW();
+
+#curdate 返回当前系统日期，不包含时间
+SELECT
+    CURDATE();    
+
+#curtime 返回当前时间，不包含日期
+SELECT
+    CURTIME();
+
+#可以获取指定的部分，年，月，日，小时，分，秒
+SELECT YEAR
+    (
+    NOW()) AS 年;#2020
+
+SELECT YEAR
+    ( &#39;1998-1-1&#39; ) 年;#1998
+
+SELECT YEAR
+    ( hiredate ) 年 
+FROM
+    employees;#hiredate是表里的字段-入职时间
+
+SELECT MONTH
+    (
+    NOW()) 月;
+
+SELECT
+    MONTHNAME(
+    NOW()) 月;#显示英文月份    </code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">str_to_date 将字符通过指定的格式转换成日期</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>%Y 四位的年份
+%y 2位的年份
+%m 月份 （01,02，...12）
+%c 月份 （1,2，..., 12）
+%d 日 
+%H 小时（24）%h（12）
+%i 分钟  %s秒</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    STR_TO_DATE( &#39;9-13-1999&#39;, &#39;%m-%d-%Y&#39; ) 日期;#1999-09-13
+                    字符串        日期格式
+SELECT 
+    STR_TO_DATE (&#39;2020-4-17&#39;,&#39;%Y-%c-%d&#39;) AS output;#2020-4-17
+                    字符串          日期格式</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">查询入职日期为1992-4-3的员工信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    * 
+FROM
+    employees 
+WHERE
+    hiredate = &#39;1992-4-3&#39;;
+
+SELECT
+    * 
+FROM
+    employees 
+WHERE
+    hiredate = STR_TO_DATE( &#39;4-3 1992&#39;, &#39;%c-%d %Y&#39; );    
+#第二块告诉电脑前面这块谁是日谁是月谁是年</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">date_format 将日期转换成字符</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    DATE_FORMAT( NOW(), &#39;%y年%m月%d日&#39; ) AS output;#20年4月17日    </code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">查询有奖金的员工名和入职日期(xx月&#x2F;xx日 xx年)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    last_name,
+    DATE_FORMAT( hiredate, &#39;%m月/%d日 %Y年&#39; ) 入职日期 
+FROM
+    employees 
+WHERE
+    commission_pct IS NOT NULL;    </code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## 其他函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>#使用较少
+SELECT 
+    VERSION();
+SELECT 
+    DATABASE();#查看当前库
+SELECT 
+    USER();</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 流程控制函数</span><br><span class="line"></span><br><span class="line">### if函数：if else 的效果</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT IF(10&gt;5,&#39;大&#39;,&#39;小&#39;);
+
+SELECT
+    last_name,
+    commission_pct,
+IF
+    ( commission_pct IS NULL, &#39;呵呵，没奖金&#39;, &#39;嘻嘻，有奖金&#39; ) 备注 
+FROM
+    employees;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### case函数的使用一: switch case的效果</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>case 要判断的字段或表达式
+when 常量1 then要显示的值1或语句1;
+when 常量2 then要显示的值2或语句2;
+...
+else 要显示的值n或语句n
+end
+（搭配select当表达式,then加一个值，或者不搭配select当语句）</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">案例：查询员工的工资.</span><br><span class="line"></span><br><span class="line">要求:</span><br><span class="line"></span><br><span class="line">	部门号&#x3D;30，显示的工资为1.1倍</span><br><span class="line">	部门号&#x3D;40，显示的工资为1.2倍</span><br><span class="line">	部门号&#x3D;50，显示的工资为1.3倍</span><br><span class="line">	其他部门显示原工资</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">代码：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    salary,
+    department_id,
+CASE
+        department_id 
+        WHEN 30 THEN
+        salary * 1.1 
+        WHEN 40 THEN
+        salary * 1.2 
+        WHEN 50 THEN
+        salary * 1.3 ELSE salary 
+    END AS 新工资 
+FROM
+    employees;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### case函数的使用二: 类似于多重if</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>case  
+when 条件1 then 要显示的值1或语句1
+when 条件2 then 要显示的值2或语句2
+...
+else 要显示的值n或语句n
+end
+与上一种情况的不同就是case后不加表达式</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">案例：查询员工的工资情况.</span><br><span class="line"></span><br><span class="line">题目：</span><br><span class="line"></span><br><span class="line">	如果工资&gt;20000,显示A级别</span><br><span class="line">	如果工资&gt;15000,显示B级别</span><br><span class="line">	如果工资&gt;10000,显示C级别</span><br><span class="line">	否则显示D级别</span><br><span class="line"></span><br><span class="line">代码：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    salary,
+CASE
+
+        WHEN salary &gt; 20000 THEN
+        &#39;A&#39; 
+        WHEN salary &gt; 15000 THEN
+        &#39;B&#39; 
+        WHEN salary &gt; 10000 THEN
+        &#39;C&#39; ELSE &#39;D&#39; 
+    END AS 工资级别 
+FROM
+    employees;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 分组函数</span><br><span class="line"></span><br><span class="line">功能：</span><br><span class="line"></span><br><span class="line">用作统计使用，又称为聚合函数或统计函数或组函数</span><br><span class="line"></span><br><span class="line">分类：</span><br><span class="line"></span><br><span class="line">	sum、  avg、  max、  min、  count</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line"></span><br><span class="line">- sum，avg用于处理数值型；max，min，count可以处于任何类型	</span><br><span class="line">- 以上分组函数都忽略null值</span><br><span class="line">- 可以和distinct搭配实现去重</span><br><span class="line">- count函数的单独介绍，一般用count(*)多，统计行数</span><br><span class="line">- 和分组函数一同查询的字段要求是group by后的字段</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 简单的使用：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    SUM( salary ) 
+FROM
+    employees;
+SELECT
+    SUM( salary ) #和,ROUND(AVG(salary),2) #平均 FROM employees;
+SELECT
+    MAX( salary ) #最高, MIN(salary) #最低 FROM employees;
+SELECT
+    MIN( salary ) 
+FROM
+    employees;
+SELECT
+    COUNT( salary ) 
+FROM
+    employees;    </code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 参数支持哪些类型</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    SUM( last_name ),
+    AVG( last_name ) 
+FROM
+    employees;
+SELECT
+    SUM( hiredate ),
+    AVG( hiredate ) 
+FROM
+    employees;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">字符求和无意义，不建议这样用</span><br><span class="line"></span><br><span class="line">所以有的适合数值型数据，有的都适合。 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    MAX( last_name ),
+    MIN( last_name ) 
+FROM
+    employees;
+SELECT
+    MAX( hiredate ),
+    MIN( hiredate ) 
+FROM
+    employees;
+
+#支持
+SELECT
+    COUNT( last_name ) 
+FROM
+    employees;#计算非空的值 107
+SELECT
+    COUNT( commission_pct ) 
+FROM
+    employees;#35</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 是否忽略null，是的</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>SELECT
+    SUM( commission_pct ),
+    AVG( commission_pct ) 
+FROM
+    employees;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">### 和distinct搭配，在统计计算时实现去重</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;SELECT</span><br><span class="line">		SUM( DISTINCT salary ),</span><br><span class="line">		SUM( salary ) </span><br><span class="line">	FROM</span><br><span class="line">		employees;</span><br><span class="line">	SELECT</span><br><span class="line">		COUNT( DISTINCT salary ),</span><br><span class="line">		COUNT( salary ) </span><br><span class="line">	FROM</span><br><span class="line">		employees;</span><br></pre></td></tr></table></figure>
+
+<h3 id="count函数的详细介绍"><a href="#count函数的详细介绍" class="headerlink" title="count函数的详细介绍"></a>count函数的详细介绍</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	COUNT( salary ) </span><br><span class="line">FROM</span><br><span class="line">	employees;</span><br><span class="line">SELECT</span><br><span class="line">	COUNT(*) </span><br><span class="line">FROM</span><br><span class="line">	employees;#统计每一列的数目，即所有行数，有一行里的一个不为NULL，就算上这一行</span><br><span class="line">SELECT</span><br><span class="line">	COUNT( 1 ) </span><br><span class="line">FROM</span><br><span class="line">	employees;#和上一语句效果一样，加了一列全是1的列，里面可以任意给数字，给字符要加引号。</span><br></pre></td></tr></table></figure>
+
+<h3 id="和分组函数一同查询的字段有限制"><a href="#和分组函数一同查询的字段有限制" class="headerlink" title="和分组函数一同查询的字段有限制"></a>和分组函数一同查询的字段有限制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">	AVG(salary),</span><br><span class="line">	employee_id </span><br><span class="line">FROM employees;</span><br><span class="line">#这个员工id查出来没有意义  </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-进阶五-分组查询"><a href="#3-5-进阶五-分组查询" class="headerlink" title="3.5 进阶五 - 分组查询"></a>3.5 进阶五 - 分组查询</h3><pre><code>语法：
+    select 分组函数（max，min这些），列（**要求出现在group by后面**）
+    from 表
+    [where 筛选条件]
+    group by 分组的列表
+    [order by]子句
+注意：查询列表必须特殊，要求是分组函数和group by后出现的字段
+
+特点：
+    1、分组查询中的筛选条件分为两类（筛选的数据源不同
+                        数据源           位置            关键字
+    分组前筛选：    原始表       group by子句前面        where
+    分组后筛选：分组后的结果集   group by子句后面        having
+
+    ①分组函数做条件，肯定是放在having子句中
+    ②能用分组前筛选的，优先考虑用分组前筛选
+
+    2、group by子句支持单个字段分组，多个字段分组，
+    （多个字段之间用逗号隔开无顺序要求），表达式或函数（用的较少）
+
+    3、可添加排序（放在group by后）
+                    ************************      
+
+#简单的分组查询
+#案例1：查询每个工种的最高工资
+SELECT 
+    MAX(salary),
+    job_id
+FROM 
+    employees
+GROUP BY 
+    job_id;
+
+#案例2：查询每个位置上的部门个数
+SELECT 
+    COUNT(*),
+    location_id
+FROM 
+    departments
+GROUP BY 
+    location_id;
+                    ************************      
+#添加分组前筛选条件
+#案例1：查询邮箱中包含a字符的，每个部门的平均工资
+SELECT
+    AVG( salary ),
+    department_id 
+FROM
+    employees 
+WHERE
+    email LIKE &#39;%a%&#39; #邮箱中包含a字符
+
+GROUP BY
+    department_id;
+
+#案例2：查询有奖金的每个领导手下员工的最高工资
+SELECT
+    MAX( salary ),
+    manager_id 
+FROM
+    employees 
+WHERE
+    commission_pct IS NOT NULL 
+GROUP BY
+    manager_id;    
+
+
+                    ************************  
+#添加分组后的筛选条件
+
+#案例1：查询哪个部门的员工个数大于2
+#①查询每个部门的员工个数
+SELECT
+    COUNT(*),
+    department_id 
+FROM
+    employees 
+GROUP BY
+    department_id;
+#②根据1的结果进行筛选
+SELECT
+    COUNT(*),
+    department_id 
+FROM
+    employees 
+GROUP BY
+    department_id 
+HAVING
+    COUNT(*)&gt; 2;#######重要##########
+
+
+#案例2：查询每个工种有奖金的员工的最高工资&gt;12000的工种编号和其最高工资 
+(#有点难)
+#①查询每个工种有奖金的员工的最高工资
+SELECT
+    MAX( salary ),
+    job_id 
+FROM
+    employees 
+WHERE
+    commission_pct IS NOT NULL 
+GROUP BY
+    job_id;
+#②根据1的结果继续筛选，最高工资&gt;12000
+SELECT
+    MAX( salary ),
+    job_id 
+FROM
+    employees 
+WHERE
+    commission_pct IS NOT NULL 
+GROUP BY
+    job_id 
+HAVING
+    MAX( salary )&gt; 12000;
+
+
+#案例3：查询领导编号&gt;102的每个领导手下的最低工资&gt;5000的领导编号
+#①查询领导编号&gt;102的每个领导手下的最低工资
+SELECT
+    MIN( salary ),
+    manager_id 
+FROM
+    employees 
+WHERE
+    manager_id &gt; 102 
+GROUP BY
+    manager_id;    
+
+#②在1的基础上，最低工资&gt;5000
+SELECT
+    MIN( salary ),
+    manager_id 
+FROM
+    employees 
+WHERE
+    manager_id &gt; 102 
+GROUP BY
+    manager_id 
+HAVING
+    MIN( salary )&gt; 5000;
+                    ************************  
+
+#按表达式或函数分组
+#案例：按员工姓名的长度分组，查询每一组的员工个数，筛选员工个数&gt;5的
+SELECT
+    COUNT(*),
+    LENGTH( last_name ) len_name 
+FROM
+    employees 
+GROUP BY
+    len_name 
+HAVING
+    COUNT(*)&gt; 5;
+
+#按多个字段分组
+#案例：查询每个部门每个工种的员工的平均工资
+SELECT
+    AVG( salary ),
+    department_id,
+    job_id 
+FROM
+    employees 
+GROUP BY
+    department_id,
+    job_id;
+                    ************************  
+#按多个字段分组--添加排序
+##案例：查询每个部门每个工种的员工的平均工资,并将&gt;10000的按高低排序
+SELECT
+    AVG( salary ) a,
+    department_id,
+    job_id 
+FROM
+    employees 
+GROUP BY
+    department_id,
+    job_id 
+HAVING
+    a &gt; 10000 
+ORDER BY
+    a DESC;</code></pre>
+<h3 id="3-6-进阶六-连接查询"><a href="#3-6-进阶六-连接查询" class="headerlink" title="3.6 进阶六 - 连接查询"></a>3.6 进阶六 - 连接查询</h3><pre><code>含义：又称多表查询，当查询的字段来自多个表，就会用到连接查询
+
+笛卡尔乘积现象：表1有m行，表2有n行，结果:m*n行
+
+发生原因：没有有效的连接条件
+如何避免：添加有效的连接条件
+
+分类：
+    按年代分类：
+    sql92标准：仅仅支持内连接
+    sql99标准【推荐】：支持内连接 + 外连接（左外，右外）+ 交叉连接
+
+    按功能分类：
+    内连接：
+            等值连接，
+            非等值连接，
+            自连接
+    外连接：
+            左外连接，
+            右外连接，
+            全外连接
+    交叉连接
+
+
+SELECT
+    * 
+FROM
+    beauty;
+SELECT
+    * 
+FROM
+    boys;
+SELECT NAME
+    ,
+    boyName 
+FROM
+    boys,
+    beauty 
+WHERE
+    beauty.boyfriend_id = boys.id;</code></pre>
+<h3 id="3-4-6-sql92标准"><a href="#3-4-6-sql92标准" class="headerlink" title="3.4.6 sql92标准"></a>3.4.6 sql92标准</h3><pre><code>#1、等值连接
+①多表等值连接的结果为多表的交集部分
+②n表连接，至少需要n-1个连接条件
+③多表的顺序无要求
+④一般需要为表起别名
+⑤可以搭配前面介绍的所有查询子句使用，比如排序，分组，筛选
+
+#案例1：查询女神名和对应的男神名
+SELECT NAME
+    ,
+    boyName 
+FROM
+    boys,
+    beauty 
+WHERE
+    beauty.boyfriend_id = boys.id;
+#案例2：查询员工名和对应的部门名
+SELECT
+    last_name,
+    department_name 
+FROM
+    employees,
+    departments 
+WHERE
+    employees.department_id = departments.department_id;
+
+                    ************************
+
+#2、为表起别名
+
+①提高语句简洁度
+②区分多个重名的字段
+③如果为表起了 别名，则 查询的字段 就不能用 原来的表名 去限定，只能用 别名
+
+#查询员工名、工种号、工种名
+SELECT
+    last_name,
+    e.job_id,
+    job_title 
+FROM
+    employees AS e,
+    jobs AS j #执行顺序是这句先
+
+WHERE
+    e.job_id = j.job_id;
+#两个表的顺序可以调换
+SELECT
+    last_name,
+    e.job_id,
+    j.job_title 
+FROM
+    jobs AS j,
+    employees AS e 
+WHERE
+    e.job_id = j.job_id;
+                    ************************ 
+#3、可以加筛选
+#案例：查询有奖金的员工名、部门名
+SELECT
+    last_name,
+    department_name,
+    commission_pct 
+FROM
+    employees e,
+    departments d 
+WHERE
+    e.department_id = d.department_id 
+    AND e.commission_pct IS NOT NULL;
+#案例2：查询出城市名中第二个字符为o的部门名和城市名
+SELECT
+    department_name,
+    city 
+FROM
+    departments d,
+    locations l 
+WHERE
+    d.location_id = l.location_id 
+    AND city LIKE &#39;_o%&#39;;
+
+                    ************************
+#4、加分组
+#案例1：查询每个城市的部门个数
+SELECT
+    COUNT(*) 个数,
+    city 
+FROM
+    departments d,
+    locations l 
+WHERE
+    d.location_id = l.location_id 
+GROUP BY
+    city;    
+
+#案例2：查询有奖金的每个部门的部门名和部门的领导编号，和该部门的最低工资
+SELECT
+    department_name,
+    d.manager_id,
+    MIN( salary ) 
+FROM
+    departments d,
+    employees e 
+WHERE
+    d.department_id = e.department_id
+    AND commission_pct IS NOT NULL 
+GROUP BY
+    department_name;
+
+                    ************************
+#5、加排序
+#案例：查询每个工种的工种名和员工个数，按员工个数降序
+
+SELECT
+    job_title,
+    COUNT(*) 
+FROM
+    employees e,
+    jobs j 
+WHERE
+    e.job_id = j.job_id
+GROUP BY
+    job_title 
+ORDER BY
+    COUNT(*) DESC;    
+                    ************************
+#6、实现三表连接
+#案例：查询员工名、部门名和所在的城市
+SELECT
+    last_name,
+    department_name,
+    city 
+FROM
+    employees e,
+    departments d,
+    locations l 
+WHERE
+    e.department_id = d.department_id
+    AND d.location_id = l.location_id;
+
+#####################################################
+#2、非等值连接
+
+#案例1：查询员工的工资和工资级别
+#创建工资级别
+#运行下面这段代码，在数据库中创建一个job_grades表
+CREATE TABLE job_grades
+(grade_level VARCHAR(3),
+lowest_sal INT,
+highest_sal INT);
+
+INSERT INTO job_grades
+VALUES (&#39;A&#39;,1000,2999);
+
+INSERT INTO job_grades
+VALUES (&#39;B&#39;,3000,5999);
+
+INSERT INTO job_grades
+VALUES (&#39;C&#39;,6000,9999);
+
+INSERT INTO job_grades
+VALUES (&#39;D&#39;,10000,14999);
+
+INSERT INTO job_grades
+VALUES (&#39;E&#39;,15000,24999);
+
+INSERT INTO job_grades
+VALUES (&#39;F&#39;,25000,40000);
+                    ************************
+
+#查询员工的工资和工资级别
+SELECT
+    salary,
+    grade_level 
+FROM
+    employees e,
+    job_grades g 
+WHERE
+    salary BETWEEN g.`lowest_sal` #笔记1有说这里为什么要加引号？ 
+    AND g.`highest_sal`;
+
+#3、自连接
+#有点像等值连接
+#案例：查询员工名和上级的名称
+SELECT
+    e.employee_id,
+    e.last_name,
+    m.employee_id,
+    m.last_name 
+FROM
+    employees e,   #一张表看成两个表
+    employees m 
+WHERE
+    e.manager_id = m.employee_id;</code></pre>
+<h3 id="3-4-6-sql99标准"><a href="#3-4-6-sql99标准" class="headerlink" title="3.4.6 sql99标准"></a>3.4.6 sql99标准</h3><pre><code>语法：
+    select 查询列表
+    from 表1 别名 【连接类型】
+    join 表2 别名 on 【连接条件】
+    on 连接条件
+    【where 筛选条件】
+    【group by 分组】
+    【having 筛选条件】
+    【order by 排序列表】
+
+分类：
+内连接：inner
+外连接：左外 left 【outer】
+    右外 right 【outer】
+    全外 full 【outer】
+交叉连接：cross
+
+                    ************************
+#一）内连接
+
+语法：
+select 查询列表
+from 表1 别名
+inner join 表2 别名
+on 连接条件；
+
+分类：
+等值
+非等值
+自连接
+
+特点：
+①添加排序、分组、筛选
+②inner可以省略
+③筛选条件放在where后面，连接条件放在on后面，提高分离性，便于阅读
+④inner join连接和sql92语法中的等值连接效果一样，都是查询多表的交集
+
+                    ************************
+#1、等值连接
+
+#案例1 查询员工名，部门名
+SELECT
+    last_name,
+    department_name 
+FROM
+    employees e
+    INNER JOIN departments d ON e.department_id = d.department_id;
+
+
+
+#案例2：查询名字中包含e的员工名和工种名（添加筛选）
+SELECT
+    last_name,
+    job_title 
+FROM
+    employees e
+    INNER JOIN jobs j ON e.job_id = j.job_id 
+WHERE
+    e.last_name LIKE &#39;%e%&#39;;
+
+#案例3：查询部门个数&gt;3的城市名和部门个数（添加分组+筛选）
+SELECT
+    city,
+    COUNT(*) 部门个数 
+FROM
+    locations l
+    INNER JOIN departments d ON d.location_id = l.location_id 
+GROUP BY
+    city 
+HAVING
+    COUNT(*)&gt; 3;
+
+#案例4：查询哪个部门的部门员工个数&gt;3的部门名，和员工个数，并按个数进行降序
+SELECT
+    department_name,
+    COUNT(*) 
+FROM
+    employees e
+    INNER JOIN departments d ON e.department_id = d.department_id 
+GROUP BY
+    department_name 
+HAVING
+    COUNT(*)&gt; 3 
+ORDER BY
+    COUNT(*) DESC;
+
+#案例5：查询员工名、部门名、工种名，并按部门名降序（三表连接）
+SELECT
+    last_name,
+    department_name,
+    job_title 
+FROM
+    employees e
+    INNER JOIN departments d ON e.department_id = d.department_id
+    INNER JOIN jobs j ON e.job_id = j.job_id 
+ORDER BY
+    d.department_name DESC;
+
+                    ************************
+#2、非等值连接
+#查询员工的工资级别
+SELECT
+    salary,
+    grade_level 
+FROM
+    employees e
+    INNER JOIN job_grades g ON e.salary BETWEEN g.lowest_sal 
+    AND g.highest_sal;
+
+#查询工资的个数&gt;20的级别个数，并且按工资级别降序
+
+SELECT
+    salary,
+    grade_level,
+    COUNT(*) 
+FROM
+    employees e
+    INNER JOIN job_grades g ON e.salary BETWEEN g.lowest_sal 
+    AND g.highest_sal 
+GROUP BY
+    grade_level 
+HAVING
+    COUNT(*) &gt; 20 
+ORDER BY
+    grade_level DESC;
+
+                    ************************
+#3、自连接
+#查询员工的名字，上级的名字
+SELECT
+    e.last_name,
+    m.last_name 
+FROM
+    employees e
+    JOIN employees m ON e.manager_id = m.employee_id;
+#加筛选：姓名中包含字符k的员工名字、上级名字
+SELECT
+    e.last_name,
+    m.last_name 
+FROM
+    employees e
+    JOIN employees m ON e.manager_id = m.employee_id 
+WHERE
+    e.last_name LIKE &#39;%k%&#39;;
+
+
+                    ************************
+#二）外连接
+
+#有主从表，主表就是你要查的信息主要来自的表
+应用场景：用于查找一个表中有，另一个表中没有的记录
+特点：
+1、外连接的 查询结果 为主表中 所有的记录
+   如果 从表中 有和它 匹配的，则显示 匹配的值
+   如果 从表中 没有和它 匹配的，则显示 null
+   外连接查询结果 = 内连接结果 + 主表中有 而从表中没有的 记录
+2、左外连接：left jon左边的是主表
+   右外连接：right join右边的是主表
+
+3、左外和右外交换两个表的顺序，可以实现同样的效果
+4、全外连接(不支持) = 内连接结果 + 表1有 但表2没有 + 表2有 但表1没有
+
+
+#引入：查询男朋友不在男生表的女生名(结果里没有的都是null)
+#左外连接
+SELECT
+    be.NAME,
+    bo.* 
+FROM
+    beauty be  #主表
+    LEFT OUTER JOIN boys bo ON be.boyfriend_id = bo.id;
+
+#右外连接
+SELECT
+    be.NAME,
+    bo.* 
+FROM
+    boys bo    #从表
+    RIGHT OUTER JOIN beauty be ON be.boyfriend_id = bo.id 
+WHERE
+    bo.id IS NOT NULL;
+
+#案例1：查询哪个部门没有员工
+#左外
+谁是主表？部门表吧？
+SELECT
+    d.*,
+    e.employee_id 
+FROM
+    departments d
+    LEFT OUTER JOIN employees e ON d.department_id = e.department_id 
+WHERE
+    e.employee_id IS NULL;
+
+#右外
+SELECT
+    d.*,
+    e.employee_id 
+FROM
+    employees e
+    RIGHT OUTER JOIN departments d ON d.department_id = e.department_id 
+WHERE
+    e.employee_id IS NULL;
+
+                    ************************
+#三）交叉连接（笛卡尔乘积）
+
+SELECT
+    be.*,
+    bo.* 
+FROM
+    beauty be
+    CROSS JOIN boys bo;
+##建议使用sql99语法</code></pre>
+<h3 id="3-7-进阶七-子查询"><a href="#3-7-进阶七-子查询" class="headerlink" title="3.7 进阶七 - 子查询"></a>3.7 进阶七 - 子查询</h3><pre><code>#可能是最难的查询
+
+
+含义：出现在 其他语句内部的 select语句，称为 子查询 或 内查询
+外部的 查询语句，称为 主查询 或 外查询
+
+分类：
+1. 按子查询出现的位置：
+         select后面：        仅仅支持 标量子查询
+         from后面：          支持 表子查询
+      ☆ where或者having后面：标量子查询，列子查询，行子查询
+         exists后面（相关子查询）：表子查询
+2. 按结果集的行列数不同：
+        标量子查询（结果集只有一行一列）
+        列子查询（结果集只有一列多行）
+        行子查询（结果集有一行多列）
+        表子查询（结果集一般为多行多列）
+
+
+                    ************************</code></pre>
+<h3 id="3-7-1-进阶七-子查询（1）where或having后面"><a href="#3-7-1-进阶七-子查询（1）where或having后面" class="headerlink" title="3.7.1 进阶七 - 子查询（1）where或having后面"></a>3.7.1 进阶七 - 子查询（1）where或having后面</h3><pre><code>#1、标量子查询
+#2、列子查询（多行子查询）
+#3、行子查询（多行多列）
+
+特点：
+①子查询放在小括号内
+②子查询一般放在条件右侧
+③标量子查询，一般搭配单行操作符使用
+&gt; &lt; &gt;= &lt;= = &lt;&gt;
+
+列子查询一般搭配多行操作符使用
+IN/NOT IN、ANY/SOME、ALL
+任意一个    某一个    所有        
+④子查询的执行优先于主查询执行
+
+
+                    ************************
+#1、标量子查询
+
+#案例1：谁的工资比Abel高
+
+#①查询abel的工资
+SELECT salary 
+FROM employees
+WHERE last_name=&#39;Abel&#39;;
+#②查询员工的信息，满足salary&gt;①的结果
+SELECT *
+FROM employees
+WHERE salary&gt;(
+    SELECT salary 
+    FROM employees
+    WHERE last_name=&#39;Abel&#39;
+);
+
+#案例2：返回job_id与141号员工相同，salary比143号员工多的员工姓名，job_id和工资
+
+#①查询141号员工的job_id
+SELECT 
+    job_id
+FROM 
+    employees
+WHERE 
+    employee_id=141;
+
+#②查询143号员工的salary
+SELECT 
+    salary
+FROM 
+    employees
+WHERE 
+    employee_id=143;
+
+#③员工的姓名，job_id,工资，要求job_id=①并且salary&gt;②
+SELECT
+    last_name,
+    job_id,
+    salary 
+FROM
+    employees 
+WHERE
+    job_id =(
+    SELECT
+        job_id 
+    FROM
+        employees 
+    WHERE
+        employee_id = 141 
+    ) 
+    AND salary &gt;(
+    SELECT
+        salary 
+    FROM
+        employees 
+    WHERE
+    employee_id = 143 
+    );
+
+#案例3：返回公司工资最少的员工的last_name,job_id,salary
+#①查询公司的最低工资
+SELECT 
+    MIN(salary) 
+FROM 
+    employees
+
+#②查询last_name,job_id
+SELECT
+    last_name,
+    job_id,
+    salary 
+FROM
+    employees 
+WHERE
+    salary = ( SELECT MIN( salary ) FROM employees );
+
+#案例4：查询最低工资大于50号部门的最低工资的部门id和其最低工资
+#①查询50号部门的最低工资
+SELECT
+    MIN( salary ) 
+FROM
+    employees 
+WHERE
+    department_id = 50;
+
+#②查询每个部门的最低工资
+SELECT
+    MIN( salary ) 
+FROM
+    employees 
+GROUP BY
+    department_id;
+
+#③筛选②
+SELECT
+    MIN( salary ),
+    department_id 
+FROM
+    employees 
+GROUP BY
+    department_id 
+HAVING
+    MIN( salary ) &gt; ( SELECT MIN( salary ) FROM employees WHERE department_id = 50 );
+
+
+
+
+                    ************************
+#2、列子查询（多行子查询）
+
+#案例1：返回location_id是1400或1700的部门中所有员工姓名
+**法一：**
+#①查询location_id是1400或1700的部门编号
+SELECT DISTINCT 
+    department_id
+FROM 
+    departments
+WHERE     
+    location_id IN(1400,1700);
+
+#②查询员工姓名要求部门号是①中的某个
+SELECT
+    last_name 
+FROM
+    employees 
+WHERE
+    department_id IN ( SELECT DISTINCT department_id FROM departments WHERE location_id IN ( 1400, 1700 ) );#in可以换成 =ANY
+#我真的搞不懂navicat这个美化为什么这里是一整行，不如老师的sqlyog好看呢
+**法二：**
+SELECT
+    last_name 
+FROM
+    employees e
+    LEFT JOIN departments d ON e.department_id = d.department_id 
+WHERE
+    d.location_id IN ( 1400, 1700 );
+#in与(= ANY)、not in与 (&lt;&gt;ALL)
+#为什么不用连接查询？因为子查询效率更高
+
+
+                    ************************
+#案例2：返回其他工种中比job_id为‘IT_PROG&#39;的任一工资低的员工信息
+#这题的题意不太好理解哈
+#用any 
+SELECT
+    employee_id,
+    last_name,
+    job_id,
+    salary 
+FROM
+    employees 
+WHERE
+    salary &lt; ANY ( SELECT DISTINCT salary FROM employees WHERE job_id = &#39;IT_PROG&#39; ) 
+    AND job_id &lt;&gt; &#39;IT_PROG&#39;;
+
+
+
+
+#案例3：返回其他工种中比job_id为‘IT_PROG&#39;的所有工资低的员工信息
+SELECT
+    employee_id,
+    last_name,
+    job_id,
+    salary 
+FROM
+    employees 
+WHERE
+    salary &lt; ALL ( SELECT DISTINCT salary FROM employees WHERE job_id = &#39;IT_PROG&#39; ) 
+    AND job_id &lt;&gt; &#39;IT_PROG&#39;;
+
+
+                    ************************
+#3、行子查询（结果集是一行多列或多行多列）
+#用的较少
+#案例：查询员工编号最小并且工资最高的员工信息
+SELECT
+    * 
+FROM
+    employees 
+WHERE
+    employee_id = ( SELECT MIN( employee_id ) FROM employees ) 
+    AND salary = ( SELECT MAX( salary ) FROM employees );
+#或者
+SELECT
+    * 
+FROM
+    employees 
+WHERE
+    ( employee_id, salary ) = ( SELECT MIN( employee_id ), MAX( salary ) FROM employees );</code></pre>
+<h3 id="3-7-2-进阶七-子查询（2）select后面"><a href="#3-7-2-进阶七-子查询（2）select后面" class="headerlink" title="3.7.2 进阶七 - 子查询（2）select后面"></a>3.7.2 进阶七 - 子查询（2）select后面</h3><pre><code>仅支持标量子查询 一行一列的
+
+#案例1：查询每个部门的员工个数
+#我第一时间会用连接 + 分组 做
+SELECT
+    d.*,
+    ( SELECT COUNT(*) FROM employees e WHERE e.department_id = d.department_id ) 个数 
+FROM
+    departments d;
+#子查询真的是..又回到被SAS支配的感觉中了
+#案例2：查询员工号=102的部门名
+SELECT
+    ( SELECT department_name FROM departments d INNER JOIN employees e ON d.department_id = e.department_id WHERE e.employee_id = 102 );
+#这题的答案真是强行嵌套..穿着雨衣打伞啊，我傻了
+#往后我不去理解了，明明可以内联，我都快傻了，跳过！
+#这美化的是美化了个锤子，又是一行</code></pre>
+<h3 id="3-7-3-进阶七-子查询（3）from后面"><a href="#3-7-3-进阶七-子查询（3）from后面" class="headerlink" title="3.7.3 进阶七 - 子查询（3）from后面"></a>3.7.3 进阶七 - 子查询（3）from后面</h3><pre><code>#案例：查询每个部门的平均工资的工资等级
+
+#①查询每个部门的平均工资
+SELECT 
+    AVG(salary),
+    department_id
+FROM 
+    employees
+GROUP BY 
+    department_id；
+
+#②连接①的结果集和等级表，筛选条件 平均工资between最低和最高
+SELECT
+    ag_dep.*,
+    g.grade_level 
+FROM
+    ( SELECT AVG( salary ) ag, department_id FROM employees GROUP BY department_id ) ag_dep
+    INNER JOIN job_grades g ON ag_dep.ag BETWEEN g.lowest_sal 
+    AND g.highest_sal;</code></pre>
+<h3 id="3-7-4-进阶七-子查询（4）exists后面"><a href="#3-7-4-进阶七-子查询（4）exists后面" class="headerlink" title="3.7.4 进阶七 - 子查询（4）exists后面"></a>3.7.4 进阶七 - 子查询（4）exists后面</h3><pre><code>exists完整的查询语句
+结果：1或0
+
+SELECT EXISTS
+    (
+    SELECT
+        employee_id 
+FROM
+    employees)#结果为1，表示存在
+
+#案例1：查询有员工的部门名
+SELECT
+    department_name 
+FROM
+    departments d 
+WHERE
+    d.`department_id` IN ( SELECT department_id FROM employees );
+#或
+SELECT
+    department_name 
+FROM
+    departments d 
+WHERE
+    EXISTS ( SELECT * FROM employees e WHERE e.department_id = d.department_id );    
+
+#案例2：查询没有女朋友的男生信息
+#in
+SELECT
+    bo.* 
+FROM
+    boys bo 
+WHERE
+    bo.id NOT IN ( SELECT boyfriend_id FROM beauty );#exists
+SELECT
+    bo.* 
+FROM
+    boys bo 
+WHERE
+    NOT EXISTS ( SELECT boyfriend_id FROM beauty be WHERE bo.id = be.boyfriend_id );</code></pre>
+<h3 id="3-8-进阶八-分页查询"><a href="#3-8-进阶八-分页查询" class="headerlink" title="3.8 进阶八 - 分页查询"></a>3.8 进阶八 - 分页查询</h3><pre><code>应用场景：当要显示的数据一页显示不全，需要分页提交sql请求
+语法：
+        select 查询列表
+        from 表
+        &#123;join type join 表2
+        where 筛选条件
+        group by 分组字段
+        having 分组后的筛选
+        order by 排序的字段&#125;
+        limit offset，size;
+               参数      参数
+        offset:要显示条目的起始索引，起始索引从0开始
+        size：要显示的条目数
+特点：
+        ①limit语句放在查询语句的**最后**
+        ②公式
+        要显示的页数page，每页的条目数size
+
+        select 查询列表
+        from 表
+        limit (page-1)*size,size;
+        size = 10
+        page
+        1        0
+        2        10
+        3        20
+#案例1：查询前五条员工信息
+SELECT
+    * 
+FROM
+    employees 
+    LIMIT 0,
+    5;
+SELECT
+    * 
+FROM
+    employees 
+    LIMIT 5;
+#    
+
+
+#案例2：查询第11条 到 第25条(一共25-11+1条)
+SELECT
+    * 
+FROM
+    employees 
+    LIMIT 10,
+    15;#索引从0开始 #索引从0开始
+
+#案例3：有奖金的 员工信息，并且工资较高的 前10名 显示
+SELECT
+    * 
+FROM
+    employees 
+WHERE
+    commission_pct IS NOT NULL 
+ORDER BY
+    salary DESC 
+    LIMIT 10;</code></pre>
+<h3 id="3-8-进阶九-联合查询"><a href="#3-8-进阶九-联合查询" class="headerlink" title="3.8 进阶九 - 联合查询"></a>3.8 进阶九 - 联合查询</h3><pre><code>union 联合 合并
+语法：
+查询语句1
+union
+查询语句2
+union 
+……
+
+应用场景：
+要查询的结果来自于多个表，且多个表没有直接的连接关系，但查询的信息一致时
+
+特点：
+1. 要求多条查询语句的查询列数是一致的
+2. 要求多条查询语句的查询的每一列的类型和顺序最好一致
+3. 用union会自动去重，不想去重的话就用union all
+#案例1 查询部门编号&gt;90或邮箱包含a的员工信息
+SELECT
+    * 
+FROM
+    employees 
+WHERE
+    email LIKE &#39;%a%&#39; 
+    OR department_id &gt; 90;
+#用union
+SELECT
+    * 
+FROM
+    employees 
+WHERE
+    email LIKE &#39;%a%&#39; UNION
+SELECT
+    * 
+FROM
+    employees 
+WHERE
+    department_id &gt; 90;
+#上面这个例子看不出来union的意义哈，我看着还怪麻烦
+#案例2 查询中国用户中男性的信息以及外国用户中年男性的用户信息
+#我是sql8.0没test这个库，不过看看代码也能明白他想干啥
+SELECT
+    id,
+    cname,
+    csex 
+FROM
+    t_ca 
+WHERE
+    csex = &quot;男&quot; UNION
+SELECT
+    t_id,
+    tName,
+    tGender 
+FROM
+    t_ua 
+WHERE
+    tGender = &#39;male&#39;;
+#不好意思我懂了，union的好处是当你一个库里 好几个表之间 没有那种可以建立连接的关系，用这个就太方便了
+#上面这个例子啊，两个表的字段不一样，但是意义却一样，如果内容不一样的话，合不起来</code></pre>
+<p><strong>这里可以贴一个结果图</strong>    </p>
+
     </div>
 
     
@@ -618,8 +1995,8 @@ select &#39;123&#39;+90; </code></pre>
 </div>
 
           <div class="post-tags">
-              <a href="/tags/mysql/" rel="tag"># mysql</a>
               <a href="/tags/learn/" rel="tag"># learn</a>
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
           </div>
 
         
@@ -689,13 +2066,13 @@ select &#39;123&#39;+90; </code></pre>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">6k</span>
+    <span title="Symbols count total">26k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">6 mins.</span>
+    <span title="Reading time total">23 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">
