@@ -21,6 +21,473 @@
 ]]></content>
   </entry>
   <entry>
+    <title>波士顿房价的可视化分析</title>
+    <url>/2020/10/26/%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%88%BF%E4%BB%B7%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>本篇是初始化内容</p>
+<a id="more"></a>
+
+<h1 id="加载数据"><a href="#加载数据" class="headerlink" title="加载数据"></a>加载数据</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import pandas as pd</span><br><span class="line">import seaborn as sns</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">from sklearn.datasets import load_boston</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">from sklearn import metrics</span><br><span class="line">from sklearn.metrics import mean_absolute_error, mean_squared_error</span><br><span class="line">from sklearn import preprocessing</span><br><span class="line"></span><br><span class="line">import warnings#忽略错误</span><br><span class="line">warnings.filterwarnings(&#39;ignore&#39;)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data &#x3D; load_boston()</span><br><span class="line">df &#x3D; pd.DataFrame(data.data,columns &#x3D; data.feature_names)</span><br><span class="line">df[&#39;PRICE&#39;] &#x3D; data.target</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRIM</th>
+      <th>ZN</th>
+      <th>INDUS</th>
+      <th>CHAS</th>
+      <th>NOX</th>
+      <th>RM</th>
+      <th>AGE</th>
+      <th>DIS</th>
+      <th>RAD</th>
+      <th>TAX</th>
+      <th>PTRATIO</th>
+      <th>B</th>
+      <th>LSTAT</th>
+      <th>PRICE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00632</td>
+      <td>18.0</td>
+      <td>2.31</td>
+      <td>0.0</td>
+      <td>0.538</td>
+      <td>6.575</td>
+      <td>65.2</td>
+      <td>4.0900</td>
+      <td>1.0</td>
+      <td>296.0</td>
+      <td>15.3</td>
+      <td>396.90</td>
+      <td>4.98</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.02731</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0.0</td>
+      <td>0.469</td>
+      <td>6.421</td>
+      <td>78.9</td>
+      <td>4.9671</td>
+      <td>2.0</td>
+      <td>242.0</td>
+      <td>17.8</td>
+      <td>396.90</td>
+      <td>9.14</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.02729</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0.0</td>
+      <td>0.469</td>
+      <td>7.185</td>
+      <td>61.1</td>
+      <td>4.9671</td>
+      <td>2.0</td>
+      <td>242.0</td>
+      <td>17.8</td>
+      <td>392.83</td>
+      <td>4.03</td>
+      <td>34.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.03237</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0.0</td>
+      <td>0.458</td>
+      <td>6.998</td>
+      <td>45.8</td>
+      <td>6.0622</td>
+      <td>3.0</td>
+      <td>222.0</td>
+      <td>18.7</td>
+      <td>394.63</td>
+      <td>2.94</td>
+      <td>33.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.06905</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0.0</td>
+      <td>0.458</td>
+      <td>7.147</td>
+      <td>54.2</td>
+      <td>6.0622</td>
+      <td>3.0</td>
+      <td>222.0</td>
+      <td>18.7</td>
+      <td>396.90</td>
+      <td>5.33</td>
+      <td>36.2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数值型12个， 分类型2个</span></span><br><span class="line">numerical_vars = [<span class="string">&#x27;CRIM&#x27;</span>,<span class="string">&#x27;ZN&#x27;</span>,<span class="string">&#x27;INDUS&#x27;</span>,<span class="string">&#x27;NOX&#x27;</span>,<span class="string">&#x27;RM&#x27;</span>,<span class="string">&#x27;AGE&#x27;</span>,<span class="string">&#x27;DIS&#x27;</span>,<span class="string">&#x27;TAX&#x27;</span>,<span class="string">&#x27;PTRATIO&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;LSTAT&#x27;</span>,<span class="string">&#x27;PRICE&#x27;</span>]</span><br><span class="line">category_vars = [<span class="string">&#x27;CHAS&#x27;</span>,<span class="string">&#x27;RAD&#x27;</span>]</span><br><span class="line">df.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(506, 14)</code></pre>
+<p>CRIM: 按照城镇划分的人均犯罪率</p>
+<p>ZN: 超过25000平方英寸的住宅用地所占的比例</p>
+<p>INDUS: 每个城镇的非零售商业面积</p>
+<p>CHAS: 这是查尔斯河哑变量 (1 or 0)</p>
+<p>NOX: 一氧化氮浓度 (每一百万部分)</p>
+<p>RM: 每个居住的平均房间数</p>
+<p>AGE: 1940年以前建造的自用住房比例</p>
+<p>DIS: 有五个波士顿就业中心，这是到他们的加权距离</p>
+<p>RAD: 到高速公路的指标</p>
+<p>TAX: 每一万美元的房产税</p>
+<p>PTRATIO: 按城镇计算的学生-教师比例</p>
+<p>B: This is calculated as 1000(Bk — 0.63)², BK是黑人后代在城镇中的比例</p>
+<p>LSTAT: 社会地位低的群体的占比</p>
+<p>MEDV: 业主自住房的价值</p>
+<h1 id="描述统计"><a href="#描述统计" class="headerlink" title="描述统计"></a>描述统计</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看有无空值</span></span><br><span class="line">df.isnull().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>CRIM       0
+ZN         0
+INDUS      0
+CHAS       0
+NOX        0
+RM         0
+AGE        0
+DIS        0
+RAD        0
+TAX        0
+PTRATIO    0
+B          0
+LSTAT      0
+PRICE      0
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 506 entries, 0 to 505
+Data columns (total 14 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   CRIM     506 non-null    float64
+ 1   ZN       506 non-null    float64
+ 2   INDUS    506 non-null    float64
+ 3   CHAS     506 non-null    float64
+ 4   NOX      506 non-null    float64
+ 5   RM       506 non-null    float64
+ 6   AGE      506 non-null    float64
+ 7   DIS      506 non-null    float64
+ 8   RAD      506 non-null    float64
+ 9   TAX      506 non-null    float64
+ 10  PTRATIO  506 non-null    float64
+ 11  B        506 non-null    float64
+ 12  LSTAT    506 non-null    float64
+ 13  PRICE    506 non-null    float64
+dtypes: float64(14)
+memory usage: 55.5 KB</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#计算常用的统计量值 -- 只看Y的</span></span><br><span class="line">df[<span class="string">&#x27;PRICE&#x27;</span>].describe()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>count    506.000000
+mean      22.532806
+std        9.197104
+min        5.000000
+25%       17.025000
+50%       21.200000
+75%       25.000000
+max       50.000000
+Name: PRICE, dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">&#x27;PRICE&#x27;</span>].hist(edgecolor = <span class="string">&#x27;black&#x27;</span>, bins = <span class="number">20</span>)</span><br><span class="line">print(<span class="string">&quot;Skewness：&#123;:0.3f&#125;&quot;</span>.<span class="built_in">format</span>(df[<span class="string">&#x27;PRICE&#x27;</span>].skew()))</span><br><span class="line">print(<span class="string">&quot;Kurtosis：&#123;:0.3f&#125;&quot;</span>.<span class="built_in">format</span>(df[<span class="string">&#x27;PRICE&#x27;</span>].kurt()))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Skewness：1.108
+Kurtosis：1.495</code></pre>
+<p><img src="output_9_1.png" alt="png"></p>
+<p>#变量分析</p>
+<h2 id="Price的分析"><a href="#Price的分析" class="headerlink" title="Price的分析"></a>Price的分析</h2><p>均值是22，最高售价是50，最低售价是5</p>
+<p>峰度为1.5，接近正态分布的变量该值一般在3左右；偏态系数为1.1，正态分布的偏态系数为0</p>
+<h2 id="数值变量"><a href="#数值变量" class="headerlink" title="数值变量"></a>数值变量</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[numerical_vars].describe()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRIM</th>
+      <th>ZN</th>
+      <th>INDUS</th>
+      <th>NOX</th>
+      <th>RM</th>
+      <th>AGE</th>
+      <th>DIS</th>
+      <th>TAX</th>
+      <th>PTRATIO</th>
+      <th>B</th>
+      <th>LSTAT</th>
+      <th>PRICE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+      <td>506.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>3.613524</td>
+      <td>11.363636</td>
+      <td>11.136779</td>
+      <td>0.554695</td>
+      <td>6.284634</td>
+      <td>68.574901</td>
+      <td>3.795043</td>
+      <td>408.237154</td>
+      <td>18.455534</td>
+      <td>356.674032</td>
+      <td>12.653063</td>
+      <td>22.532806</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>8.601545</td>
+      <td>23.322453</td>
+      <td>6.860353</td>
+      <td>0.115878</td>
+      <td>0.702617</td>
+      <td>28.148861</td>
+      <td>2.105710</td>
+      <td>168.537116</td>
+      <td>2.164946</td>
+      <td>91.294864</td>
+      <td>7.141062</td>
+      <td>9.197104</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.006320</td>
+      <td>0.000000</td>
+      <td>0.460000</td>
+      <td>0.385000</td>
+      <td>3.561000</td>
+      <td>2.900000</td>
+      <td>1.129600</td>
+      <td>187.000000</td>
+      <td>12.600000</td>
+      <td>0.320000</td>
+      <td>1.730000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.082045</td>
+      <td>0.000000</td>
+      <td>5.190000</td>
+      <td>0.449000</td>
+      <td>5.885500</td>
+      <td>45.025000</td>
+      <td>2.100175</td>
+      <td>279.000000</td>
+      <td>17.400000</td>
+      <td>375.377500</td>
+      <td>6.950000</td>
+      <td>17.025000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.256510</td>
+      <td>0.000000</td>
+      <td>9.690000</td>
+      <td>0.538000</td>
+      <td>6.208500</td>
+      <td>77.500000</td>
+      <td>3.207450</td>
+      <td>330.000000</td>
+      <td>19.050000</td>
+      <td>391.440000</td>
+      <td>11.360000</td>
+      <td>21.200000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>3.677083</td>
+      <td>12.500000</td>
+      <td>18.100000</td>
+      <td>0.624000</td>
+      <td>6.623500</td>
+      <td>94.075000</td>
+      <td>5.188425</td>
+      <td>666.000000</td>
+      <td>20.200000</td>
+      <td>396.225000</td>
+      <td>16.955000</td>
+      <td>25.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>88.976200</td>
+      <td>100.000000</td>
+      <td>27.740000</td>
+      <td>0.871000</td>
+      <td>8.780000</td>
+      <td>100.000000</td>
+      <td>12.126500</td>
+      <td>711.000000</td>
+      <td>22.000000</td>
+      <td>396.900000</td>
+      <td>37.970000</td>
+      <td>50.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[numerical_vars].hist(edgecolor=<span class="string">&#x27;black&#x27;</span>, bins = <span class="number">15</span>, figsize = (<span class="number">16</span>,<span class="number">8</span>), layout = (<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D961CF60&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D969A3C8&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D96CC630&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D9701898&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D9736B00&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D976BD68&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D961C080&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D9595390&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D9595358&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D979FE10&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D97E10B8&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001C5D9812320&gt;]],
+      dtype=object)</code></pre>
+<p><img src="output_13_1.png" alt="png"></p>
+<p>CRIM：犯罪比例普遍不高</p>
+<p>DIS：大多数房子到就业中心的距离很近</p>
+<p>B：黑人的情况可能是要么这个城镇里没有黑人，要么就很多黑人</p>
+<p>ZN：大房子非常少</p>
+<p>LSTAT：地位低的群体在30(%)以内</p>
+<p>RM：住宅的房间数主要是5、6、7</p>
+<h3 id="散点图矩阵"><a href="#散点图矩阵" class="headerlink" title="散点图矩阵"></a>散点图矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.pairplot(df[numerical_vars[:<span class="number">6</span>] + [<span class="string">&#x27;PRICE&#x27;</span>]])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x1c5d9e802b0&gt;</code></pre>
+<p><img src="output_16_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.pairplot(df[numerical_vars[<span class="number">6</span>:]])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x1c5dc5dce80&gt;</code></pre>
+<p><img src="output_17_1.png" alt="png"></p>
+<h3 id="热力图"><a href="#热力图" class="headerlink" title="热力图"></a>热力图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#相关性分析</span></span><br><span class="line">corrmat = df.corr()</span><br><span class="line">fig, ax = plt.subplots(figsize = (<span class="number">18</span>, <span class="number">10</span>))</span><br><span class="line">sns.heatmap(corrmat, annot = <span class="literal">True</span>, annot_kws=&#123;<span class="string">&#x27;size&#x27;</span>: <span class="number">12</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1c5dde08240&gt;</code></pre>
+<p><img src="output_18_1.png" alt="png"></p>
+<h2 id="类别变量"><a href="#类别变量" class="headerlink" title="类别变量"></a>类别变量</h2><p>RAD到高速路的便捷程度 CHAS查尔斯河</p>
+<h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, ax = plt.subplots(<span class="number">1</span>,<span class="number">2</span>, figsize = (<span class="number">16</span>, <span class="number">8</span>))</span><br><span class="line"><span class="keyword">for</span> var, subplot <span class="keyword">in</span> <span class="built_in">zip</span>(category_vars, ax.flatten()):</span><br><span class="line">    df[var].value_counts().plot(kind = <span class="string">&#x27;bar&#x27;</span>, ax = subplot, title = var)</span><br><span class="line">    </span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="output_21_0.png" alt="png"></p>
+<p>可见，不挨着查尔斯河的多，离着高速公路远(应该是数值越大越远叭)的也比较多</p>
+<h3 id="箱线图"><a href="#箱线图" class="headerlink" title="箱线图"></a>箱线图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, ax = plt.subplots(<span class="number">1</span>,<span class="number">2</span>, figsize = (<span class="number">16</span>, <span class="number">8</span>))</span><br><span class="line"><span class="keyword">for</span> var, subplot <span class="keyword">in</span> <span class="built_in">zip</span>(category_vars, ax.flatten()):</span><br><span class="line">    sns.boxplot(x = var, y = <span class="string">&#x27;PRICE&#x27;</span>, data = df, ax = subplot)</span><br><span class="line">    </span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="output_24_0.png" alt="png"></p>
+<p>挨着查尔斯河的房价会高一些，距离高速特别远的房价也会低一些。</p>
+<h3 id="条件图"><a href="#条件图" class="headerlink" title="条件图"></a>条件图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conditional_plot = sns.FacetGrid(df, col = <span class="string">&#x27;RAD&#x27;</span>, row = <span class="string">&#x27;CHAS&#x27;</span>)</span><br><span class="line">conditional_plot.<span class="built_in">map</span>(plt.scatter, <span class="string">&#x27;DIS&#x27;</span>, <span class="string">&#x27;PRICE&#x27;</span>).add_legend()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x1c5df57a5f8&gt;</code></pre>
+<p><img src="output_27_1.png" alt="png"></p>
+]]></content>
+      <categories>
+        <category>statistics</category>
+      </categories>
+      <tags>
+        <tag>visualization</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>谈谈博客开通过程遇到的问题</title>
     <url>/2020/10/30/%E8%B0%88%E8%B0%88%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>过去和现在：本篇是搭建博客时踩过的坑</p>
