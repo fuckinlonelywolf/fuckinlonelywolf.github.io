@@ -3,7 +3,7 @@
   <entry>
     <title>Hello World</title>
     <url>/2020/10/29/hello-world/</url>
-    <content><![CDATA[<p>本篇是初始化内容</p>
+    <content><![CDATA[<p>This article is the initialization content</p>
 <a id="more"></a>
 <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
@@ -19,11 +19,17 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+      <categories>
+        <category>默认分类</category>
+      </categories>
+      <tags>
+        <tag>initial</tag>
+      </tags>
   </entry>
   <entry>
-    <title>波士顿房价的可视化分析</title>
+    <title>A visual analysis of Housing prices in Boston</title>
     <url>/2020/10/26/%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%88%BF%E4%BB%B7%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>入门–经典案例的学习</p>
+    <content><![CDATA[<p>Getting Started - Learning classic Cases</p>
 <a id="more"></a>
 
 <h1 id="加载数据"><a href="#加载数据" class="headerlink" title="加载数据"></a>加载数据</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import pandas as pd</span><br><span class="line">import seaborn as sns</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">from sklearn.datasets import load_boston</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">from sklearn import metrics</span><br><span class="line">from sklearn.metrics import mean_absolute_error, mean_squared_error</span><br><span class="line">from sklearn import preprocessing</span><br><span class="line"></span><br><span class="line">import warnings#忽略错误</span><br><span class="line">warnings.filterwarnings(&#39;ignore&#39;)</span><br></pre></td></tr></table></figure>
@@ -245,9 +251,8 @@ Name: PRICE, dtype: float64</code></pre>
 
 <pre><code>Skewness：1.108
 Kurtosis：1.495</code></pre>
-<p><img src="https://s1.ax1x.com/2020/11/03/ByS6KI.png" alt="png"></p>
-<p>#变量分析</p>
-<h2 id="Price的分析"><a href="#Price的分析" class="headerlink" title="Price的分析"></a>Price的分析</h2><p>均值是22，最高售价是50，最低售价是5</p>
+<p><img src="https://s1.ax1x.com/2020/11/03/ByS6KI.png" alt="price直方图"></p>
+<h1 id="变量分析"><a href="#变量分析" class="headerlink" title="变量分析"></a>变量分析</h1><h2 id="Price的分析"><a href="#Price的分析" class="headerlink" title="Price的分析"></a>Price的分析</h2><p>均值是22，最高售价是50，最低售价是5</p>
 <p>峰度为1.5，接近正态分布的变量该值一般在3左右；偏态系数为1.1，正态分布的偏态系数为0</p>
 <h2 id="数值变量"><a href="#数值变量" class="headerlink" title="数值变量"></a>数值变量</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[numerical_vars].describe()</span><br></pre></td></tr></table></figure>
 
@@ -419,7 +424,7 @@ Kurtosis：1.495</code></pre>
 
 
 
-<p><img src="https://s1.ax1x.com/2020/11/03/ByScrt.png" alt="png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/03/ByScrt.png" alt="直方图矩阵"></p>
 <p>CRIM：犯罪比例普遍不高</p>
 <p>DIS：大多数房子到就业中心的距离很近</p>
 <p>B：黑人的情况可能是要么这个城镇里没有黑人，要么就很多黑人</p>
@@ -434,7 +439,7 @@ Kurtosis：1.495</code></pre>
 
 
 
-<p><img src="https://s1.ax1x.com/2020/11/03/BySRVf.png" alt="png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/03/BySRVf.png" alt="散点图矩阵"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sns.pairplot(df[numerical_vars[<span class="number">6</span>:]])</span><br></pre></td></tr></table></figure>
 
 
@@ -443,7 +448,7 @@ Kurtosis：1.495</code></pre>
 
 
 
-<p><img src="https://s1.ax1x.com/2020/11/03/BySsxA.png" alt="png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/03/BySsxA.png" alt="散点图矩阵"></p>
 <h3 id="热力图"><a href="#热力图" class="headerlink" title="热力图"></a>热力图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#相关性分析</span></span><br><span class="line">corrmat = df.corr()</span><br><span class="line">fig, ax = plt.subplots(figsize = (<span class="number">18</span>, <span class="number">10</span>))</span><br><span class="line">sns.heatmap(corrmat, annot = <span class="literal">True</span>, annot_kws=&#123;<span class="string">&#x27;size&#x27;</span>: <span class="number">12</span>&#125;)</span><br></pre></td></tr></table></figure>
 
 
@@ -454,11 +459,12 @@ Kurtosis：1.495</code></pre>
 
 
 <p><img src="https://s1.ax1x.com/2020/11/03/BySr2d.png" alt="png"></p>
-<h2 id="类别变量"><a href="#类别变量" class="headerlink" title="类别变量"></a>类别变量</h2><p>RAD到高速路的便捷程度 CHAS查尔斯河</p>
+<h2 id="类别变量"><a href="#类别变量" class="headerlink" title="类别变量"></a>类别变量</h2><p>RAD：到高速路的便捷程度 </p>
+<p>CHAS：查尔斯河</p>
 <h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, ax = plt.subplots(<span class="number">1</span>,<span class="number">2</span>, figsize = (<span class="number">16</span>, <span class="number">8</span>))</span><br><span class="line"><span class="keyword">for</span> var, subplot <span class="keyword">in</span> <span class="built_in">zip</span>(category_vars, ax.flatten()):</span><br><span class="line">    df[var].value_counts().plot(kind = <span class="string">&#x27;bar&#x27;</span>, ax = subplot, title = var)</span><br><span class="line">    </span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="https://s1.ax1x.com/2020/11/03/BySWa8.png" alt="png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/03/BySWa8.png" alt="热力图"></p>
 <p>可见，不挨着查尔斯河的多，离着高速公路远(应该是数值越大越远叭)的也比较多</p>
 <h3 id="箱线图"><a href="#箱线图" class="headerlink" title="箱线图"></a>箱线图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, ax = plt.subplots(<span class="number">1</span>,<span class="number">2</span>, figsize = (<span class="number">16</span>, <span class="number">8</span>))</span><br><span class="line"><span class="keyword">for</span> var, subplot <span class="keyword">in</span> <span class="built_in">zip</span>(category_vars, ax.flatten()):</span><br><span class="line">    sns.boxplot(x = var, y = <span class="string">&#x27;PRICE&#x27;</span>, data = df, ax = subplot)</span><br><span class="line">    </span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
 
@@ -468,14 +474,9 @@ Kurtosis：1.495</code></pre>
 <h3 id="条件图"><a href="#条件图" class="headerlink" title="条件图"></a>条件图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conditional_plot = sns.FacetGrid(df, col = <span class="string">&#x27;RAD&#x27;</span>, row = <span class="string">&#x27;CHAS&#x27;</span>)</span><br><span class="line">conditional_plot.<span class="built_in">map</span>(plt.scatter, <span class="string">&#x27;DIS&#x27;</span>, <span class="string">&#x27;PRICE&#x27;</span>).add_legend()</span><br></pre></td></tr></table></figure>
 
 
-
-
-
-
-
-
-<p><img src="https://s1.ax1x.com/2020/11/03/ByS4Pg.png" alt="png"></p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p>[1]阿尔瓦罗·富恩特斯著,刘璋译,python数据分析师修炼之道,清华大学出版社</p>
+<p><img src="https://s1.ax1x.com/2020/11/03/ByS4Pg.png" alt="条件图"></p>
+<p>根据自己的情况，有目的性的修改参数。</p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p>[1]阿尔瓦罗·富恩特斯著,刘璋译,python数据分析师修炼之道,清华大学出版社.</p>
 ]]></content>
       <categories>
         <category>数据分析</category>
@@ -486,9 +487,9 @@ Kurtosis：1.495</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>谈谈博客开通过程遇到的问题</title>
+    <title>Talk about the difficulties while creating my blog</title>
     <url>/2020/10/30/%E8%B0%88%E8%B0%88%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>过去和现在：本篇是搭建博客时踩过的坑</p>
+    <content><![CDATA[<p>Past and Present: Here’s a look at the pitfalls of blogging</p>
 <a id="more"></a>
 
 <h1 id="初识Hexo"><a href="#初识Hexo" class="headerlink" title="初识Hexo"></a>初识Hexo</h1><h2 id="文件介绍"><a href="#文件介绍" class="headerlink" title="文件介绍"></a>文件介绍</h2><ul>
@@ -567,13 +568,13 @@ Kurtosis：1.495</code></pre>
   <entry>
     <title>Tianic:machine learning from disaster</title>
     <url>/2020/11/03/titanic%E7%94%9F%E5%AD%98%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>入门–经典案例的学习(非原创)</p>
+    <content><![CDATA[<p>Getting Started - Learning <a href="https://www.kaggle.com/c/titanic">classic Cases</a> (not by myself)</p>
 <a id="more"></a>
 
 
 <h2 id="数据概览"><a href="#数据概览" class="headerlink" title="数据概览"></a>数据概览</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</span><br><span class="line"><span class="keyword">from</span> xgboost.sklearn <span class="keyword">import</span> XGBClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve, auc</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> OneHotEncoder, LabelEncoder, StandardScaler</span><br></pre></td></tr></table></figure>
 
-<h3 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">concat_df</span>(<span class="params">train_data, test_data</span>):</span></span><br><span class="line">    <span class="keyword">return</span> pd.concat([train_data, test_data], sort=<span class="literal">True</span>).reset_index(drop=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">divide_df</span>(<span class="params">all_data</span>):</span></span><br><span class="line">    <span class="keyword">return</span> all_data.loc[:<span class="number">890</span>], all_data.loc[<span class="number">891</span>:].drop([<span class="string">&#x27;Survived&#x27;</span>], axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">df_train = pd.read_csv(<span class="string">&quot;../data/train.csv&quot;</span>)</span><br><span class="line">df_test = pd.read_csv(<span class="string">&quot;../data/test.csv&quot;</span>)</span><br><span class="line">df_all = concat_df(df_train, df_test)</span><br><span class="line"></span><br><span class="line">df_train.name = <span class="string">&#x27;Training Set&#x27;</span></span><br><span class="line">df_test.name = <span class="string">&#x27;Test Set&#x27;</span></span><br><span class="line">df_all.name = <span class="string">&#x27;All Set&#x27;</span> </span><br><span class="line"></span><br><span class="line">dfs = [df_train, df_test]</span><br></pre></td></tr></table></figure>
+<h3 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_train = pd.read_csv(<span class="string">&quot;../data/train.csv&quot;</span>)</span><br><span class="line">df_test = pd.read_csv(<span class="string">&quot;../data/test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>看看训练集和测试集的维度</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(<span class="string">f&quot;Train shape: <span class="subst">&#123;df_train.shape&#125;</span>&quot;</span>)</span><br><span class="line">df_train.head()</span><br></pre></td></tr></table></figure>
@@ -800,7 +801,7 @@ dtype: int64</code></pre>
 <li><p>下面做cabin(船舱)里住的人的pclass船票等级分布图</p>
 </li>
 </ul>
-<p><img src="https://s1.ax1x.com/2020/11/10/BLdO54.png" alt="png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLdO54.png" alt="deck堆积柱状图"></p>
 <ul>
 <li>A, B, C甲板100%为头等舱乘客</li>
 <li>D甲板上有87%的头等舱乘客和13%的二等乘客</li>
@@ -811,7 +812,7 @@ dtype: int64</code></pre>
 <li>注:标记为M的乘客是客舱特征的缺失值。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">idx = df_all[df_all[<span class="string">&#x27;Deck&#x27;</span>] == <span class="string">&#x27;T&#x27;</span>].index</span><br><span class="line">df_all.loc[idx, <span class="string">&#x27;Deck&#x27;</span>] = <span class="string">&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2020/11/10/BOMlDA.png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BOMlDA.png" alt="deck与survived"></p>
 <p>T与A合并后，通过作图(上图)我发现：</p>
 <ul>
 <li>B, C, D, E甲板的存活率最高。或许因为大部分被头等舱的乘客所占据。</li>
@@ -965,35 +966,35 @@ Name: Deck, dtype: int64</code></pre>
 
 <h2 id="数据探索"><a href="#数据探索" class="headerlink" title="数据探索"></a>数据探索</h2><h3 id="相关性分析"><a href="#相关性分析" class="headerlink" title="相关性分析"></a>相关性分析</h3><p>特征之间是高度相关和相互依赖的。feature之间的相关性在training set上最高为0.55,test set上最高为0.58 (Fare and Pclass)。</p>
 <p>从我学的知识来看，变量之间的相关性最好低一些，否则存在多重共线性，然后跟Y的相关性应该高一些。</p>
-<p>可实际上，在这种比赛里，相关性很少被人关注，在树的模型里例如information gain的计算时不会考虑这个。</p>
-<p><img src="https://s1.ax1x.com/2020/11/10/BLdjPJ.png" alt="png"></p>
-<h3 id="关于因变量"><a href="#关于因变量" class="headerlink" title="关于因变量"></a>关于因变量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">survived = df_train[<span class="string">&#x27;Survived&#x27;</span>].value_counts()[<span class="number">1</span>]</span><br><span class="line">not_survived = df_train[<span class="string">&#x27;Survived&#x27;</span>].value_counts()[<span class="number">0</span>]</span><br><span class="line">survived_per = survived / df_train.shape[<span class="number">0</span>] * <span class="number">100</span></span><br><span class="line">not_survived_per = not_survived / df_train.shape[<span class="number">0</span>] * <span class="number">100</span></span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">8</span>))</span><br><span class="line">sns.countplot(df_train[<span class="string">&#x27;Survived&#x27;</span>])</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&#x27;Survival&#x27;</span>, size=<span class="number">15</span>, labelpad=<span class="number">15</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Passenger Count&#x27;</span>, size=<span class="number">15</span>, labelpad=<span class="number">15</span>)</span><br><span class="line">plt.xticks((<span class="number">0</span>, <span class="number">1</span>), [<span class="string">&#x27;Not Survived (&#123;0:.2f&#125;%)&#x27;</span>.<span class="built_in">format</span>(not_survived_per), <span class="string">&#x27;Survived (&#123;0:.2f&#125;%)&#x27;</span>.<span class="built_in">format</span>(survived_per)])</span><br><span class="line">plt.tick_params(axis=<span class="string">&#x27;x&#x27;</span>, labelsize=<span class="number">13</span>)</span><br><span class="line">plt.tick_params(axis=<span class="string">&#x27;y&#x27;</span>, labelsize=<span class="number">13</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLdjPJ.png" alt="热力图"></p>
+<h3 id="因变量"><a href="#因变量" class="headerlink" title="因变量"></a>因变量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">survived = df_train[<span class="string">&#x27;Survived&#x27;</span>].value_counts()[<span class="number">1</span>]</span><br><span class="line">not_survived = df_train[<span class="string">&#x27;Survived&#x27;</span>].value_counts()[<span class="number">0</span>]</span><br><span class="line">survived_per = survived / df_train.shape[<span class="number">0</span>] * <span class="number">100</span></span><br><span class="line">not_survived_per = not_survived / df_train.shape[<span class="number">0</span>] * <span class="number">100</span></span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">8</span>))</span><br><span class="line">sns.countplot(df_train[<span class="string">&#x27;Survived&#x27;</span>])</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&#x27;Survival&#x27;</span>, size=<span class="number">15</span>, labelpad=<span class="number">15</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Passenger Count&#x27;</span>, size=<span class="number">15</span>, labelpad=<span class="number">15</span>)</span><br><span class="line">plt.xticks((<span class="number">0</span>, <span class="number">1</span>), [<span class="string">&#x27;Not Survived (&#123;0:.2f&#125;%)&#x27;</span>.<span class="built_in">format</span>(not_survived_per), <span class="string">&#x27;Survived (&#123;0:.2f&#125;%)&#x27;</span>.<span class="built_in">format</span>(survived_per)])</span><br><span class="line">plt.tick_params(axis=<span class="string">&#x27;x&#x27;</span>, labelsize=<span class="number">13</span>)</span><br><span class="line">plt.tick_params(axis=<span class="string">&#x27;y&#x27;</span>, labelsize=<span class="number">13</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="https://s1.ax1x.com/2020/11/10/BLdqVU.png" alt="png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLdqVU.png"></p>
 <p>训练集中幸存者占38.38%</p>
-<h4 id="分类型变量"><a href="#分类型变量" class="headerlink" title="分类型变量"></a>分类型变量</h4><p>下图的橙色代表的是幸存者，这个图就像excel的分类汇总一样，一般用于分类变量，可以了解数据。</p>
+<h3 id="分类型变量"><a href="#分类型变量" class="headerlink" title="分类型变量"></a>分类型变量</h3><p>下图的橙色代表的是幸存者，这个图就像excel的分类汇总一样，一般用于分类变量，可以了解数据。</p>
 <p>得到的结论就比如：男士多在灾难中逝世，女士多存活下来了，所以之前说的救生船优先给女士和小孩是没错的。</p>
 <p>而且看第三个图，M多逝世者，其他舱多存活者。</p>
-<p><img src="https://s1.ax1x.com/2020/11/10/BLdHbT.png" alt="png"></p>
-<h4 id="连续型变量"><a href="#连续型变量" class="headerlink" title="连续型变量"></a>连续型变量</h4><p>age和fare，即年龄和票价都有明显的的分割点和尖峰，决策树非常喜欢。</p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLdHbT.png" alt="分类型变量"></p>
+<h3 id="连续型变量"><a href="#连续型变量" class="headerlink" title="连续型变量"></a>连续型变量</h3><p>age和fare，即年龄和票价都有明显的的分割点和尖峰，决策树非常喜欢。</p>
 <p>这两个特征都存在一个潜在的问题，即分布在训练集中有更多的峰值和颠簸，而在测试集中更平滑。因此，模型可能无法推广到测试集中。</p>
 <p>age的分布清楚地表明，15岁以下儿童的生存率高于其他任何年龄组</p>
 <p>在fare分布中，分布尾部的存活率较高。由于异常值非常大，该分布还具有正偏态(右偏)</p>
-<p><img src="https://s1.ax1x.com/2020/11/10/BLwpKx.png" alt="png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLwpKx.png" alt="连续型变量"></p>
+<p>不知道下面这种图确切的术语叫啥，分组绘图，还是分箱？</p>
+<h4 id="Fare"><a href="#Fare" class="headerlink" title="Fare"></a>Fare</h4><p>fare采用13分位数的箱</p>
+<p>图左侧各组生存率最低，图右侧各组生存率最高。这种高存活率在分布图中不可见。</p>
+<p>在这一过程中还捕获了一个异常的群体(15.742,26.55)，其生存率较高。</p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLdvG9.png"></p>
+<h4 id="Age-1"><a href="#Age-1" class="headerlink" title="Age"></a>Age</h4><p>用十分位数划分箱子，第一箱的存活率最高，第四箱的存活率最低。</p>
+<p>这些是分布中最大的峰值。在这一过程中还捕获到一个异常的高存活率群体(34.0,40.0)。</p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLdx2R.png"></p>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>连续特征中可见分割点和峰值。基于树的模型可以很容易地捕捉到它们，但是线性模型可能无法发现它们。</p>
 <p>分类特征有非常不同的分布，不同的存活率。这些特性可以one-hot编码。其中一些特性可能会相互结合，形成新的特性。</p>
 <p>大多数特征是相互关联的。通过特征转换和特征交互，可以使用这种关系创建新的特征。目标编码也可能非常有用，因为它与幸存的特性高度相关。</p>
-<h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><h3 id="连续型变量分组绘图"><a href="#连续型变量分组绘图" class="headerlink" title="连续型变量分组绘图"></a>连续型变量分组绘图</h3><h4 id="Fare"><a href="#Fare" class="headerlink" title="Fare"></a>Fare</h4><p>fare采用13分位数的箱</p>
-<p>图左侧各组生存率最低，图右侧各组生存率最高。这种高存活率在分布图中不可见。</p>
-<p>在这一过程中还捕获了一个异常的群体(15.742,26.55)，其生存率较高。</p>
-<p><img src="https://s1.ax1x.com/2020/11/10/BLdvG9.png" alt="png"></p>
-<h4 id="Age-1"><a href="#Age-1" class="headerlink" title="Age"></a>Age</h4><p>用十分位数划分箱子，第一箱的存活率最高，第四箱的存活率最低。</p>
-<p>这些是分布中最大的峰值。在这一过程中还捕获到一个异常的高存活率群体(34.0,40.0)。</p>
-<p><img src="https://s1.ax1x.com/2020/11/10/BLdx2R.png" alt="png"></p>
-<h3 id="特征重构"><a href="#特征重构" class="headerlink" title="特征重构"></a>特征重构</h3><p>添加创建Family_Size = SibSp + Parch + 1。</p>
+<h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><h3 id="特征重构"><a href="#特征重构" class="headerlink" title="特征重构"></a>特征重构</h3><h4 id="Family-Size"><a href="#Family-Size" class="headerlink" title="Family_Size"></a>Family_Size</h4><p>添加创建Family_Size = SibSp + Parch + 1。</p>
 <p>SibSp是兄弟姐妹和配偶的计数，Parch是父母和孩子的计数。添加这个列是为了找到家族的总规模。最后加1，就是当前乘客。下图清楚地表明，家庭规模是生存的一个预测因素，因为不同的值有不同的生存率。</p>
-<p><img src="https://s1.ax1x.com/2020/11/10/BLw9r6.png" alt="png"></p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLw9r6.png" alt="Family_Size"></p>
 <ul>
 <li><p>1的家庭规模被标记为alone</p>
 </li>
@@ -1004,13 +1005,13 @@ Name: Deck, dtype: int64</code></pre>
 <li><p>7, 8和11的家庭规模被标记为large</p>
 </li>
 </ul>
-<h4 id="Ticket"><a href="#Ticket" class="headerlink" title="Ticket"></a>Ticket</h4><p>有太多独特的ticket的值需要分析，所以按照它们的频率将它们分组会使事情变得更容易。</p>
+<h4 id="Ticket-Frequency"><a href="#Ticket-Frequency" class="headerlink" title="Ticket_Frequency"></a>Ticket_Frequency</h4><p>有太多独特的ticket的值需要分析，所以按照它们的频率将它们分组会使事情变得更容易。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_all[<span class="string">&#x27;Ticket_Frequency&#x27;</span>] = df_all.groupby(<span class="string">&#x27;Ticket&#x27;</span>)[<span class="string">&#x27;Ticket&#x27;</span>].transform(<span class="string">&#x27;count&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>思考这个特性与Family_Size有什么不同?<br>许多乘客是集体旅行的，不光是和三五好友或者家庭外出旅游，那个时代有钱人出行往往会带着家里的保姆、女佣等。他们没有被算作家人，但他们会使用同一张票。</p>
 <p>为什么不把票按前缀分组呢?<br>如果票证特征中的前缀有任何意义，那么它们已经被Pclass或Embarked捕获，因为这可能是唯一可以从票证特征派生出的逻辑信息。</p>
-<p><img src="https://s1.ax1x.com/2020/11/10/BLdzx1.png" alt="png"></p>
-<p>从上图可以看出，2、3、4人组的存活率更高。独自旅行的乘客存活率最低。4组之后的生存率明显下降。这个模式与Family_Size特性非常相似，但是有一些小的区别。Ticket_Frequency值不像Family_Size那样分组，因为这将基本上创建具有完美相关性的相同特性。这种特性不会提供任何额外的信息。</p>
+<p><img src="https://s1.ax1x.com/2020/11/10/BLdzx1.png"></p>
+<p>从上图可以看出，2、3、4人组的存活率更高。独自旅行的乘客存活率最低。4组之后的生存率明显下降。这个模式与Family_Size特性非常相似，但是有一些小的区别。Ticket_Frequency值不像Family_Size那样分组，因为这俩理解起来太像了！这非常有可能创建具有极高相关性的特征。所以即使我们觉得是个办法，但也可能是多余的。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_all.head()</span><br></pre></td></tr></table></figure>
 
 
@@ -1172,16 +1173,17 @@ Name: Deck, dtype: int64</code></pre>
 <pre><code>X_train shape: (891, 24)
 y_train shape: (891,)
 X_test shape: (418, 24)</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seed = <span class="number">2020</span></span><br><span class="line">leaderboard_model = XGBClassifier(learning_rate=<span class="number">0.1</span>,</span><br><span class="line">                        booster=<span class="string">&#x27;gbtree&#x27;</span>,</span><br><span class="line">                         n_estimators=<span class="number">3000</span>,</span><br><span class="line">                         max_depth=<span class="number">3</span>,</span><br><span class="line">                         min_child_weight=<span class="number">1</span>,</span><br><span class="line">                         gamma=<span class="number">0</span>,</span><br><span class="line">                         subsample=<span class="number">0.8</span>,</span><br><span class="line">                         colsample_bytree=<span class="number">0.8</span>,</span><br><span class="line">                         objective=<span class="string">&#x27;binary:logistic&#x27;</span>,</span><br><span class="line">                         nthread=<span class="number">2</span>,</span><br><span class="line">                         scale_pos_weight=<span class="number">1</span>,</span><br><span class="line">                         seed=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seed = <span class="number">1024</span></span><br><span class="line">leaderboard_model = XGBClassifier(learning_rate=<span class="number">0.1</span>,</span><br><span class="line">                        booster=<span class="string">&#x27;gbtree&#x27;</span>,</span><br><span class="line">                         n_estimators=<span class="number">3000</span>,</span><br><span class="line">                         max_depth=<span class="number">3</span>,</span><br><span class="line">                         min_child_weight=<span class="number">1</span>,</span><br><span class="line">                         gamma=<span class="number">0</span>,</span><br><span class="line">                         subsample=<span class="number">0.8</span>,</span><br><span class="line">                         colsample_bytree=<span class="number">0.8</span>,</span><br><span class="line">                         objective=<span class="string">&#x27;binary:logistic&#x27;</span>,</span><br><span class="line">                         nthread=<span class="number">2</span>,</span><br><span class="line">                         scale_pos_weight=<span class="number">1</span>,</span><br><span class="line">                         seed=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N = <span class="number">5</span></span><br><span class="line">probs = pd.DataFrame(np.zeros((<span class="built_in">len</span>(X_test), N * <span class="number">2</span>)), columns=[<span class="string">&#x27;Fold_&#123;&#125;_Prob_&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(i, j) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)])</span><br><span class="line">importances = pd.DataFrame(np.zeros((X_train.shape[<span class="number">1</span>], N)), columns=[<span class="string">&#x27;Fold_&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>)], index=df_all.columns)</span><br><span class="line">fprs, tprs, scores = [], [], []</span><br><span class="line">skf = StratifiedKFold(n_splits=N, random_state=N, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> fold, (trn_idx, val_idx) <span class="keyword">in</span> <span class="built_in">enumerate</span>(skf.split(X_train, y_train), <span class="number">1</span>):</span><br><span class="line">  </span><br><span class="line">    leaderboard_model.fit(X_train[trn_idx], y_train[trn_idx])</span><br><span class="line">    trn_fpr, trn_tpr, trn_thresholds = roc_curve(y_train[trn_idx], leaderboard_model.predict_proba(X_train[trn_idx])[:, <span class="number">1</span>])</span><br><span class="line">    trn_auc_score = auc(trn_fpr, trn_tpr)</span><br><span class="line"></span><br><span class="line">    val_fpr, val_tpr, val_thresholds = roc_curve(y_train[val_idx], leaderboard_model.predict_proba(X_train[val_idx])[:, <span class="number">1</span>])</span><br><span class="line">    val_auc_score = auc(val_fpr, val_tpr)  </span><br><span class="line">    </span><br><span class="line">    scores.append((trn_auc_score, val_auc_score))</span><br><span class="line">    fprs.append(val_fpr)</span><br><span class="line">    tprs.append(val_tpr)</span><br><span class="line">    </span><br><span class="line">    probs.loc[:, <span class="string">&#x27;Fold_&#123;&#125;_Prob_0&#x27;</span>.<span class="built_in">format</span>(fold)] = leaderboard_model.predict_proba(X_test)[:, <span class="number">0</span>]</span><br><span class="line">    probs.loc[:, <span class="string">&#x27;Fold_&#123;&#125;_Prob_1&#x27;</span>.<span class="built_in">format</span>(fold)] = leaderboard_model.predict_proba(X_test)[:, <span class="number">1</span>]</span><br><span class="line">    importances.iloc[:, fold - <span class="number">1</span>] = leaderboard_model.feature_importances_</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://s1.ax1x.com/2020/11/10/BLwiVO.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">class_survived = [col <span class="keyword">for</span> col <span class="keyword">in</span> probs.columns <span class="keyword">if</span> col.endswith(<span class="string">&#x27;Prob_1&#x27;</span>)]</span><br><span class="line">probs[<span class="string">&#x27;1&#x27;</span>] = probs[class_survived].<span class="built_in">sum</span>(axis=<span class="number">1</span>) / N</span><br><span class="line">probs[<span class="string">&#x27;0&#x27;</span>] = probs.drop(columns=class_survived).<span class="built_in">sum</span>(axis=<span class="number">1</span>) / N</span><br><span class="line">probs[<span class="string">&#x27;pred&#x27;</span>] = <span class="number">0</span></span><br><span class="line">pos = probs[probs[<span class="string">&#x27;1&#x27;</span>] &gt;= <span class="number">0.5</span>].index</span><br><span class="line">probs.loc[pos, <span class="string">&#x27;pred&#x27;</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">y_pred = probs[<span class="string">&#x27;pred&#x27;</span>].astype(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line">submission_df = pd.DataFrame(columns=[<span class="string">&#x27;PassengerId&#x27;</span>, <span class="string">&#x27;Survived&#x27;</span>])</span><br><span class="line">submission_df[<span class="string">&#x27;PassengerId&#x27;</span>] = df_test[<span class="string">&#x27;PassengerId&#x27;</span>]</span><br><span class="line">submission_df[<span class="string">&#x27;Survived&#x27;</span>] = y_pred.values</span><br><span class="line">submission_df.to_csv(<span class="string">&#x27;sub1110.csv&#x27;</span>, header=<span class="literal">True</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>本文转载自<a href="https://www.kaggle.com/gunesevitan/titanic-advanced-feature-engineering-tutorial">Gunes Evitan’s notebook</a></strong></p>
-<p>仅供学习交流使用，侵删。</p>
+<p>时间关系，关于模型的部分先写到这</p>
+<p>只是可惜，XGB在本例的效果远不及RF，为了给大家展示Kaggle排行榜对参赛选手的激励，我只好重新提交一份Adaboost的作品，得到如下成绩：</p>
+<p><img src="https://s1.ax1x.com/2020/11/11/BjM7GV.png" alt="submission"></p>
+<p>感兴趣的话大家可以踊跃参与，丰富自己的研究生生活。</p>
+<p><strong>本文大部分的流程来自于大佬Gunes Evitan在kaggle上开源的<a href="https://www.kaggle.com/gunesevitan/titanic-advanced-feature-engineering-tutorial">notebook(0.8372)</a>，这是一位非常优秀的数据科学家，他的作品令我受益匪浅</strong></p>
 ]]></content>
       <categories>
         <category>数据挖掘</category>
@@ -1194,9 +1196,9 @@ X_test shape: (418, 24)</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>初识MySQL---基础篇习题</title>
+    <title>Introduction to MySQL -- basic exercises</title>
     <url>/2020/06/10/%E5%88%9D%E8%AF%86MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%A0%E9%A2%98/</url>
-    <content><![CDATA[<p>本篇是学习MySQL的基础篇习题</p>
+    <content><![CDATA[<p>This is a basic exercise of learning MySQL</p>
 <a id="more"></a>
 
 
@@ -1865,9 +1867,9 @@ END SELECT
       </tags>
   </entry>
   <entry>
-    <title>初识MySQL---基础篇笔记</title>
+    <title>Introduction to MySQL -- basic notes</title>
     <url>/2020/06/08/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>本篇是学习MySQL的基础篇笔记</p>
+    <content><![CDATA[<p>This is a basic note on how to learn MySQL</p>
 <a id="more"></a>
 
 <h1 id="初识数据库"><a href="#初识数据库" class="headerlink" title="初识数据库"></a>初识数据库</h1><h2 id="DBMS—数据库管理系统"><a href="#DBMS—数据库管理系统" class="headerlink" title="DBMS—数据库管理系统"></a>DBMS—数据库管理系统</h2><h3 id="RDBMS—关系型数据库"><a href="#RDBMS—关系型数据库" class="headerlink" title="RDBMS—关系型数据库"></a>RDBMS—关系型数据库</h3><ul>

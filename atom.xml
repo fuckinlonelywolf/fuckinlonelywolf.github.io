@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-11-10T15:58:33.461Z</updated>
+  <updated>2020-11-11T07:48:46.774Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="http://example.com/2020/11/03/titanic%E7%94%9F%E5%AD%98%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90/"/>
     <id>http://example.com/2020/11/03/titanic%E7%94%9F%E5%AD%98%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90/</id>
     <published>2020-11-03T07:51:38.000Z</published>
-    <updated>2020-11-10T15:58:33.461Z</updated>
+    <updated>2020-11-11T07:48:46.774Z</updated>
     
     
-    <summary type="html">&lt;p&gt;入门–经典案例的学习(非原创)&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;Getting Started - Learning &lt;a href=&quot;https://www.kaggle.com/c/titanic&quot;&gt;classic Cases&lt;/a&gt; (not by myself)&lt;/p&gt;</summary>
     
     
     
@@ -42,14 +42,14 @@
   </entry>
   
   <entry>
-    <title>谈谈博客开通过程遇到的问题</title>
+    <title>Talk about the difficulties while creating my blog</title>
     <link href="http://example.com/2020/10/30/%E8%B0%88%E8%B0%88%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://example.com/2020/10/30/%E8%B0%88%E8%B0%88%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</id>
     <published>2020-10-30T08:40:12.000Z</published>
-    <updated>2020-11-01T13:21:11.497Z</updated>
+    <updated>2020-11-11T07:46:47.471Z</updated>
     
     
-    <summary type="html">&lt;p&gt;过去和现在：本篇是搭建博客时踩过的坑&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;Past and Present: Here’s a look at the pitfalls of blogging&lt;/p&gt;</summary>
     
     
     
@@ -66,26 +66,30 @@
     <title>Hello World</title>
     <link href="http://example.com/2020/10/29/hello-world/"/>
     <id>http://example.com/2020/10/29/hello-world/</id>
-    <published>2020-10-29T11:21:31.043Z</published>
-    <updated>2020-10-29T15:43:36.133Z</updated>
+    <published>2020-10-29T11:21:31.000Z</published>
+    <updated>2020-11-11T07:47:35.975Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇是初始化内容&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;This article is the initialization content&lt;/p&gt;</summary>
     
     
     
+    <category term="默认分类" scheme="http://example.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="initial" scheme="http://example.com/tags/initial/"/>
     
   </entry>
   
   <entry>
-    <title>波士顿房价的可视化分析</title>
+    <title>A visual analysis of Housing prices in Boston</title>
     <link href="http://example.com/2020/10/26/%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%88%BF%E4%BB%B7%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/"/>
     <id>http://example.com/2020/10/26/%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%88%BF%E4%BB%B7%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/</id>
     <published>2020-10-26T12:19:12.000Z</published>
-    <updated>2020-11-10T10:23:08.407Z</updated>
+    <updated>2020-11-11T07:48:46.773Z</updated>
     
     
-    <summary type="html">&lt;p&gt;入门–经典案例的学习&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;Getting Started - Learning classic Cases&lt;/p&gt;</summary>
     
     
     
@@ -99,14 +103,14 @@
   </entry>
   
   <entry>
-    <title>初识MySQL---基础篇习题</title>
+    <title>Introduction to MySQL -- basic exercises</title>
     <link href="http://example.com/2020/06/10/%E5%88%9D%E8%AF%86MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%A0%E9%A2%98/"/>
     <id>http://example.com/2020/06/10/%E5%88%9D%E8%AF%86MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87%E4%B9%A0%E9%A2%98/</id>
     <published>2020-06-10T09:17:51.000Z</published>
-    <updated>2020-11-01T13:37:07.876Z</updated>
+    <updated>2020-11-11T07:48:46.775Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇是学习MySQL的基础篇习题&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;This is a basic exercise of learning MySQL&lt;/p&gt;</summary>
     
     
     
@@ -120,14 +124,14 @@
   </entry>
   
   <entry>
-    <title>初识MySQL---基础篇笔记</title>
+    <title>Introduction to MySQL -- basic notes</title>
     <link href="http://example.com/2020/06/08/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2020/06/08/%E5%88%9D%E8%AF%86mysql-%E5%9F%BA%E7%A1%80%E7%AF%87%E7%AC%94%E8%AE%B0/</id>
     <published>2020-06-08T14:30:27.000Z</published>
     <updated>2020-06-18T15:24:56.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇是学习MySQL的基础篇笔记&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;This is a basic note on how to learn MySQL&lt;/p&gt;</summary>
     
     
     
