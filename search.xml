@@ -1,6 +1,448 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Solutions from 2020 Data Analysis Professional Skills Competition(Teddy Cup)</title>
+    <url>/2020/11/15/2020%E6%B3%B0%E8%BF%AA%E6%9D%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90B%E9%A2%98%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p>This article is about</p>
+<a id="more"></a>
+
+
+<h1 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h1><p>大赛<a href="http://www.tipdm.org/bdrace/jljingsai/">官网</a></p>
+<p>截取以下题目，数据分析还蛮有趣的 ^0^</p>
+<p><strong>第一题</strong>根据附件1“城市疫情”中的数据统计各城市自首次通报确诊病例后至6月30日的每日累计确诊人数、累计治愈人数和累计死亡人数，将结果保存为“task1_1.csv”，第一行为字段名，按城市、日期、累计确诊人数、累计治愈人数、累计死亡人数的次序分别放在A列–E列。<br><strong>第二题</strong>列表给出武汉、深圳、保定每月10、25日的统计结果，并将其保存为“task1_2.csv”。</p>
+<p><strong>第三题</strong>根据1的结果，并结合附件1“城市省份对照表”统计各省级行政单位按日新增和累计数据，将结果保存为“task2_1.csv”，第一行为字段名，按省份、日期、新增确诊人数、新增治愈人数、新增死亡人数、累计确诊人数、累计治愈人数、累计死亡人数的次序分别放在A列–H列。<br><strong>第四题</strong>列表给出湖北、广东、河北每月15日的统计结果，将其保存为“task2_2.csv”。</p>
+<h1 id="赛题解答"><a href="#赛题解答" class="headerlink" title="赛题解答"></a>赛题解答</h1><p>想不到现在公众号现在都在推送python办公自动化，有这么火热吗..本来以为这个题是需要用到openpyxl等包的，可是做着做着就做完了，也不怎么复杂，还是正常的流程做的，肯定不是最优的解答，但应该没啥大问题，有问题电邮我！</p>
+<h2 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h2><p>把城市疫情的表单独摘出来命名为book1.csv</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.read_csv(<span class="string">&quot;book1.csv&quot;</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>城市</th>
+      <th>日期</th>
+      <th>新增确诊</th>
+      <th>新增治愈</th>
+      <th>新增死亡</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>遵义</td>
+      <td>2020/1/29</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>遵义</td>
+      <td>2020/1/31</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>遵义</td>
+      <td>2020/2/1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>遵义</td>
+      <td>2020/2/2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>遵义</td>
+      <td>2020/2/3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>导入数据为df后，先按照城市分组，然后新建三个变量，分别计算分组后的和，cumsum真是厉害，省的自定义函数了。</p>
+<p>所以数据分析真是个经验活，这函数能省多些事啊。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grouped = df.groupby([<span class="string">&#x27;城市&#x27;</span>])</span><br><span class="line">df[<span class="string">&quot;累计确诊人数&quot;</span>] = grouped[<span class="string">&quot;新增确诊&quot;</span>].cumsum()</span><br><span class="line">df[<span class="string">&quot;累计治愈人数&quot;</span>] = grouped[<span class="string">&quot;新增治愈&quot;</span>].cumsum()</span><br><span class="line">df[<span class="string">&quot;累计死亡人数&quot;</span>] = grouped[<span class="string">&quot;新增死亡&quot;</span>].cumsum()</span><br></pre></td></tr></table></figure>
+
+<p>按要求保留列</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = df.drop(columns = [<span class="string">&#x27;新增确诊&#x27;</span>,<span class="string">&#x27;新增治愈&#x27;</span>,<span class="string">&#x27;新增死亡&#x27;</span>])</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>城市</th>
+      <th>日期</th>
+      <th>累计确诊人数</th>
+      <th>累计治愈人数</th>
+      <th>累计死亡人数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>遵义</td>
+      <td>2020/1/29</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>遵义</td>
+      <td>2020/1/31</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>遵义</td>
+      <td>2020/2/1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>遵义</td>
+      <td>2020/2/2</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>遵义</td>
+      <td>2020/2/3</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+<p>保存数据，不要索引，要表头。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.to_csv(<span class="string">&#x27;task1_1.csv&#x27;</span>,header = <span class="number">1</span>, index = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df1 = pd.read_csv(<span class="string">&quot;task1_1.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>读取数据为df1，在df1的城市里寻找是武汉、深圳、保定的，返回dataframe</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df2 = df1[df1[<span class="string">&#x27;城市&#x27;</span>].isin([<span class="string">&#x27;武汉&#x27;</span>,<span class="string">&#x27;深圳&#x27;</span>,<span class="string">&#x27;保定&#x27;</span>])]</span><br><span class="line">df2.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>城市</th>
+      <th>日期</th>
+      <th>新增确诊</th>
+      <th>新增治愈</th>
+      <th>新增死亡</th>
+      <th>累计新增确诊</th>
+      <th>累计新增死亡</th>
+      <th>累计新增治愈</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2200</th>
+      <td>武汉</td>
+      <td>2020/1/10</td>
+      <td>41</td>
+      <td>2</td>
+      <td>1</td>
+      <td>41</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2201</th>
+      <td>武汉</td>
+      <td>2020/1/11</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>41</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2202</th>
+      <td>武汉</td>
+      <td>2020/1/12</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>41</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2203</th>
+      <td>武汉</td>
+      <td>2020/1/15</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1</td>
+      <td>41</td>
+      <td>2</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>2204</th>
+      <td>武汉</td>
+      <td>2020/1/16</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>45</td>
+      <td>2</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>下面是碰巧了没有十月的，用contains可能不是一个好办法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df3 = df2[df2[<span class="string">&#x27;日期&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;/10&#x27;</span>)]</span><br><span class="line">df3 = df3.append(df2[df2[<span class="string">&#x27;日期&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;/15&#x27;</span>)])</span><br><span class="line">df3 = df3.sort_values(by = [<span class="string">&#x27;城市&#x27;</span>,<span class="string">&#x27;日期&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df3.to_csv(<span class="string">&#x27;task1_2.csv&#x27;</span>,header = <span class="number">1</span>, index = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h2><p>看起来很简单的事情，总是让我想到sql的key键，用python应该怎么做呢..怎么连接两个表呢..</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df4 = pd.read_csv(<span class="string">&quot;book2.csv&quot;</span>)</span><br><span class="line">df4.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>城市</th>
+      <th>省份</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>阿坝州</td>
+      <td>四川</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>阿克苏</td>
+      <td>新疆</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>安徽-境外输入</td>
+      <td>安徽</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>安康</td>
+      <td>陕西</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>安庆</td>
+      <td>安徽</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>城市</th>
+      <th>日期</th>
+      <th>累计确诊人数</th>
+      <th>累计治愈人数</th>
+      <th>累计死亡人数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>遵义</td>
+      <td>2020/1/29</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>遵义</td>
+      <td>2020/1/31</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>遵义</td>
+      <td>2020/2/1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>遵义</td>
+      <td>2020/2/2</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>遵义</td>
+      <td>2020/2/3</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+<p>遇事不决用循环..虽然笨了点但是肯定能解决问题0.0</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> df.index:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> df4.index:</span><br><span class="line">        <span class="keyword">if</span> df[<span class="string">&#x27;城市&#x27;</span>][i] == df4[<span class="string">&#x27;城市&#x27;</span>][j]:</span><br><span class="line">            df[<span class="string">&#x27;省份&#x27;</span>][i] = df4[<span class="string">&#x27;省份&#x27;</span>][j]</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = df.drop(columns = <span class="string">&#x27;城市&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>按要求计算</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grouped = df.groupby([<span class="string">&#x27;省份&#x27;</span>])</span><br><span class="line">df[<span class="string">&quot;累计确诊人数&quot;</span>] = grouped[<span class="string">&quot;新增确诊&quot;</span>].cumsum()</span><br><span class="line">df[<span class="string">&quot;累计治愈人数&quot;</span>] = grouped[<span class="string">&quot;新增治愈&quot;</span>].cumsum()</span><br><span class="line">df[<span class="string">&quot;累计死亡人数&quot;</span>] = grouped[<span class="string">&quot;新增死亡&quot;</span>].cumsum()</span><br></pre></td></tr></table></figure>
+<p>按要求的保存列</p>
+<p><strong>注：没用pop然后插入那种方式移动列‘省份’</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = df.rename(columns = &#123;<span class="string">&#x27;新增确诊&#x27;</span>:<span class="string">&#x27;新增确诊人数&#x27;</span>,<span class="string">&#x27;新增治愈&#x27;</span>:<span class="string">&#x27;新增治愈人数&#x27;</span>,<span class="string">&#x27;新增死亡&#x27;</span>:<span class="string">&#x27;新增死亡人数&#x27;</span>&#125;)</span><br><span class="line">order = [<span class="string">&#x27;省份&#x27;</span>, <span class="string">&#x27;日期&#x27;</span>, <span class="string">&#x27;新增确诊人数&#x27;</span>, <span class="string">&#x27;新增治愈人数&#x27;</span>, <span class="string">&#x27;新增死亡人数&#x27;</span>, <span class="string">&#x27;累计确诊人数&#x27;</span>, <span class="string">&#x27;累计治愈人数&#x27;</span>, <span class="string">&#x27;累计死亡人数&#x27;</span>]</span><br><span class="line">df = df[order]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.to_csv(<span class="string">&#x27;task2_1.csv&#x27;</span>,header = <span class="number">1</span>, index = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h2><p>换汤不换药</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df5 = pd.read_csv(<span class="string">&quot;task2_1.csv&quot;</span>)</span><br><span class="line">df5 = df5[df5[<span class="string">&#x27;日期&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;/15&#x27;</span>)]</span><br><span class="line">df5 = df5[df5[<span class="string">&#x27;省份&#x27;</span>].isin([<span class="string">&#x27;湖北&#x27;</span>,<span class="string">&#x27;广东&#x27;</span>,<span class="string">&#x27;河北&#x27;</span>])]</span><br><span class="line">df5 = df5.sort_values(by = [<span class="string">&#x27;省份&#x27;</span>,<span class="string">&#x27;日期&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df5.to_csv(<span class="string">&#x27;task2_2.csv&#x27;</span>,header = <span class="number">1</span>, index = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>methods</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/10/29/hello-world/</url>
     <content><![CDATA[<p>This article is the initialization content</p>
@@ -482,8 +924,8 @@ Kurtosis：1.495</code></pre>
         <category>数据分析</category>
       </categories>
       <tags>
-        <tag>visualization</tag>
         <tag>python</tag>
+        <tag>visualization</tag>
       </tags>
   </entry>
   <entry>
@@ -549,6 +991,7 @@ Kurtosis：1.495</code></pre>
 <p>我想知道下面这个<code>theme</code>的配置里，第三个为啥是false，</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
 
+<p>emm并不是这样的，后面经常改完了出现这个，最后发现实际上是网络状况不好..</p>
 <h1 id="如何正确测试"><a href="#如何正确测试" class="headerlink" title="如何正确测试"></a>如何正确测试</h1><p>在<code>git bash</code>上输入：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s -p 1024</span><br></pre></td></tr></table></figure>
 
@@ -556,6 +999,9 @@ Kurtosis：1.495</code></pre>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:1024</span><br></pre></td></tr></table></figure>
 
 <p><em>注：数字是我随便输的</em></p>
+<p>测试没问题了再三连</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>learning notes</category>
@@ -1189,8 +1635,8 @@ X_test shape: (418, 24)</code></pre>
         <category>数据挖掘</category>
       </categories>
       <tags>
-        <tag>visualization</tag>
         <tag>python</tag>
+        <tag>visualization</tag>
         <tag>competition</tag>
         <tag>xgboost</tag>
       </tags>
