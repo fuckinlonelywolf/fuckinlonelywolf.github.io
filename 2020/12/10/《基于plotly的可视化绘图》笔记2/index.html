@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"8.0.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false}};
+  </script>
+
+  <meta name="description" content="《python数据分析 基于plotly的动态可视化绘图》, 孙洋洋 王硕 邢梦来 袁泉 吴娜著, 电子工业出版社. 看看第一篇就够了，主要是在说基本的画图函数和多子图。到这里就像是强迫症不写完难受了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《基于plotly的可视化绘图》笔记2">
+<meta property="og:url" content="http://example.com/2020/12/10/%E3%80%8A%E5%9F%BA%E4%BA%8Eplotly%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%98%E5%9B%BE%E3%80%8B%E7%AC%94%E8%AE%B02/index.html">
+<meta property="og:site_name" content="martini&#39;s blog">
+<meta property="og:description" content="《python数据分析 基于plotly的动态可视化绘图》, 孙洋洋 王硕 邢梦来 袁泉 吴娜著, 电子工业出版社. 看看第一篇就够了，主要是在说基本的画图函数和多子图。到这里就像是强迫症不写完难受了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVYAXD.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVYk6O.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVYip6.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVYF1K.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVYCfx.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVY9t1.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVJx0J.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVJz79.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVJLlT.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVJO6U.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVYY7j.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVJXXF.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/12/rVYpkR.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/14/rnSOdH.png">
+<meta property="article:published_time" content="2020-12-10T14:01:14.000Z">
+<meta property="article:modified_time" content="2020-12-14T03:47:03.162Z">
+<meta property="article:author" content="martini">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="notes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.ax1x.com/2020/12/12/rVYAXD.png">
+
+
+<link rel="canonical" href="http://example.com/2020/12/10/%E3%80%8A%E5%9F%BA%E4%BA%8Eplotly%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%98%E5%9B%BE%E3%80%8B%E7%AC%94%E8%AE%B02/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>《基于plotly的可视化绘图》笔记2 | martini's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="martini's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">martini's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">wings</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">12</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#plotly%E4%B8%8Epandas"><span class="nav-number">1.</span> <span class="nav-text">plotly与pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">简单案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E5%BD%A2%E5%9B%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text">线形图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="nav-number">1.1.2.</span> <span class="nav-text">散点图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="nav-number">1.1.3.</span> <span class="nav-text">柱状图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8cufflinks%E7%BB%98%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">使用cufflinks绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5cufflinks"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">导入cufflinks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEpandas%E7%9A%84%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">设置pandas的输入模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">绘制图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%A5%E9%94%99"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">报错</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.2.</span> <span class="nav-text">快速获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%98%E5%9B%BE"><span class="nav-number">1.2.3.</span> <span class="nav-text">自定义绘图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6"><span class="nav-number">1.2.4.</span> <span class="nav-text">基本图形绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%B1%E7%8A%B6%E5%9B%BE-1"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">柱状图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E5%8F%A0%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">层叠柱状图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE-1"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">散点图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%B7%E5%B7%AE%E5%9B%BE"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">价差图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.2.4.5.</span> <span class="nav-text">直方图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E5%AD%90%E5%9B%BE"><span class="nav-number">1.2.4.6.</span> <span class="nav-text">时序子图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3D%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="nav-number">1.2.4.7.</span> <span class="nav-text">3D散点图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyecharts%E7%BB%98%E5%9B%BE%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">pyecharts绘图示例</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="martini"
+      src="/images/head3.jpg">
+  <p class="site-author-name" itemprop="name">martini</p>
+  <div class="site-description" itemprop="description">长安一片月</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:yueze98@qq.com" title="E-Mail → mailto:yueze98@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://klausvon.cn/" title="http:&#x2F;&#x2F;klausvon.cn" rel="noopener" target="_blank">klausvon</a>
+        </li>
+    </ul>
+  </div>
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/fuckinlonelywolf" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/10/%E3%80%8A%E5%9F%BA%E4%BA%8Eplotly%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%98%E5%9B%BE%E3%80%8B%E7%AC%94%E8%AE%B02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head3.jpg">
+      <meta itemprop="name" content="martini">
+      <meta itemprop="description" content="长安一片月">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="martini's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《基于plotly的可视化绘图》笔记2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-10 22:01:14" itemprop="dateCreated datePublished" datetime="2020-12-10T22:01:14+08:00">2020-12-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-14 11:47:03" itemprop="dateModified" datetime="2020-12-14T11:47:03+08:00">2020-12-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>《python数据分析 基于plotly的动态可视化绘图》, 孙洋洋 王硕 邢梦来 袁泉 吴娜著, 电子工业出版社.</p>
+<p>看看第一篇就够了，主要是在说基本的画图函数和多子图。<br>到这里就像是强迫症不写完难受了。</p>
+<a id="more"></a>
+
+<p>有些章节目前对我来说还是有些遥远，所以我只写<code>23496</code>章和<code>visdom</code>，av8d噶油.</p>
+<h1 id="plotly与pandas"><a href="#plotly与pandas" class="headerlink" title="plotly与pandas"></a>plotly与pandas</h1><p>可以直接识别<code>pandas</code>的<code>dataframe</code>或者<code>series</code>，</p>
+<h2 id="简单案例"><a href="#简单案例" class="headerlink" title="简单案例"></a>简单案例</h2><p>线形图、散点图、柱状图</p>
+<h3 id="线形图"><a href="#线形图" class="headerlink" title="线形图"></a>线形图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYAXD.png" alt="线形图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py </span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">N = <span class="number">500</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.head()</span><br><span class="line"></span><br><span class="line">data = [</span><br><span class="line">    go.Scatter(</span><br><span class="line">        x=df[<span class="string">&#x27;x&#x27;</span>], </span><br><span class="line">        y=df[<span class="string">&#x27;y&#x27;</span>]</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">url = pyplt(data)</span><br></pre></td></tr></table></figure>
+<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYk6O.png" alt="散点图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">df_50 = pd.read_csv(<span class="string">&#x27;../Chapter04/dat/000016.csv&#x27;</span>, index_col=[<span class="string">&#x27;date&#x27;</span>]) </span><br><span class="line">df_50.sort_index(inplace=<span class="literal">True</span>) <span class="comment"># 排序</span></span><br><span class="line">df_50 = df_50.loc[<span class="string">&#x27;2017-01-03&#x27;</span>:,:]</span><br><span class="line">df_300 = pd.read_csv(<span class="string">&#x27;../Chapter04/dat/000300.csv&#x27;</span>, index_col=[<span class="string">&#x27;date&#x27;</span>])</span><br><span class="line">df_300.sort_index(inplace=<span class="literal">True</span>) </span><br><span class="line">df_300 = df_300.loc[<span class="string">&#x27;2017-01-01&#x27;</span>:]</span><br><span class="line"></span><br><span class="line">fig = &#123;</span><br><span class="line">    <span class="string">&#x27;data&#x27;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;x&#x27;</span>: df_50.index,</span><br><span class="line">            <span class="string">&#x27;y&#x27;</span>: df_50.volume,</span><br><span class="line">            <span class="string">&#x27;mode&#x27;</span>: <span class="string">&#x27;markers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;上证50&#x27;</span>&#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;x&#x27;</span>: df_300.index,</span><br><span class="line">            <span class="string">&#x27;y&#x27;</span>: df_300.volume,</span><br><span class="line">            <span class="string">&#x27;mode&#x27;</span>: <span class="string">&#x27;markers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;沪深300&#x27;</span>&#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;layout&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;xaxis&#x27;</span>: &#123;<span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;时间&#x27;</span>,</span><br><span class="line">                  <span class="comment"># &#x27;type&#x27;: &#x27;log&#x27;,</span></span><br><span class="line">                  &#125;,</span><br><span class="line">        <span class="string">&#x27;yaxis&#x27;</span>: &#123;<span class="string">&#x27;title&#x27;</span>: <span class="string">&quot;成交量&quot;</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url = pyplt(fig)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYip6.png" alt="柱状图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py  </span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">N = <span class="number">40</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.head()</span><br><span class="line"></span><br><span class="line">data = [</span><br><span class="line">    go.Bar(</span><br><span class="line">        x=df[<span class="string">&#x27;x&#x27;</span>], </span><br><span class="line">        y=df[<span class="string">&#x27;y&#x27;</span>]</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">url = pyplt(data)</span><br></pre></td></tr></table></figure>
+<h2 id="使用cufflinks绘图"><a href="#使用cufflinks绘图" class="headerlink" title="使用cufflinks绘图"></a>使用cufflinks绘图</h2><p><code>cufflinks</code>的作用是改变<code>pandas</code>默认的呈现模式<code>matplotlib</code>为<code>plotly</code><br>安装<code>cufflinks</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install cufflinks -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+<p>然后运行代码。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">N = <span class="number">500</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.set_index(<span class="string">&#x27;x&#x27;</span>,inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/12/12/rVYF1K.png" alt="cufflinks"></p>
+<h4 id="导入cufflinks"><a href="#导入cufflinks" class="headerlink" title="导入cufflinks"></a>导入cufflinks</h4><pre><code>import cufflinks as cf</code></pre>
+<h4 id="设置pandas的输入模式"><a href="#设置pandas的输入模式" class="headerlink" title="设置pandas的输入模式"></a>设置pandas的输入模式</h4><pre><code>cf.set_config_file(offline=True, theme=&#39;ggplot&#39;)</code></pre>
+<p>用<code>cf.getThemes()</code>可以获取当前版本所有可支持的主题。<br>并且<code>cf.set_config_file</code>只需要在<code>jupyter</code>里出现一次，这是个全局变量函数。</p>
+<h4 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h4><pre><code>df.iplot(kind=&#39;scatter&#39;)</code></pre>
+<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The plotly.plotly module is deprecated,</span><br><span class="line">please install the chart-studio package and use the</span><br><span class="line">chart_studio.plotly module instead. </span><br></pre></td></tr></table></figure>
+<p>直接在<code>jupyter</code>里输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install chart-studio -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+<p>后面都需要用<code>import chart_studio.plotly as py</code>替换<code>import plotly.plotly as py</code></p>
+<h3 id="快速获取数据"><a href="#快速获取数据" class="headerlink" title="快速获取数据"></a>快速获取数据</h3><p>可以用<code>datagen</code>来获取<code>bar、pie、scatter、ohlc</code>等图的数据。等多查询<code>dir(cf.datagen)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, theme=<span class="string">&#x27;polar&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df = cf.datagen.scatter() <span class="comment"># 生成散点图数据</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>, mode=<span class="string">&#x27;markers&#x27;</span>, x=<span class="string">&#x27;x&#x27;</span>, y=<span class="string">&#x27;y&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/12/12/rVYCfx.png" alt="datagen"></p>
+<h3 id="自定义绘图"><a href="#自定义绘图" class="headerlink" title="自定义绘图"></a>自定义绘图</h3><p>完成一些常见设置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = cf.datagen.lines(n_traces=<span class="number">3</span>,columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]) <span class="comment"># 生成一个3列的DataFrame（默认5列）。</span></span><br><span class="line"></span><br><span class="line">colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;black&#x27;</span>] <span class="comment"># 自定义每条线的颜色</span></span><br><span class="line">dashes = [<span class="string">&#x27;solid&#x27;</span>, <span class="string">&#x27;dash&#x27;</span>, <span class="string">&#x27;dashdot&#x27;</span>] <span class="comment"># 自定义每条线的Style</span></span><br><span class="line">widths = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>] <span class="comment"># 自定义每条线的宽度</span></span><br><span class="line"></span><br><span class="line">plot_url = df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>, mode=<span class="string">&#x27;lines&#x27;</span>, colors=colors, dash=dashes,width=widths,xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;数量&#x27;</span>,title=<span class="string">&#x27;自定义绘图&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/12/12/rVY9t1.png" alt="自定义绘图"></p>
+<h3 id="基本图形绘制"><a href="#基本图形绘制" class="headerlink" title="基本图形绘制"></a>基本图形绘制</h3><p>可以输入<code>df.iplot?</code>进行学习。<br>下面的案例真是又简单又好看，惊了。</p>
+<h4 id="柱状图-1"><a href="#柱状图-1" class="headerlink" title="柱状图"></a>柱状图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJx0J.png" alt="柱状图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line">df = cf.datagen.bars()</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;bar&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="层叠柱状图"><a href="#层叠柱状图" class="headerlink" title="层叠柱状图"></a>层叠柱状图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJz79.png" alt="层叠柱状图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line">df = cf.datagen.bars(n_categories=<span class="number">4</span>,columns=[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>])</span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;bar&#x27;</span>, barmode=<span class="string">&#x27;stack&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="散点图-1"><a href="#散点图-1" class="headerlink" title="散点图"></a>散点图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJLlT.png" alt="散点图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line">df = cf.datagen.lines(<span class="number">2</span>, columns=[<span class="string">&#x27;中信证券&#x27;</span>,<span class="string">&#x27;招商证券&#x27;</span>])</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>,mode=<span class="string">&#x27;markers&#x27;</span>,size=<span class="number">10</span>,symbol=<span class="string">&#x27;x&#x27;</span>,colorscale=<span class="string">&#x27;paired&#x27;</span>,</span><br><span class="line">                          xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;每股盈利增长率&#x27;</span>,title=<span class="string">&#x27;散点图&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="价差图"><a href="#价差图" class="headerlink" title="价差图"></a>价差图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJO6U.png" alt="价差图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line">df= cf.datagen.lines(<span class="number">2</span>,columns=[<span class="string">&#x27;万科A&#x27;</span>,<span class="string">&#x27;中粮地产&#x27;</span>])</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;spread&#x27;</span>,xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;收益率&#x27;</span>,title=<span class="string">&#x27;价差图&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVYY7j.png" alt="直方图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df= cf.datagen.histogram(<span class="number">2</span>)</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;histogram&#x27;</span>,opacity=<span class="number">.75</span>,title=<span class="string">&#x27;直方图&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="时序子图"><a href="#时序子图" class="headerlink" title="时序子图"></a>时序子图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJXXF.png" alt="时序子图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;pearl&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df=cf.datagen.lines(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">df.iplot(subplots=<span class="literal">True</span>, shape=(<span class="number">4</span>,<span class="number">1</span>), shared_xaxes=<span class="literal">True</span>, fill=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="3D散点图"><a href="#3D散点图" class="headerlink" title="3D散点图"></a>3D散点图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVYpkR.png" alt="3D散点图"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df = cf.datagen.scatter3d(<span class="number">2</span>,<span class="number">150</span>)</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter3d&#x27;</span>,x=<span class="string">&#x27;x&#x27;</span>,y=<span class="string">&#x27;y&#x27;</span>,z=<span class="string">&#x27;z&#x27;</span>,size=<span class="number">15</span>,categories=<span class="string">&#x27;categories&#x27;</span>,text=<span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">                             title=<span class="string">&#x27;3D散点图&#x27;</span>,colors=[<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>],width=<span class="number">0.5</span>,margin=(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>),</span><br><span class="line">                             opacity=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>艾西，<code>pandas</code>这章跟我想的还是不太一样，有点失望。<br>看来具体理解还得自己去尝试，感觉没有学到预期的东西，<code>cufflinks</code>非常方便，但可能也只是限于理解绘图函数吧。</p>
+<h1 id="pyecharts绘图示例"><a href="#pyecharts绘图示例" class="headerlink" title="pyecharts绘图示例"></a>pyecharts绘图示例</h1><p>而且<code>pyecharts</code>的效果也是很好的，还可以画动态图，下面举个例子.</p>
+<p><img src="https://s3.ax1x.com/2020/12/14/rnSOdH.png" alt="line"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> Line, Bar</span><br><span class="line"><span class="comment"># 折线图， 日均积数</span></span><br><span class="line"></span><br><span class="line">line = Line(<span class="string">&#x27;积数按季度变化图&#x27;</span>) <span class="comment"># 图的名字</span></span><br><span class="line">xii = [<span class="string">&#x27;20160930&#x27;</span>, <span class="string">&#x27;20161231&#x27;</span>, <span class="string">&#x27;20170331&#x27;</span>, <span class="string">&#x27;20170630&#x27;</span>, <span class="string">&#x27;20170930&#x27;</span>, <span class="string">&#x27;20171231&#x27;</span>, <span class="string">&#x27;20180331&#x27;</span>, <span class="string">&#x27;20180630&#x27;</span>, <span class="string">&#x27;20180819&#x27;</span>]</span><br><span class="line">yii = [<span class="string">&#x27;13156337.93&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;39318037.75&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;59714025.06&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;63307896.71&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;120550973.1&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;130784306.8&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;191504839.2&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;242483066&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;266377661.4&#x27;</span>]</span><br><span class="line">line.add(<span class="string">&quot;日均积数&quot;</span>, xii, yii, mark_line=[<span class="string">&quot;average&quot;</span>], mark_point=[<span class="string">&quot;max&quot;</span>, <span class="string">&quot;min&quot;</span>])</span><br><span class="line">line.show_config()</span><br><span class="line">line.render()</span><br></pre></td></tr></table></figure>
+<p>会在当前文件夹生成一个html文件。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wxpay.jpg" alt="martini 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="martini 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+              <a href="/tags/notes/" rel="tag"><i class="fa fa-tag"></i> notes</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/12/02/%E3%80%8A%E5%9F%BA%E4%BA%8Eplotly%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%98%E5%9B%BE%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="《基于plotly的可视化绘图》读书笔记">
+                  <i class="fa fa-chevron-left"></i> 《基于plotly的可视化绘图》读书笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/13/%E3%80%8A%E5%9F%BA%E4%BA%8Eplotly%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%98%E5%9B%BE%E3%80%8B%E7%AC%94%E8%AE%B03/" rel="next" title="《基于plotly的可视化绘图》笔记3">
+                  《基于plotly的可视化绘图》笔记3 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">martini</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">162k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:27</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
