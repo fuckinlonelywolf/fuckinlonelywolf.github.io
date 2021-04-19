@@ -27,21 +27,35 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"8.0.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false}};
   </script>
 
-  <meta name="description" content="这个题哈 越做越难..">
+  <meta name="description" content="9.2和9.3部分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="山东大数据竞赛--疫情密切接触者追踪">
-<meta property="og:url" content="http://example.com/2021/02/20/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AB%9E%E8%B5%9B-%E7%96%AB%E6%83%85%E5%AF%86%E5%88%87%E6%8E%A5%E8%A7%A6%E8%80%85%E8%BF%BD%E8%B8%AA/index.html">
+<meta property="og:title" content="数据采集方法四月小组合作--数据提取策略">
+<meta property="og:url" content="http://example.com/2021/04/19/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E6%96%B9%E6%B3%95%E5%9B%9B%E6%9C%88%E5%B0%8F%E7%BB%84%E5%90%88%E4%BD%9C/index.html">
 <meta property="og:site_name" content="martini&#39;s blog">
-<meta property="og:description" content="这个题哈 越做越难..">
+<meta property="og:description" content="9.2和9.3部分">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-20T09:34:58.000Z">
-<meta property="article:modified_time" content="2021-04-03T16:11:48.931Z">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/19/coGm2d.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/19/coGe8H.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/19/coGMrt.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/19/coGKKI.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/cThaJU.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/cThUiT.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/cThtoV.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/19/cTWyc9.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/19/cTWgn1.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/cT42Bn.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/cT4R7q.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/cT4fA0.png">
+<meta property="article:published_time" content="2021-04-19T01:35:43.000Z">
+<meta property="article:modified_time" content="2021-04-19T16:59:29.385Z">
 <meta property="article:author" content="martini">
 <meta property="article:tag" content="learn">
+<meta property="article:tag" content="spyder">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/04/19/coGm2d.png">
 
 
-<link rel="canonical" href="http://example.com/2021/02/20/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AB%9E%E8%B5%9B-%E7%96%AB%E6%83%85%E5%AF%86%E5%88%87%E6%8E%A5%E8%A7%A6%E8%80%85%E8%BF%BD%E8%B8%AA/">
+<link rel="canonical" href="http://example.com/2021/04/19/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E6%96%B9%E6%B3%95%E5%9B%9B%E6%9C%88%E5%B0%8F%E7%BB%84%E5%90%88%E4%BD%9C/">
 
 
 <script class="page-configurations">
@@ -54,7 +68,7 @@
   };
 </script>
 
-  <title>山东大数据竞赛--疫情密切接触者追踪 | martini's blog</title>
+  <title>数据采集方法四月小组合作--数据提取策略 | martini's blog</title>
   
 
 
@@ -222,7 +236,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">多任务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91"><span class="nav-number">1.1.</span> <span class="nav-text">并发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C"><span class="nav-number">1.2.</span> <span class="nav-text">并行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%AE%8C%E6%88%90%E5%A4%9A%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.4.</span> <span class="nav-text">多进程完成多任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6-%E6%94%B9%E5%8F%98%E5%88%97%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">读取文件 改变列名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E6%88%90datetime"><span class="nav-number">4.</span> <span class="nav-text">转换成datetime</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E6%97%A5%E6%9C%9F"><span class="nav-number">5.</span> <span class="nav-text">提取日期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95"><span class="nav-number">5.1.</span> <span class="nav-text">尝试</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">正则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8Cxpath"><span class="nav-number">2.</span> <span class="nav-text">css选择器和xpath</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">2.1.</span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xpath"><span class="nav-number">2.2.</span> <span class="nav-text">xpath</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90json"><span class="nav-number">3.</span> <span class="nav-text">解析json</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E5%BE%B7API"><span class="nav-number">4.</span> <span class="nav-text">高德API</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -313,7 +327,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/20/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AB%9E%E8%B5%9B-%E7%96%AB%E6%83%85%E5%AF%86%E5%88%87%E6%8E%A5%E8%A7%A6%E8%80%85%E8%BF%BD%E8%B8%AA/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/19/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E6%96%B9%E6%B3%95%E5%9B%9B%E6%9C%88%E5%B0%8F%E7%BB%84%E5%90%88%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head3.jpg">
@@ -326,7 +340,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          山东大数据竞赛--疫情密切接触者追踪
+          数据采集方法四月小组合作--数据提取策略
         </h1>
 
         <div class="post-meta-container">
@@ -337,14 +351,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-02-20 17:34:58" itemprop="dateCreated datePublished" datetime="2021-02-20T17:34:58+08:00">2021-02-20</time>
+      <time title="创建时间：2021-04-19 09:35:43" itemprop="dateCreated datePublished" datetime="2021-04-19T09:35:43+08:00">2021-04-19</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-04 00:11:48" itemprop="dateModified" datetime="2021-04-04T00:11:48+08:00">2021-04-04</time>
+        <time title="修改时间：2021-04-20 00:59:29" itemprop="dateModified" datetime="2021-04-20T00:59:29+08:00">2021-04-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -371,14 +385,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>836</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -389,23 +403,33 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>这个题哈 越做越难..</p>
+        <p>9.2和9.3部分</p>
 <a id="more"></a>
 
-<h1 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h1><h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>单核cpu处理多任务 交替执行 是并发</p>
-<h2 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h2><p>多核cpu处理多任务，一个核一个任务</p>
-<p>在python中用多进程来实现多任务</p>
-<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>资源分配的最小单位，运行起来的程序。程序是静态，进程是动态</p>
-<h2 id="多进程完成多任务"><a href="#多进程完成多任务" class="headerlink" title="多进程完成多任务"></a>多进程完成多任务</h2><h1 id="读取文件-改变列名"><a href="#读取文件-改变列名" class="headerlink" title="读取文件 改变列名"></a>读取文件 改变列名</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#df1 = pd.read_csv(&#x27;../data/确诊患者亮码记录.csv&#x27;, names = [&#x27;usetime&#x27;,&#x27;lat&#x27;,&#x27;lng&#x27;,&#x27;note&#x27;], header = 0)</span></span><br><span class="line">df1 = pd.read_csv(<span class="string">&#x27;../data/确诊患者亮码记录.csv&#x27;</span>)</span><br><span class="line">df2 = pd.read_csv(<span class="string">&#x27;../data/df_travel.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&quot;https://rate.tmall.com/list_detail_rate.htm?itemId=621844857713&amp;sellerId=3251681972&amp;order=3&amp;currentPage=1&amp;pageSize=20&amp;&amp;callback=_DLP_2665_der_3_currentPage_1_pageSize_10_&quot;</span></span><br><span class="line"></span><br><span class="line">header = &#123;                                                               </span><br><span class="line">            <span class="string">&#x27;Referer&#x27;</span>: url,</span><br><span class="line">            <span class="string">&#x27;cookie&#x27;</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">response = requests.get(url,headers = header).text</span><br><span class="line">response</span><br></pre></td></tr></table></figure>
 
-<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df1 = pd.read_csv(<span class="string">&#x27;../data/确诊患者亮码记录.csv&#x27;</span>)</span><br><span class="line">df2 = pd.read_csv(<span class="string">&#x27;../data/df_travel.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df1 = df1.sort_values(by = [<span class="string">&#x27;亮码时间&#x27;</span>]) <span class="comment"># 排序 然后 截取 j从 当前id开始 到后面的时间和位置</span></span><br><span class="line">df2 = df2.sort_values(by = [<span class="string">&#x27;usetime&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="https://z3.ax1x.com/2021/04/19/coGm2d.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">texts = []</span><br><span class="line">pat = re.<span class="built_in">compile</span>(<span class="string">&#x27;&quot;rateContent&quot;:&quot;(.*?)&quot;,&quot;fromMall&quot;&#x27;</span>)</span><br><span class="line">texts.extend(pat.findall(response))</span><br><span class="line">texts</span><br></pre></td></tr></table></figure>
 
+<p><img src="https://z3.ax1x.com/2021/04/19/coGe8H.png"></p>
+<h1 id="css选择器和xpath"><a href="#css选择器和xpath" class="headerlink" title="css选择器和xpath"></a>css选择器和xpath</h1><p><img src="https://z3.ax1x.com/2021/04/19/coGMrt.png"></p>
+<p>剥洋葱</p>
+<p><img src="https://z3.ax1x.com/2021/04/19/coGKKI.png"></p>
+<p>一层层看</p>
+<p><img src="https://z3.ax1x.com/2021/04/20/cThaJU.png"></p>
+<h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url=url,headers=header)</span><br><span class="line">html_data = response.text</span><br><span class="line">selector = parsel.Selector(html_data)</span><br><span class="line">lis = selector.css(<span class="string">&#x27;.resblock-list.post_ulog_exposure_scroll.has-results&#x27;</span>) <span class="comment">#10个li ctrl+F</span></span><br><span class="line"><span class="keyword">for</span> li <span class="keyword">in</span> lis:</span><br><span class="line">    area = li.css(<span class="string">&#x27;.resblock-area span::text&#x27;</span>).get() <span class="comment"># 面积</span></span><br><span class="line">print(area)</span><br></pre></td></tr></table></figure>
+<p><img src="https://z3.ax1x.com/2021/04/20/cThUiT.png"></p>
+<h2 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url=url,headers=header)</span><br><span class="line">html_data = response.text</span><br><span class="line">parse_html = etree.HTML(html_data)</span><br><span class="line">lis = parse_html.xpath(<span class="string">&#x27;//li[@class=&quot;resblock-list post_ulog_exposure_scroll has-results&quot;]&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> li <span class="keyword">in</span> lis:</span><br><span class="line">    area = li.xpath(<span class="string">&#x27;//div[@class=&quot;resblock-area&quot;]/span/text()&#x27;</span>)[<span class="number">0</span>] <span class="comment"># 面积</span></span><br><span class="line">    print(area)</span><br></pre></td></tr></table></figure>
+<p><img src="https://z3.ax1x.com/2021/04/20/cThtoV.png"></p>
+<h1 id="解析json"><a href="#解析json" class="headerlink" title="解析json"></a>解析json</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">&#x27;https://server.cbaleague.com/data/team_season?matchtypeid=1&amp;ranktype=PointsAverage&#x27;</span></span><br><span class="line">header = &#123;                                                       </span><br><span class="line">            <span class="string">&#x27;Referer&#x27;</span>:url,</span><br><span class="line">            <span class="string">&#x27;user-agent&#x27;</span>:<span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; The World)&#x27;</span>&#125;</span><br><span class="line">res = requests.get(url=url,headers=header).json()</span><br><span class="line">res[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;data&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://z3.ax1x.com/2021/04/19/cTWyc9.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> res[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;data&#x27;</span>]:</span><br><span class="line">    print(i[<span class="string">&#x27;TeamCNAlias&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="https://z3.ax1x.com/2021/04/19/cTWgn1.png"></p>
+<h1 id="高德API"><a href="#高德API" class="headerlink" title="高德API"></a>高德API</h1><p><img src="https://z3.ax1x.com/2021/04/20/cT42Bn.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">&#x27;https://restapi.amap.com/v3/geocode/geo&#x27;</span></span><br><span class="line">params = &#123; <span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27; &#x27;</span>,</span><br><span class="line">           <span class="string">&#x27;address&#x27;</span>: address&#125;</span><br><span class="line">res = requests.get(url, params)</span><br><span class="line">j =  json.loads(res.text)</span><br><span class="line"><span class="keyword">return</span> j[<span class="string">&#x27;geocodes&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;location&#x27;</span>]  </span><br></pre></td></tr></table></figure>
 
-
-<h1 id="转换成datetime"><a href="#转换成datetime" class="headerlink" title="转换成datetime"></a>转换成datetime</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df1[<span class="string">&#x27;usetime&#x27;</span>] = pd.to_datetime(df1[<span class="string">&#x27;usetime&#x27;</span>])</span><br><span class="line">df2[<span class="string">&#x27;usetime&#x27;</span>] = pd.to_datetime(df2[<span class="string">&#x27;usetime&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<h1 id="提取日期"><a href="#提取日期" class="headerlink" title="提取日期"></a>提取日期</h1><h2 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1 = df2[<span class="string">&#x27;usetime&#x27;</span>][<span class="number">2</span>]</span><br><span class="line">re.findall(<span class="string">&#x27;(.+)\s&#x27;</span>,str1) <span class="comment">#日期</span></span><br><span class="line">re.findall(<span class="string">&#x27;\s(.+)$&#x27;</span>,str1)[<span class="number">0</span>] <span class="comment"># 时间</span></span><br></pre></td></tr></table></figure>
-
+<p><img src="https://z3.ax1x.com/2021/04/20/cT4R7q.png"><br><img src="https://z3.ax1x.com/2021/04/20/cT4fA0.png"></p>
+<p>感谢聆听。</p>
 
     </div>
 
@@ -434,20 +458,18 @@
 
           <div class="post-tags">
               <a href="/tags/learn/" rel="tag"><i class="fa fa-tag"></i> learn</a>
+              <a href="/tags/spyder/" rel="tag"><i class="fa fa-tag"></i> spyder</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/09/%E9%9D%92%E5%B2%9B%E4%BA%8C%E6%89%8B%E6%88%BF%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E4%BB%B7%E6%A0%BC%E5%88%86%E6%9E%90/" rel="prev" title="青岛房价可视化与价格分析">
-                  <i class="fa fa-chevron-left"></i> 青岛房价可视化与价格分析
+                <a href="/2021/02/20/python%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" rel="prev" title="python使用心得">
+                  <i class="fa fa-chevron-left"></i> python使用心得
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/20/python%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" rel="next" title="python使用心得">
-                  python使用心得 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
