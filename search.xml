@@ -523,15 +523,76 @@
 <p>This is a basic note on how to learn MySQL</p>
 <a id="more"></a>
 
-<h1 id="jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了："><a href="#jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了：" class="headerlink" title="jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了："></a>jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了：</h1><p>是Tampermonkey中的“网页限制解除”脚本造成的。</p>
+<h1 id="latex快速获得eps图片"><a href="#latex快速获得eps图片" class="headerlink" title="latex快速获得eps图片"></a>latex快速获得eps图片</h1><p><code>bmeps -c 1.png 1.eps</code></p>
+<h1 id="jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了："><a href="#jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了：" class="headerlink" title="jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了："></a>jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了：</h1><p>是<code>Tampermonkey</code>中的“网页限制解除”脚本造成的。</p>
 <h1 id="python的copy包"><a href="#python的copy包" class="headerlink" title="python的copy包"></a>python的copy包</h1><p>赋值不叫拷贝。你有一个最初的b，你如果用a=b这样写，是把ab串联起来了，改b，a也改，值和地址都改。<br>所以有个需求需要解决：需要把b完全独立开来，只读与a一样，但是写的时候不受改变。</p>
-<h1 id="dict-get"><a href="#dict-get" class="headerlink" title="dict.get()"></a>dict.get()</h1><p>count.get(tap, 0)<br>get是字典的函数 get函数：如果count这个字典的键tap的值为null,则返回0；</p>
-<h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1><p>argsort(list) # 从小到大排序 返回索引</p>
-<h1 id="查看自己的Ip"><a href="#查看自己的Ip" class="headerlink" title="查看自己的Ip"></a>查看自己的Ip</h1><p>ipconfig</p>
-<p>#删除异常值<br>df_train = df_train.drop(df_train[(df_train[‘min_distance’]&lt;40000) &amp; (df_train[‘price’]&gt;4000000)].index)</p>
-<p>#exec函数<br>循环生成字符变量名exec (“temp%s=%d”%(i,i))</p>
-<p>#modin<br>pip install modin[dask]<br>import modin.pandas as pd<br>df_modin = pd.read_csv(“test.csv”)</p>
-<p>#查找列表中的元素位置<br>nums = [40, 36, 89, 2, 36, 100, 7, -20.5, -999]<br>print( nums.index(2) )</p>
+<h1 id="dict-get"><a href="#dict-get" class="headerlink" title="dict.get()"></a>dict.get()</h1><p><code>count.get(tap, 0)</code><br><code>get</code>是字典的函数<br><code>get</code>函数：如果<code>count</code>这个字典的键<code>tap</code>的值为<code>null</code>,则返回0；</p>
+<h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1><p><code>argsort(list)</code> 从小到大排序 返回索引</p>
+<h1 id="查看自己的Ip"><a href="#查看自己的Ip" class="headerlink" title="查看自己的Ip"></a>查看自己的Ip</h1><p><code>ipconfig</code></p>
+<h1 id="删除异常值"><a href="#删除异常值" class="headerlink" title="删除异常值"></a>删除异常值</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_train = df_train.drop(df_train[(df_train[<span class="string">&#x27;min_distance&#x27;</span>]&lt;<span class="number">40000</span>) &amp; (df_train[<span class="string">&#x27;price&#x27;</span>]&gt;<span class="number">4000000</span>)].index)</span><br></pre></td></tr></table></figure>
+
+<h1 id="exec函数"><a href="#exec函数" class="headerlink" title="exec函数"></a>exec函数</h1><p>循环生成字符变量名<code>exec (&quot;temp%s=%d&quot;%(i,i))</code></p>
+<h1 id="查找列表中的元素位置"><a href="#查找列表中的元素位置" class="headerlink" title="查找列表中的元素位置"></a>查找列表中的元素位置</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">nums = [<span class="number">40</span>, <span class="number">36</span>, <span class="number">89</span>, <span class="number">2</span>, <span class="number">36</span>, <span class="number">100</span>, <span class="number">7</span>, <span class="number">-20.5</span>, <span class="number">-999</span>]</span><br><span class="line">print( nums.index(<span class="number">2</span>) )</span><br></pre></td></tr></table></figure>
+<h1 id="modin"><a href="#modin" class="headerlink" title="modin"></a>modin</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install modin[dask]</span><br><span class="line"><span class="keyword">import</span> modin.pandas <span class="keyword">as</span> pd</span><br><span class="line">df_modin = pd.read_csv(<span class="string">&quot;test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="noname1"><a href="#noname1" class="headerlink" title="noname1"></a>noname1</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> <span class="built_in">enumerate</span>(df.index)</span><br></pre></td></tr></table></figure>
+<h1 id="self"><a href="#self" class="headerlink" title="self"></a>self</h1><p>摘自某评论：<br>我个人粗糙的理解 <code>self</code> 就是 “我”<br>“<code>class</code>类代码块”相当于“我家整体”，<code>self</code>==我，<code>self.name</code>=我的名字，<code>self.age</code>==我的年龄</p>
+<p>“我”这个主语<strong>谁都能用</strong>，如果实例化给 “张三”，那么<code>class</code>块内的<code>self</code>就是张三了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">home</span>():</span></span><br><span class="line">     <span class="function"><span class="keyword">def</span>   <span class="title">__init__</span>(<span class="params">self,name,age</span>):</span></span><br><span class="line">             self.name=name </span><br><span class="line">             self.age=age</span><br></pre></td></tr></table></figure>
+
+<p>实例化给张三</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_home(<span class="string">&#x27;张三&#x27;</span>,<span class="number">27</span>)</span><br></pre></td></tr></table></figure>
+
+<p>实例化给李四</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">zhangsan_home(<span class="string">&#x27;李四&#x27;</span>,<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>self</code>就是家的主人，当实例化时，<code>python</code>会自动传参给<code>self</code>，<code>self==</code>我 就是个主语词，只有实例化时才会有具体的’我’</p>
+<p>这个<code>self</code>特别像 语言学中的”我”，抽象来看就是一个逻辑代指，只有具体到个人才会有实际意义。<br>我都是自学，不知道对不对</p>
+<h1 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h1><p>我还没用过这个方式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">html = requests.get(url=url,headers=self.headers).content.decode(<span class="string">&quot;utf-8&quot;</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>默认分类</category>
+      </categories>
+      <tags>
+        <tag>learn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wx小程序重要事件之备份版本翻车</title>
+    <url>/2021/05/27/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E4%B9%8B%E5%A4%87%E4%BB%BD%E7%89%88%E6%9C%AC%E7%BF%BB%E8%BD%A6/</url>
+    <content><![CDATA[<p>这件事情是使用git的导火索。</p>
+<a id="more"></a>
+
+<h1 id="what-happen"><a href="#what-happen" class="headerlink" title="what happen"></a>what happen</h1><p>事情是这样的，本月25号，也就是事发的前一天凌晨，出现了下面这个报错：</p>
+<p><img src="https://z3.ax1x.com/2021/05/27/2iDdxK.png"></p>
+<p>其实这个错误是默认的代理错了，在设置里改一下，不知道啥时候改的我，突然就这样了，所以懵了。</p>
+<p>当时不知道啊，大晚上的意识不清晰就很莽，然后我找到了之前所谓最新的备份，直接拿过来给替换了，因为我以为是我最近复制粘贴弄错了什么地方还是那个获取用户信息的接口更新的事，反正不知道，无脑替换了，倒霉蛋开始了..</p>
+<p>结果，<strong>他不是最新备份！！</strong> 后来看了看更新记录是我备份完之后可能灵感涌现，又连夜优化了一下搜索，然后一直这版唯一的没存没当回事，当时也不知道<code>git</code>，总之气的人都晕了</p>
+<h1 id="what-did-I-DO"><a href="#what-did-I-DO" class="headerlink" title="what did I DO"></a>what did I DO</h1><p>UI的代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">    &lt;text class&#x3D;&#39;text-red&#39;&gt;&lt;&#x2F;text&gt;试试输入&quot;洗衣&quot;-&gt;选择一个店铺-&gt;搜索</span><br><span class="line">&lt;&#x2F;view&gt;</span><br><span class="line">&lt;!-- 表单 --&gt;</span><br><span class="line">&lt;form bindsubmit&#x3D;&quot;formSubmit&quot;&gt;</span><br><span class="line">    &lt;!-- 2.1搜索栏--&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;cu-bar bg-color1 search&quot;&gt;</span><br><span class="line">        &lt;!-- 搜索框 --&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;search-form radius&quot;&gt;</span><br><span class="line">            &lt;text class&#x3D;&quot;cuIcon-search&quot;&gt;&lt;&#x2F;text&gt;</span><br><span class="line">            &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;搜索商家&quot; name&#x3D;&quot;keyword&quot; value&#x3D;&quot;&#123;&#123;inputValue&#125;&#125;&quot; bindinput&#x3D;&quot;bindinput&quot; bindconfirm&#x3D;&quot;bindconfirm&quot;&gt;&lt;&#x2F;input&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">        &lt;!-- 搜索按钮 --&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;action&quot;&gt;</span><br><span class="line">            &lt;button class&#x3D;&quot;cu-btn bg-green shadow-blur round&quot; formType&#x3D;&quot;submit&quot;&gt;搜索&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;!-- 下拉联想 --&gt;</span><br><span class="line">    &lt;scroll-view scroll-y&#x3D;&quot;true&quot; class&#x3D;&quot;cu-bar bg-color1 search&quot; hidden&#x3D;&quot;&#123;&#123;hideScroll&#125;&#125;&quot; style&#x3D;&quot;&#123;&#123;arrayHeight&gt;340?&#39;height:340rpx&#39;:&#39;&#39;&#125;&#125;&quot;&gt;</span><br><span class="line">        &lt;view wx:for&#x3D;&quot;&#123;&#123;bindSource&#125;&#125;&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">            &lt;view id&#x3D;&quot;&#123;&#123;item&#125;&#125;&quot; bindtap&#x3D;&quot;itemtap&quot; class&#x3D;&quot;search-form radius&quot;&gt; &#123;&#123;item&#125;&#125;&lt;&#x2F;view&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">        &lt;!-- 搜索按钮 --&gt;</span><br><span class="line">    &lt;&#x2F;scroll-view&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>UI如下：</p>
+<p><img src="https://z3.ax1x.com/2021/05/29/2AR0Ff.png" alt="界面"></p>
+<p>然后<code>js</code>里就写几个事件啊，先是表单事件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;执行表单事件，点击搜索跳转</span><br><span class="line">formSubmit: function (e) &#123;</span><br><span class="line">&#x2F;&#x2F; console.log(e)</span><br><span class="line">&#x2F;&#x2F;获取表单所有name&#x3D;keyword的值 keyword就是点搜索的那个值</span><br><span class="line">var key &#x3D; e.detail.value.keyword;</span><br><span class="line">console.log(key)</span><br><span class="line">wx.navigateTo(&#123;</span><br><span class="line">    url: &#39;&#x2F;pages&#x2F;category2&#x2F;search?name&#x3D;&#39; + key,</span><br><span class="line">&#125;);</span><br><span class="line">if (key &#x3D;&#x3D; &quot;&quot;) &#123;</span><br><span class="line">    var state &#x3D; 3</span><br><span class="line">&#125;;</span><br><span class="line">wx.setStorage(&#123;</span><br><span class="line">    key: &quot;have&quot;,</span><br><span class="line">    data: state</span><br><span class="line">&#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>bindconfirm</code>是你键盘回车的事件，不加的话回车默认是取消键盘，加了下面这个就直接跳转。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 写好的代码段在自己手机上测试没有效果 像极了我的现状</span><br><span class="line">bindconfirm: function (e) &#123;</span><br><span class="line">console.log(e)</span><br><span class="line">var key &#x3D; e.detail.value;</span><br><span class="line">wx.navigateTo(&#123;</span><br><span class="line">    url: &#39;&#x2F;pages&#x2F;category2&#x2F;search?name&#x3D;&#39; + key,</span><br><span class="line">&#125;)&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>下面这是打字时候的事件，我理解的是就是边打边在缓存里搜索。</p>
+<p>这个当时参考了几个博客，因为我一开始做搜索只看到了他们调后端的接口然后去写一个sql，那我这个数据就在前端页面上，没有接数据库啊，就用不了，所以当时上线就没做这个功能，是真的不会，真的做不了。</p>
+<p>后来就是屡败屡战，先是接触到了这个联想词，下拉菜单，后来看到缓存这块就开始打缓存的注意，我倒是忘了有没有人把这两个结合起来写了，反正我这么用的，下拉菜单这些我肯定自己写不出来的，但是写几个state，然后搜一下缓存，然后再传参这个我会啊，就慢慢做出来了。</p>
+<p>反正就是列几种情况，用<code>state</code>区分，虽然可能是笨办法吧…这里区分一个key值和list的情况，因为我也不知道用户会搜啥，乱七八糟的输入很多时候我就给他推荐几个商家了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;当键盘输入时，触发input事件</span><br><span class="line">bindinput: function (e) &#123;</span><br><span class="line">&#x2F;&#x2F;用户实时输入值</span><br><span class="line">var prefix &#x3D; e.detail.value</span><br><span class="line">&#x2F;&#x2F;匹配的结果</span><br><span class="line">var newSource &#x3D; []</span><br><span class="line">if (prefix !&#x3D; &quot;&quot;) &#123;</span><br><span class="line">    &#x2F;&#x2F; 对于数组array进行遍历，功能函数中的参数 &#96;e&#96;就是遍历时的数组元素值。</span><br><span class="line">    this.data.adapterSource.forEach(function (e) &#123;</span><br><span class="line">    &#x2F;&#x2F; 用户输入的字符串如果在数组中某个元素中出现，将该元素存到newSource中</span><br><span class="line">    if (e.indexOf(prefix) !&#x3D; -1) &#123;</span><br><span class="line">        &#x2F;&#x2F; console.log(1)</span><br><span class="line">        newSource.push(e)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F; 如果匹配结果存在，那么将其返回，相反则返回空数组</span><br><span class="line">if (newSource.length !&#x3D; 0) &#123;</span><br><span class="line">    &#x2F;&#x2F; console.log(1111111111)</span><br><span class="line">    &#x2F;&#x2F; console.log(newSource);</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">    &#x2F;&#x2F; 匹配结果存在，显示自动联想词下拉列表</span><br><span class="line">    hideScroll: false,</span><br><span class="line">    bindSource: newSource,</span><br><span class="line">    arrayHeight: newSource.length * 71</span><br><span class="line">    &#125;)</span><br><span class="line">    if (newSource.length &#x3D;&#x3D; 1) &#123; &#x2F;&#x2F;匹配一个</span><br><span class="line">    var state &#x3D; 1</span><br><span class="line">    &#125; else &#123; &#x2F;&#x2F;匹配多个</span><br><span class="line">    var state &#x3D; 2</span><br><span class="line">    &#125;</span><br><span class="line">&#125; else &#123; &#x2F;&#x2F; 匹配无结果，不实现下拉列表</span><br><span class="line">    var state &#x3D; 3</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">    hideScroll: true,</span><br><span class="line">    bindSource: []</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">wx.setStorage(&#123;</span><br><span class="line">    key: &quot;have&quot;,</span><br><span class="line">    data: state</span><br><span class="line">    &#125;),</span><br><span class="line">    wx.setStorage(&#123;</span><br><span class="line">    key: &quot;list&quot;,</span><br><span class="line">    data: newSource</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>然后就没什么了，主要联想菜单那块大佬写的太行了，开源大佬真牛。<br>然后就是去目标页面接一下，<code>js</code>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">onLoad: function (options) &#123;</span><br><span class="line">&#x2F;&#x2F; console.log(2222222222222222222)</span><br><span class="line">&#x2F;&#x2F; console.log(options)</span><br><span class="line">var that &#x3D; this;</span><br><span class="line">var state &#x3D; wx.getStorageSync(&#39;have&#39;);</span><br><span class="line">var list &#x3D; wx.getStorageSync(&#39;list&#39;);</span><br><span class="line">&#x2F;&#x2F; console.log(state)</span><br><span class="line"></span><br><span class="line">that.setData(&#123;</span><br><span class="line">    search: options.name,</span><br><span class="line">    state: state,</span><br><span class="line">    list: list</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; console.log(list)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>别忘了定义<code>data</code>啊，上回那个博客写的太简单了，早把这些东西写写，我也不用折腾到两点。</p>
+<p>反正用了大概四个小时，补上了这个坑，肯定是不知道当时咋写的了，但是也大差不差吧，主要是看以前的代码是真膈应人，好歹注释有够多，不然这个项目要毁于一次误操作了。</p>
+<p>不过还是不行啊，微信不给过审md，真燥人呢。</p>
+<p>算了。</p>
+<p>赶紧<code>git</code>学起来吧，回滚！</p>
 ]]></content>
       <categories>
         <category>默认分类</category>
@@ -723,7 +784,7 @@
   <entry>
     <title>山东大数据竞赛--疫情密切接触者追踪</title>
     <url>/2021/02/20/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AB%9E%E8%B5%9B-%E7%96%AB%E6%83%85%E5%AF%86%E5%88%87%E6%8E%A5%E8%A7%A6%E8%80%85%E8%BF%BD%E8%B8%AA/</url>
-    <content><![CDATA[<p>这个题哈 越做越难..</p>
+    <content><![CDATA[<p>烂尾了烂尾了</p>
 <a id="more"></a>
 
 <h1 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h1><h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>单核cpu处理多任务 交替执行 是并发</p>
@@ -740,48 +801,14 @@
 
 <h1 id="提取日期"><a href="#提取日期" class="headerlink" title="提取日期"></a>提取日期</h1><h2 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str1 = df2[<span class="string">&#x27;usetime&#x27;</span>][<span class="number">2</span>]</span><br><span class="line">re.findall(<span class="string">&#x27;(.+)\s&#x27;</span>,str1) <span class="comment">#日期</span></span><br><span class="line">re.findall(<span class="string">&#x27;\s(.+)$&#x27;</span>,str1)[<span class="number">0</span>] <span class="comment"># 时间</span></span><br></pre></td></tr></table></figure>
 
+
+<p>烂尾了，做不了，太偏计算机了，人家都是<code>CPython</code>，只有我，还不会用<code>numba</code>加速，但是我也有从五个小时到四十几分钟的进步，导师又要说我不干正事耽误时间啦！！</p>
 ]]></content>
       <categories>
         <category>默认分类</category>
       </categories>
       <tags>
         <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-python元组</title>
-    <url>/2020/11/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-python%E5%85%83%E7%BB%84/</url>
-    <content><![CDATA[<p>及时更新</p>
-<a id="more"></a>
-
-
-
-<p>元组是一种特殊的列表，特殊在元素不可以改变，不可以添加或删除。</p>
-<p>好家伙，又是一个我没有用过的，我开始怀疑看这两本书对自己有用吗..</p>
-<h1 id="创建元组"><a href="#创建元组" class="headerlink" title="创建元组"></a>创建元组</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup = (<span class="string">&#x27;ak41&#x27;</span>, <span class="string">&#x27;ak42&#x27;</span>, <span class="string">&#x27;ak43&#x27;</span>, <span class="string">&#x27;ak44&#x27;</span>, <span class="string">&#x27;ak45&#x27;</span>, <span class="string">&#x27;ak46&#x27;</span>)</span><br><span class="line">tup1 = () <span class="comment">#创建空元组，所以空的有什么用呢你也没说..</span></span><br><span class="line">print(tup[<span class="number">0</span>])</span><br><span class="line">print(tup[<span class="number">0</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>ak41
-(&#39;ak41&#39;, &#39;ak42&#39;, &#39;ak43&#39;)</code></pre>
-<h1 id="修改元组"><a href="#修改元组" class="headerlink" title="修改元组"></a>修改元组</h1><p>列表那套修改的方式不好使，只能拼接</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup = (<span class="string">&#x27;ak41&#x27;</span>, <span class="string">&#x27;ak42&#x27;</span>, <span class="string">&#x27;ak43&#x27;</span>, <span class="string">&#x27;ak44&#x27;</span>, <span class="string">&#x27;ak45&#x27;</span>, <span class="string">&#x27;ak46&#x27;</span>)</span><br><span class="line">tup1 = (<span class="string">&#x27;ak47&#x27;</span>,) </span><br><span class="line">tup2 = tup + tup1</span><br><span class="line">print(tup2)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(&#39;ak41&#39;, &#39;ak42&#39;, &#39;ak43&#39;, &#39;ak44&#39;, &#39;ak45&#39;, &#39;ak46&#39;, &#39;ak47&#39;)</code></pre>
-<h1 id="删除元组"><a href="#删除元组" class="headerlink" title="删除元组"></a>删除元组</h1><p>说了不能删除和修改，删除的话只能删除整个元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup = (<span class="string">&#x27;ak41&#x27;</span>, <span class="string">&#x27;ak42&#x27;</span>, <span class="string">&#x27;ak43&#x27;</span>, <span class="string">&#x27;ak44&#x27;</span>, <span class="string">&#x27;ak45&#x27;</span>, <span class="string">&#x27;ak46&#x27;</span>)</span><br><span class="line">tup1 = (<span class="string">&#x27;ak47&#x27;</span>,)</span><br><span class="line">tup2 = tup + tup1</span><br><span class="line">print(tup2)</span><br><span class="line"><span class="keyword">del</span> tup2</span><br></pre></td></tr></table></figure>
-
-<pre><code>(&#39;ak41&#39;, &#39;ak42&#39;, &#39;ak43&#39;, &#39;ak44&#39;, &#39;ak45&#39;, &#39;ak46&#39;, &#39;ak47&#39;)</code></pre>
-<p>真的删掉了，不信<code>print(tup2)</code>看看，会报错呀。</p>
-<p>剩下的内容我可能不用看了。</p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ol>
-<li>python算法详解，张玲玲编著，人民邮电出版社</li>
-</ol>
-]]></content>
-      <categories>
-        <category>算法与数据结构</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -825,6 +852,42 @@
 </li>
 <li><p>yield详解,<a href="https://blog.csdn.net/mieleizhi0522/article/details/82142856">https://blog.csdn.net/mieleizhi0522/article/details/82142856</a></p>
 </li>
+</ol>
+]]></content>
+      <categories>
+        <category>算法与数据结构</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-python元组</title>
+    <url>/2020/11/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-python%E5%85%83%E7%BB%84/</url>
+    <content><![CDATA[<p>及时更新</p>
+<a id="more"></a>
+
+
+
+<p>元组是一种特殊的列表，特殊在元素不可以改变，不可以添加或删除。</p>
+<p>好家伙，又是一个我没有用过的，我开始怀疑看这两本书对自己有用吗..</p>
+<h1 id="创建元组"><a href="#创建元组" class="headerlink" title="创建元组"></a>创建元组</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup = (<span class="string">&#x27;ak41&#x27;</span>, <span class="string">&#x27;ak42&#x27;</span>, <span class="string">&#x27;ak43&#x27;</span>, <span class="string">&#x27;ak44&#x27;</span>, <span class="string">&#x27;ak45&#x27;</span>, <span class="string">&#x27;ak46&#x27;</span>)</span><br><span class="line">tup1 = () <span class="comment">#创建空元组，所以空的有什么用呢你也没说..</span></span><br><span class="line">print(tup[<span class="number">0</span>])</span><br><span class="line">print(tup[<span class="number">0</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>ak41
+(&#39;ak41&#39;, &#39;ak42&#39;, &#39;ak43&#39;)</code></pre>
+<h1 id="修改元组"><a href="#修改元组" class="headerlink" title="修改元组"></a>修改元组</h1><p>列表那套修改的方式不好使，只能拼接</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup = (<span class="string">&#x27;ak41&#x27;</span>, <span class="string">&#x27;ak42&#x27;</span>, <span class="string">&#x27;ak43&#x27;</span>, <span class="string">&#x27;ak44&#x27;</span>, <span class="string">&#x27;ak45&#x27;</span>, <span class="string">&#x27;ak46&#x27;</span>)</span><br><span class="line">tup1 = (<span class="string">&#x27;ak47&#x27;</span>,) </span><br><span class="line">tup2 = tup + tup1</span><br><span class="line">print(tup2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(&#39;ak41&#39;, &#39;ak42&#39;, &#39;ak43&#39;, &#39;ak44&#39;, &#39;ak45&#39;, &#39;ak46&#39;, &#39;ak47&#39;)</code></pre>
+<h1 id="删除元组"><a href="#删除元组" class="headerlink" title="删除元组"></a>删除元组</h1><p>说了不能删除和修改，删除的话只能删除整个元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup = (<span class="string">&#x27;ak41&#x27;</span>, <span class="string">&#x27;ak42&#x27;</span>, <span class="string">&#x27;ak43&#x27;</span>, <span class="string">&#x27;ak44&#x27;</span>, <span class="string">&#x27;ak45&#x27;</span>, <span class="string">&#x27;ak46&#x27;</span>)</span><br><span class="line">tup1 = (<span class="string">&#x27;ak47&#x27;</span>,)</span><br><span class="line">tup2 = tup + tup1</span><br><span class="line">print(tup2)</span><br><span class="line"><span class="keyword">del</span> tup2</span><br></pre></td></tr></table></figure>
+
+<pre><code>(&#39;ak41&#39;, &#39;ak42&#39;, &#39;ak43&#39;, &#39;ak44&#39;, &#39;ak45&#39;, &#39;ak46&#39;, &#39;ak47&#39;)</code></pre>
+<p>真的删掉了，不信<code>print(tup2)</code>看看，会报错呀。</p>
+<p>剩下的内容我可能不用看了。</p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ol>
+<li>python算法详解，张玲玲编著，人民邮电出版社</li>
 </ol>
 ]]></content>
       <categories>
