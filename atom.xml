@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-05-30T07:11:12.628Z</updated>
+  <updated>2021-05-30T07:17:50.335Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="http://example.com/2021/05/27/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E4%B9%8B%E5%A4%87%E4%BB%BD%E7%89%88%E6%9C%AC%E7%BF%BB%E8%BD%A6/"/>
     <id>http://example.com/2021/05/27/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E4%B9%8B%E5%A4%87%E4%BB%BD%E7%89%88%E6%9C%AC%E7%BF%BB%E8%BD%A6/</id>
     <published>2021-05-26T23:56:58.000Z</published>
-    <updated>2021-05-30T07:11:12.628Z</updated>
+    <updated>2021-05-30T07:17:50.335Z</updated>
     
     
-    <summary type="html">&lt;p&gt;这件事情是使用git的导火索。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;不会吧不会吧，还有人不会用&lt;code&gt;git&lt;/code&gt;？&lt;/p&gt;</summary>
     
     
     

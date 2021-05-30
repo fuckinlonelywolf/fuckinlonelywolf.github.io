@@ -443,47 +443,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python使用心得</title>
-    <url>/2021/02/20/python%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<p>记录问题</p>
-<p>This is a basic note on how to learn MySQL</p>
-<a id="more"></a>
-
-<h1 id="latex快速获得eps图片"><a href="#latex快速获得eps图片" class="headerlink" title="latex快速获得eps图片"></a>latex快速获得eps图片</h1><p><code>bmeps -c 1.png 1.eps</code></p>
-<h1 id="jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了："><a href="#jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了：" class="headerlink" title="jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了："></a>jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了：</h1><p>是<code>Tampermonkey</code>中的“网页限制解除”脚本造成的。</p>
-<h1 id="python的copy包"><a href="#python的copy包" class="headerlink" title="python的copy包"></a>python的copy包</h1><p>赋值不叫拷贝。你有一个最初的b，你如果用a=b这样写，是把ab串联起来了，改b，a也改，值和地址都改。<br>所以有个需求需要解决：需要把b完全独立开来，只读与a一样，但是写的时候不受改变。</p>
-<h1 id="dict-get"><a href="#dict-get" class="headerlink" title="dict.get()"></a>dict.get()</h1><p><code>count.get(tap, 0)</code><br><code>get</code>是字典的函数<br><code>get</code>函数：如果<code>count</code>这个字典的键<code>tap</code>的值为<code>null</code>,则返回0；</p>
-<h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1><p><code>argsort(list)</code> 从小到大排序 返回索引</p>
-<h1 id="查看自己的Ip"><a href="#查看自己的Ip" class="headerlink" title="查看自己的Ip"></a>查看自己的Ip</h1><p><code>ipconfig</code></p>
-<h1 id="删除异常值"><a href="#删除异常值" class="headerlink" title="删除异常值"></a>删除异常值</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_train = df_train.drop(df_train[(df_train[<span class="string">&#x27;min_distance&#x27;</span>]&lt;<span class="number">40000</span>) &amp; (df_train[<span class="string">&#x27;price&#x27;</span>]&gt;<span class="number">4000000</span>)].index)</span><br></pre></td></tr></table></figure>
-
-<h1 id="exec函数"><a href="#exec函数" class="headerlink" title="exec函数"></a>exec函数</h1><p>循环生成字符变量名<code>exec (&quot;temp%s=%d&quot;%(i,i))</code></p>
-<h1 id="查找列表中的元素位置"><a href="#查找列表中的元素位置" class="headerlink" title="查找列表中的元素位置"></a>查找列表中的元素位置</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">nums = [<span class="number">40</span>, <span class="number">36</span>, <span class="number">89</span>, <span class="number">2</span>, <span class="number">36</span>, <span class="number">100</span>, <span class="number">7</span>, <span class="number">-20.5</span>, <span class="number">-999</span>]</span><br><span class="line">print( nums.index(<span class="number">2</span>) )</span><br></pre></td></tr></table></figure>
-<h1 id="modin"><a href="#modin" class="headerlink" title="modin"></a>modin</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install modin[dask]</span><br><span class="line"><span class="keyword">import</span> modin.pandas <span class="keyword">as</span> pd</span><br><span class="line">df_modin = pd.read_csv(<span class="string">&quot;test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="noname1"><a href="#noname1" class="headerlink" title="noname1"></a>noname1</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> <span class="built_in">enumerate</span>(df.index)</span><br></pre></td></tr></table></figure>
-<h1 id="self"><a href="#self" class="headerlink" title="self"></a>self</h1><p>摘自某评论：<br>我个人粗糙的理解 <code>self</code> 就是 “我”<br>“<code>class</code>类代码块”相当于“我家整体”，<code>self</code>==我，<code>self.name</code>=我的名字，<code>self.age</code>==我的年龄</p>
-<p>“我”这个主语<strong>谁都能用</strong>，如果实例化给 “张三”，那么<code>class</code>块内的<code>self</code>就是张三了</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">home</span>():</span></span><br><span class="line">     <span class="function"><span class="keyword">def</span>   <span class="title">__init__</span>(<span class="params">self,name,age</span>):</span></span><br><span class="line">             self.name=name </span><br><span class="line">             self.age=age</span><br></pre></td></tr></table></figure>
-
-<p>实例化给张三</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_home(<span class="string">&#x27;张三&#x27;</span>,<span class="number">27</span>)</span><br></pre></td></tr></table></figure>
-
-<p>实例化给李四</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">zhangsan_home(<span class="string">&#x27;李四&#x27;</span>,<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-
-<p><code>self</code>就是家的主人，当实例化时，<code>python</code>会自动传参给<code>self</code>，<code>self==</code>我 就是个主语词，只有实例化时才会有具体的’我’</p>
-<p>这个<code>self</code>特别像 语言学中的”我”，抽象来看就是一个逻辑代指，只有具体到个人才会有实际意义。<br>我都是自学，不知道对不对</p>
-<h1 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h1><p>我还没用过这个方式</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">html = requests.get(url=url,headers=self.headers).content.decode(<span class="string">&quot;utf-8&quot;</span>)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>默认分类</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《python3数据分析与机器学习实战》读书笔记</title>
     <url>/2020/10/26/python3%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>《python3 数据分析与机器学习实战》, 龙马高新教育编著, 北京大学出版社.</p>
@@ -558,9 +517,50 @@
       </tags>
   </entry>
   <entry>
+    <title>python使用心得</title>
+    <url>/2021/02/20/python%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<p>记录问题</p>
+<p>This is a basic note on how to learn MySQL</p>
+<a id="more"></a>
+
+<h1 id="latex快速获得eps图片"><a href="#latex快速获得eps图片" class="headerlink" title="latex快速获得eps图片"></a>latex快速获得eps图片</h1><p><code>bmeps -c 1.png 1.eps</code></p>
+<h1 id="jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了："><a href="#jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了：" class="headerlink" title="jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了："></a>jupyter回车变成两行，且编辑模式改不了的下拉菜单点不了：</h1><p>是<code>Tampermonkey</code>中的“网页限制解除”脚本造成的。</p>
+<h1 id="python的copy包"><a href="#python的copy包" class="headerlink" title="python的copy包"></a>python的copy包</h1><p>赋值不叫拷贝。你有一个最初的b，你如果用a=b这样写，是把ab串联起来了，改b，a也改，值和地址都改。<br>所以有个需求需要解决：需要把b完全独立开来，只读与a一样，但是写的时候不受改变。</p>
+<h1 id="dict-get"><a href="#dict-get" class="headerlink" title="dict.get()"></a>dict.get()</h1><p><code>count.get(tap, 0)</code><br><code>get</code>是字典的函数<br><code>get</code>函数：如果<code>count</code>这个字典的键<code>tap</code>的值为<code>null</code>,则返回0；</p>
+<h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1><p><code>argsort(list)</code> 从小到大排序 返回索引</p>
+<h1 id="查看自己的Ip"><a href="#查看自己的Ip" class="headerlink" title="查看自己的Ip"></a>查看自己的Ip</h1><p><code>ipconfig</code></p>
+<h1 id="删除异常值"><a href="#删除异常值" class="headerlink" title="删除异常值"></a>删除异常值</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_train = df_train.drop(df_train[(df_train[<span class="string">&#x27;min_distance&#x27;</span>]&lt;<span class="number">40000</span>) &amp; (df_train[<span class="string">&#x27;price&#x27;</span>]&gt;<span class="number">4000000</span>)].index)</span><br></pre></td></tr></table></figure>
+
+<h1 id="exec函数"><a href="#exec函数" class="headerlink" title="exec函数"></a>exec函数</h1><p>循环生成字符变量名<code>exec (&quot;temp%s=%d&quot;%(i,i))</code></p>
+<h1 id="查找列表中的元素位置"><a href="#查找列表中的元素位置" class="headerlink" title="查找列表中的元素位置"></a>查找列表中的元素位置</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">nums = [<span class="number">40</span>, <span class="number">36</span>, <span class="number">89</span>, <span class="number">2</span>, <span class="number">36</span>, <span class="number">100</span>, <span class="number">7</span>, <span class="number">-20.5</span>, <span class="number">-999</span>]</span><br><span class="line">print( nums.index(<span class="number">2</span>) )</span><br></pre></td></tr></table></figure>
+<h1 id="modin"><a href="#modin" class="headerlink" title="modin"></a>modin</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install modin[dask]</span><br><span class="line"><span class="keyword">import</span> modin.pandas <span class="keyword">as</span> pd</span><br><span class="line">df_modin = pd.read_csv(<span class="string">&quot;test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="noname1"><a href="#noname1" class="headerlink" title="noname1"></a>noname1</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> <span class="built_in">enumerate</span>(df.index)</span><br></pre></td></tr></table></figure>
+<h1 id="self"><a href="#self" class="headerlink" title="self"></a>self</h1><p>摘自某评论：<br>我个人粗糙的理解 <code>self</code> 就是 “我”<br>“<code>class</code>类代码块”相当于“我家整体”，<code>self</code>==我，<code>self.name</code>=我的名字，<code>self.age</code>==我的年龄</p>
+<p>“我”这个主语<strong>谁都能用</strong>，如果实例化给 “张三”，那么<code>class</code>块内的<code>self</code>就是张三了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">home</span>():</span></span><br><span class="line">     <span class="function"><span class="keyword">def</span>   <span class="title">__init__</span>(<span class="params">self,name,age</span>):</span></span><br><span class="line">             self.name=name </span><br><span class="line">             self.age=age</span><br></pre></td></tr></table></figure>
+
+<p>实例化给张三</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_home(<span class="string">&#x27;张三&#x27;</span>,<span class="number">27</span>)</span><br></pre></td></tr></table></figure>
+
+<p>实例化给李四</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">zhangsan_home(<span class="string">&#x27;李四&#x27;</span>,<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>self</code>就是家的主人，当实例化时，<code>python</code>会自动传参给<code>self</code>，<code>self==</code>我 就是个主语词，只有实例化时才会有具体的’我’</p>
+<p>这个<code>self</code>特别像 语言学中的”我”，抽象来看就是一个逻辑代指，只有具体到个人才会有实际意义。<br>我都是自学，不知道对不对</p>
+<h1 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h1><p>我还没用过这个方式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">html = requests.get(url=url,headers=self.headers).content.decode(<span class="string">&quot;utf-8&quot;</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>默认分类</category>
+      </categories>
+      <tags>
+        <tag>learn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>wx小程序重要事件之备份版本翻车</title>
     <url>/2021/05/27/wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E4%B9%8B%E5%A4%87%E4%BB%BD%E7%89%88%E6%9C%AC%E7%BF%BB%E8%BD%A6/</url>
-    <content><![CDATA[<p>这件事情是使用git的导火索。</p>
+    <content><![CDATA[<p>不会吧不会吧，还有人不会用<code>git</code>？</p>
 <a id="more"></a>
 
 <h1 id="what-happen"><a href="#what-happen" class="headerlink" title="what happen"></a>what happen</h1><p>事情是这样的，本月25号，也就是事发的前一天凌晨，出现了下面这个报错：</p>
@@ -596,7 +596,8 @@
 <p>2021-05-30</p>
 <p>我过审了我的天呐！！人生真是阴阳相调啊！！线上终于有搜索功能了！！！直接搜<code>嘻唰唰便民卡</code>即可，也感谢对象和我吵架，不然我不会睡不着来这杠审核。哭了，太难了tmd。</p>
 <p>山重水复疑无路，柳暗花明又一村！！又一村！！！</p>
-<h1 id="凭印象记得的references"><a href="#凭印象记得的references" class="headerlink" title="凭印象记得的references"></a>凭印象记得的references</h1><p>[1]<a href="https://www.jianshu.com/p/3f40578cb94b">https://www.jianshu.com/p/3f40578cb94b</a></p>
+<h1 id="references"><a href="#references" class="headerlink" title="references"></a>references</h1><p>后期主要看的几个</p>
+<p>[1]<a href="https://www.jianshu.com/p/3f40578cb94b">https://www.jianshu.com/p/3f40578cb94b</a></p>
 <p>[2]<a href="https://blog.csdn.net/qaqcfff/article/details/89578225">https://blog.csdn.net/qaqcfff/article/details/89578225</a></p>
 <p>[3]<a href="https://www.color-ui.com/">https://www.color-ui.com</a></p>
 <p>[4]<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/">https://developers.weixin.qq.com/miniprogram/dev/framework/</a></p>
@@ -606,6 +607,73 @@
       </categories>
       <tags>
         <tag>learn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《基于plotly的可视化绘图》笔记2</title>
+    <url>/2020/12/10/%E3%80%8A%E5%9F%BA%E4%BA%8Eplotly%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%98%E5%9B%BE%E3%80%8B%E7%AC%94%E8%AE%B02/</url>
+    <content><![CDATA[<p>《python数据分析 基于plotly的动态可视化绘图》, 孙洋洋 王硕 邢梦来 袁泉 吴娜著, 电子工业出版社.</p>
+<p>看看第一篇就够了，主要是在说基本的画图函数和多子图。<br>到这里就像是强迫症不写完难受了。</p>
+<a id="more"></a>
+
+<p>有些章节目前对我来说还是有些遥远，所以我只写<code>23496</code>章和<code>visdom</code>，av8d噶油.</p>
+<h1 id="plotly与pandas"><a href="#plotly与pandas" class="headerlink" title="plotly与pandas"></a>plotly与pandas</h1><p>可以直接识别<code>pandas</code>的<code>dataframe</code>或者<code>series</code>，</p>
+<h2 id="简单案例"><a href="#简单案例" class="headerlink" title="简单案例"></a>简单案例</h2><p>线形图、散点图、柱状图</p>
+<h3 id="线形图"><a href="#线形图" class="headerlink" title="线形图"></a>线形图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYAXD.png" alt="线形图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py </span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">N = <span class="number">500</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.head()</span><br><span class="line"></span><br><span class="line">data = [</span><br><span class="line">    go.Scatter(</span><br><span class="line">        x=df[<span class="string">&#x27;x&#x27;</span>], </span><br><span class="line">        y=df[<span class="string">&#x27;y&#x27;</span>]</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">url = pyplt(data)</span><br></pre></td></tr></table></figure>
+<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYk6O.png" alt="散点图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">df_50 = pd.read_csv(<span class="string">&#x27;../Chapter04/dat/000016.csv&#x27;</span>, index_col=[<span class="string">&#x27;date&#x27;</span>]) </span><br><span class="line">df_50.sort_index(inplace=<span class="literal">True</span>) <span class="comment"># 排序</span></span><br><span class="line">df_50 = df_50.loc[<span class="string">&#x27;2017-01-03&#x27;</span>:,:]</span><br><span class="line">df_300 = pd.read_csv(<span class="string">&#x27;../Chapter04/dat/000300.csv&#x27;</span>, index_col=[<span class="string">&#x27;date&#x27;</span>])</span><br><span class="line">df_300.sort_index(inplace=<span class="literal">True</span>) </span><br><span class="line">df_300 = df_300.loc[<span class="string">&#x27;2017-01-01&#x27;</span>:]</span><br><span class="line"></span><br><span class="line">fig = &#123;</span><br><span class="line">    <span class="string">&#x27;data&#x27;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;x&#x27;</span>: df_50.index,</span><br><span class="line">            <span class="string">&#x27;y&#x27;</span>: df_50.volume,</span><br><span class="line">            <span class="string">&#x27;mode&#x27;</span>: <span class="string">&#x27;markers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;上证50&#x27;</span>&#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;x&#x27;</span>: df_300.index,</span><br><span class="line">            <span class="string">&#x27;y&#x27;</span>: df_300.volume,</span><br><span class="line">            <span class="string">&#x27;mode&#x27;</span>: <span class="string">&#x27;markers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;沪深300&#x27;</span>&#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;layout&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;xaxis&#x27;</span>: &#123;<span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;时间&#x27;</span>,</span><br><span class="line">                  <span class="comment"># &#x27;type&#x27;: &#x27;log&#x27;,</span></span><br><span class="line">                  &#125;,</span><br><span class="line">        <span class="string">&#x27;yaxis&#x27;</span>: &#123;<span class="string">&#x27;title&#x27;</span>: <span class="string">&quot;成交量&quot;</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url = pyplt(fig)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYip6.png" alt="柱状图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py  </span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">N = <span class="number">40</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.head()</span><br><span class="line"></span><br><span class="line">data = [</span><br><span class="line">    go.Bar(</span><br><span class="line">        x=df[<span class="string">&#x27;x&#x27;</span>], </span><br><span class="line">        y=df[<span class="string">&#x27;y&#x27;</span>]</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">url = pyplt(data)</span><br></pre></td></tr></table></figure>
+<h2 id="使用cufflinks绘图"><a href="#使用cufflinks绘图" class="headerlink" title="使用cufflinks绘图"></a>使用cufflinks绘图</h2><p><code>cufflinks</code>的作用是改变<code>pandas</code>默认的呈现模式<code>matplotlib</code>为<code>plotly</code><br>安装<code>cufflinks</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!pip install cufflinks -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+<p>然后运行代码。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">N = <span class="number">500</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.set_index(<span class="string">&#x27;x&#x27;</span>,inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/12/12/rVYF1K.png" alt="cufflinks"></p>
+<h4 id="导入cufflinks"><a href="#导入cufflinks" class="headerlink" title="导入cufflinks"></a>导入cufflinks</h4><pre><code>import cufflinks as cf</code></pre>
+<h4 id="设置pandas的输入模式"><a href="#设置pandas的输入模式" class="headerlink" title="设置pandas的输入模式"></a>设置pandas的输入模式</h4><pre><code>cf.set_config_file(offline=True, theme=&#39;ggplot&#39;)</code></pre>
+<p>用<code>cf.getThemes()</code>可以获取当前版本所有可支持的主题。<br>并且<code>cf.set_config_file</code>只需要在<code>jupyter</code>里出现一次，这是个全局变量函数。</p>
+<h4 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h4><pre><code>df.iplot(kind=&#39;scatter&#39;)</code></pre>
+<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">The plotly.plotly module is deprecated,</span><br><span class="line">please install the chart-studio package and use the</span><br><span class="line">chart_studio.plotly module instead. </span><br></pre></td></tr></table></figure>
+<p>直接在<code>jupyter</code>里输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!pip install chart-studio -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+<p>后面都需要用<code>import chart_studio.plotly as py</code>替换<code>import plotly.plotly as py</code></p>
+<h3 id="快速获取数据"><a href="#快速获取数据" class="headerlink" title="快速获取数据"></a>快速获取数据</h3><p>可以用<code>datagen</code>来获取<code>bar、pie、scatter、ohlc</code>等图的数据。等多查询<code>dir(cf.datagen)</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, theme=<span class="string">&#x27;polar&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df = cf.datagen.scatter() <span class="comment"># 生成散点图数据</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>, mode=<span class="string">&#x27;markers&#x27;</span>, x=<span class="string">&#x27;x&#x27;</span>, y=<span class="string">&#x27;y&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/12/12/rVYCfx.png" alt="datagen"></p>
+<h3 id="自定义绘图"><a href="#自定义绘图" class="headerlink" title="自定义绘图"></a>自定义绘图</h3><p>完成一些常见设置。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = cf.datagen.lines(n_traces=<span class="number">3</span>,columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]) <span class="comment"># 生成一个3列的DataFrame（默认5列）。</span></span><br><span class="line"></span><br><span class="line">colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;black&#x27;</span>] <span class="comment"># 自定义每条线的颜色</span></span><br><span class="line">dashes = [<span class="string">&#x27;solid&#x27;</span>, <span class="string">&#x27;dash&#x27;</span>, <span class="string">&#x27;dashdot&#x27;</span>] <span class="comment"># 自定义每条线的Style</span></span><br><span class="line">widths = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>] <span class="comment"># 自定义每条线的宽度</span></span><br><span class="line"></span><br><span class="line">plot_url = df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>, mode=<span class="string">&#x27;lines&#x27;</span>, colors=colors, dash=dashes,width=widths,xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;数量&#x27;</span>,title=<span class="string">&#x27;自定义绘图&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/12/12/rVY9t1.png" alt="自定义绘图"></p>
+<h3 id="基本图形绘制"><a href="#基本图形绘制" class="headerlink" title="基本图形绘制"></a>基本图形绘制</h3><p>可以输入<code>df.iplot?</code>进行学习。<br>下面的案例真是又简单又好看，惊了。</p>
+<h4 id="柱状图-1"><a href="#柱状图-1" class="headerlink" title="柱状图"></a>柱状图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJx0J.png" alt="柱状图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line">df = cf.datagen.bars()</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;bar&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="层叠柱状图"><a href="#层叠柱状图" class="headerlink" title="层叠柱状图"></a>层叠柱状图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJz79.png" alt="层叠柱状图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line">df = cf.datagen.bars(n_categories=<span class="number">4</span>,columns=[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>])</span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;bar&#x27;</span>, barmode=<span class="string">&#x27;stack&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="散点图-1"><a href="#散点图-1" class="headerlink" title="散点图"></a>散点图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJLlT.png" alt="散点图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line">df = cf.datagen.lines(<span class="number">2</span>, columns=[<span class="string">&#x27;中信证券&#x27;</span>,<span class="string">&#x27;招商证券&#x27;</span>])</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>,mode=<span class="string">&#x27;markers&#x27;</span>,size=<span class="number">10</span>,symbol=<span class="string">&#x27;x&#x27;</span>,colorscale=<span class="string">&#x27;paired&#x27;</span>,</span><br><span class="line">                          xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;每股盈利增长率&#x27;</span>,title=<span class="string">&#x27;散点图&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="价差图"><a href="#价差图" class="headerlink" title="价差图"></a>价差图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJO6U.png" alt="价差图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line">df= cf.datagen.lines(<span class="number">2</span>,columns=[<span class="string">&#x27;万科A&#x27;</span>,<span class="string">&#x27;中粮地产&#x27;</span>])</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;spread&#x27;</span>,xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;收益率&#x27;</span>,title=<span class="string">&#x27;价差图&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVYY7j.png" alt="直方图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df= cf.datagen.histogram(<span class="number">2</span>)</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;histogram&#x27;</span>,opacity=<span class="number">.75</span>,title=<span class="string">&#x27;直方图&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="时序子图"><a href="#时序子图" class="headerlink" title="时序子图"></a>时序子图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJXXF.png" alt="时序子图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;pearl&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df=cf.datagen.lines(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">df.iplot(subplots=<span class="literal">True</span>, shape=(<span class="number">4</span>,<span class="number">1</span>), shared_xaxes=<span class="literal">True</span>, fill=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="3D散点图"><a href="#3D散点图" class="headerlink" title="3D散点图"></a>3D散点图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVYpkR.png" alt="3D散点图"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df = cf.datagen.scatter3d(<span class="number">2</span>,<span class="number">150</span>)</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter3d&#x27;</span>,x=<span class="string">&#x27;x&#x27;</span>,y=<span class="string">&#x27;y&#x27;</span>,z=<span class="string">&#x27;z&#x27;</span>,size=<span class="number">15</span>,categories=<span class="string">&#x27;categories&#x27;</span>,text=<span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">                             title=<span class="string">&#x27;3D散点图&#x27;</span>,colors=[<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>],width=<span class="number">0.5</span>,margin=(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>),</span><br><span class="line">                             opacity=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>艾西，<code>pandas</code>这章跟我想的还是不太一样，有点失望。<br>看来具体理解还得自己去尝试，感觉没有学到预期的东西，<code>cufflinks</code>非常方便，但可能也只是限于理解绘图函数吧。</p>
+<h1 id="pyecharts绘图示例"><a href="#pyecharts绘图示例" class="headerlink" title="pyecharts绘图示例"></a>pyecharts绘图示例</h1><p>而且<code>pyecharts</code>的效果也是很好的，还可以画动态图，下面举个例子.</p>
+<p><img src="https://s3.ax1x.com/2020/12/14/rnSOdH.png" alt="line"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> Line, Bar</span><br><span class="line"><span class="comment"># 折线图， 日均积数</span></span><br><span class="line"></span><br><span class="line">line = Line(<span class="string">&#x27;积数按季度变化图&#x27;</span>) <span class="comment"># 图的名字</span></span><br><span class="line">xii = [<span class="string">&#x27;20160930&#x27;</span>, <span class="string">&#x27;20161231&#x27;</span>, <span class="string">&#x27;20170331&#x27;</span>, <span class="string">&#x27;20170630&#x27;</span>, <span class="string">&#x27;20170930&#x27;</span>, <span class="string">&#x27;20171231&#x27;</span>, <span class="string">&#x27;20180331&#x27;</span>, <span class="string">&#x27;20180630&#x27;</span>, <span class="string">&#x27;20180819&#x27;</span>]</span><br><span class="line">yii = [<span class="string">&#x27;13156337.93&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;39318037.75&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;59714025.06&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;63307896.71&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;120550973.1&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;130784306.8&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;191504839.2&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;242483066&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;266377661.4&#x27;</span>]</span><br><span class="line">line.add(<span class="string">&quot;日均积数&quot;</span>, xii, yii, mark_line=[<span class="string">&quot;average&quot;</span>], mark_point=[<span class="string">&quot;max&quot;</span>, <span class="string">&quot;min&quot;</span>])</span><br><span class="line">line.show_config()</span><br><span class="line">line.render()</span><br></pre></td></tr></table></figure>
+<p>会在当前文件夹生成一个html文件。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>notes</tag>
       </tags>
   </entry>
   <entry>
@@ -712,73 +780,6 @@
 
 <p>这种科普类的书真是有点鸡肋 深不深浅不浅的 </p>
 <p>哎好烦躁 不学了</p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>notes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《基于plotly的可视化绘图》笔记2</title>
-    <url>/2020/12/10/%E3%80%8A%E5%9F%BA%E4%BA%8Eplotly%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%98%E5%9B%BE%E3%80%8B%E7%AC%94%E8%AE%B02/</url>
-    <content><![CDATA[<p>《python数据分析 基于plotly的动态可视化绘图》, 孙洋洋 王硕 邢梦来 袁泉 吴娜著, 电子工业出版社.</p>
-<p>看看第一篇就够了，主要是在说基本的画图函数和多子图。<br>到这里就像是强迫症不写完难受了。</p>
-<a id="more"></a>
-
-<p>有些章节目前对我来说还是有些遥远，所以我只写<code>23496</code>章和<code>visdom</code>，av8d噶油.</p>
-<h1 id="plotly与pandas"><a href="#plotly与pandas" class="headerlink" title="plotly与pandas"></a>plotly与pandas</h1><p>可以直接识别<code>pandas</code>的<code>dataframe</code>或者<code>series</code>，</p>
-<h2 id="简单案例"><a href="#简单案例" class="headerlink" title="简单案例"></a>简单案例</h2><p>线形图、散点图、柱状图</p>
-<h3 id="线形图"><a href="#线形图" class="headerlink" title="线形图"></a>线形图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYAXD.png" alt="线形图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py </span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">N = <span class="number">500</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.head()</span><br><span class="line"></span><br><span class="line">data = [</span><br><span class="line">    go.Scatter(</span><br><span class="line">        x=df[<span class="string">&#x27;x&#x27;</span>], </span><br><span class="line">        y=df[<span class="string">&#x27;y&#x27;</span>]</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">url = pyplt(data)</span><br></pre></td></tr></table></figure>
-<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYk6O.png" alt="散点图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">df_50 = pd.read_csv(<span class="string">&#x27;../Chapter04/dat/000016.csv&#x27;</span>, index_col=[<span class="string">&#x27;date&#x27;</span>]) </span><br><span class="line">df_50.sort_index(inplace=<span class="literal">True</span>) <span class="comment"># 排序</span></span><br><span class="line">df_50 = df_50.loc[<span class="string">&#x27;2017-01-03&#x27;</span>:,:]</span><br><span class="line">df_300 = pd.read_csv(<span class="string">&#x27;../Chapter04/dat/000300.csv&#x27;</span>, index_col=[<span class="string">&#x27;date&#x27;</span>])</span><br><span class="line">df_300.sort_index(inplace=<span class="literal">True</span>) </span><br><span class="line">df_300 = df_300.loc[<span class="string">&#x27;2017-01-01&#x27;</span>:]</span><br><span class="line"></span><br><span class="line">fig = &#123;</span><br><span class="line">    <span class="string">&#x27;data&#x27;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;x&#x27;</span>: df_50.index,</span><br><span class="line">            <span class="string">&#x27;y&#x27;</span>: df_50.volume,</span><br><span class="line">            <span class="string">&#x27;mode&#x27;</span>: <span class="string">&#x27;markers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;上证50&#x27;</span>&#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;x&#x27;</span>: df_300.index,</span><br><span class="line">            <span class="string">&#x27;y&#x27;</span>: df_300.volume,</span><br><span class="line">            <span class="string">&#x27;mode&#x27;</span>: <span class="string">&#x27;markers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;沪深300&#x27;</span>&#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;layout&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;xaxis&#x27;</span>: &#123;<span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;时间&#x27;</span>,</span><br><span class="line">                  <span class="comment"># &#x27;type&#x27;: &#x27;log&#x27;,</span></span><br><span class="line">                  &#125;,</span><br><span class="line">        <span class="string">&#x27;yaxis&#x27;</span>: &#123;<span class="string">&#x27;title&#x27;</span>: <span class="string">&quot;成交量&quot;</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url = pyplt(fig)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h3><p><img src="https://s3.ax1x.com/2020/12/12/rVYip6.png" alt="柱状图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly <span class="keyword">as</span> py  </span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pyplt = py.offline.iplot</span><br><span class="line"></span><br><span class="line">N = <span class="number">40</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.head()</span><br><span class="line"></span><br><span class="line">data = [</span><br><span class="line">    go.Bar(</span><br><span class="line">        x=df[<span class="string">&#x27;x&#x27;</span>], </span><br><span class="line">        y=df[<span class="string">&#x27;y&#x27;</span>]</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">url = pyplt(data)</span><br></pre></td></tr></table></figure>
-<h2 id="使用cufflinks绘图"><a href="#使用cufflinks绘图" class="headerlink" title="使用cufflinks绘图"></a>使用cufflinks绘图</h2><p><code>cufflinks</code>的作用是改变<code>pandas</code>默认的呈现模式<code>matplotlib</code>为<code>plotly</code><br>安装<code>cufflinks</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!pip install cufflinks -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
-<p>然后运行代码。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">N = <span class="number">500</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">1</span>, N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;x&#x27;</span>: x, <span class="string">&#x27;y&#x27;</span>: y&#125;)</span><br><span class="line">df.set_index(<span class="string">&#x27;x&#x27;</span>,inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s3.ax1x.com/2020/12/12/rVYF1K.png" alt="cufflinks"></p>
-<h4 id="导入cufflinks"><a href="#导入cufflinks" class="headerlink" title="导入cufflinks"></a>导入cufflinks</h4><pre><code>import cufflinks as cf</code></pre>
-<h4 id="设置pandas的输入模式"><a href="#设置pandas的输入模式" class="headerlink" title="设置pandas的输入模式"></a>设置pandas的输入模式</h4><pre><code>cf.set_config_file(offline=True, theme=&#39;ggplot&#39;)</code></pre>
-<p>用<code>cf.getThemes()</code>可以获取当前版本所有可支持的主题。<br>并且<code>cf.set_config_file</code>只需要在<code>jupyter</code>里出现一次，这是个全局变量函数。</p>
-<h4 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h4><pre><code>df.iplot(kind=&#39;scatter&#39;)</code></pre>
-<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">The plotly.plotly module is deprecated,</span><br><span class="line">please install the chart-studio package and use the</span><br><span class="line">chart_studio.plotly module instead. </span><br></pre></td></tr></table></figure>
-<p>直接在<code>jupyter</code>里输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!pip install chart-studio -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
-<p>后面都需要用<code>import chart_studio.plotly as py</code>替换<code>import plotly.plotly as py</code></p>
-<h3 id="快速获取数据"><a href="#快速获取数据" class="headerlink" title="快速获取数据"></a>快速获取数据</h3><p>可以用<code>datagen</code>来获取<code>bar、pie、scatter、ohlc</code>等图的数据。等多查询<code>dir(cf.datagen)</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, theme=<span class="string">&#x27;polar&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df = cf.datagen.scatter() <span class="comment"># 生成散点图数据</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>, mode=<span class="string">&#x27;markers&#x27;</span>, x=<span class="string">&#x27;x&#x27;</span>, y=<span class="string">&#x27;y&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s3.ax1x.com/2020/12/12/rVYCfx.png" alt="datagen"></p>
-<h3 id="自定义绘图"><a href="#自定义绘图" class="headerlink" title="自定义绘图"></a>自定义绘图</h3><p>完成一些常见设置。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = cf.datagen.lines(n_traces=<span class="number">3</span>,columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]) <span class="comment"># 生成一个3列的DataFrame（默认5列）。</span></span><br><span class="line"></span><br><span class="line">colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;black&#x27;</span>] <span class="comment"># 自定义每条线的颜色</span></span><br><span class="line">dashes = [<span class="string">&#x27;solid&#x27;</span>, <span class="string">&#x27;dash&#x27;</span>, <span class="string">&#x27;dashdot&#x27;</span>] <span class="comment"># 自定义每条线的Style</span></span><br><span class="line">widths = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>] <span class="comment"># 自定义每条线的宽度</span></span><br><span class="line"></span><br><span class="line">plot_url = df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>, mode=<span class="string">&#x27;lines&#x27;</span>, colors=colors, dash=dashes,width=widths,xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;数量&#x27;</span>,title=<span class="string">&#x27;自定义绘图&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s3.ax1x.com/2020/12/12/rVY9t1.png" alt="自定义绘图"></p>
-<h3 id="基本图形绘制"><a href="#基本图形绘制" class="headerlink" title="基本图形绘制"></a>基本图形绘制</h3><p>可以输入<code>df.iplot?</code>进行学习。<br>下面的案例真是又简单又好看，惊了。</p>
-<h4 id="柱状图-1"><a href="#柱状图-1" class="headerlink" title="柱状图"></a>柱状图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJx0J.png" alt="柱状图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line">df = cf.datagen.bars()</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;bar&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="层叠柱状图"><a href="#层叠柱状图" class="headerlink" title="层叠柱状图"></a>层叠柱状图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJz79.png" alt="层叠柱状图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line">df = cf.datagen.bars(n_categories=<span class="number">4</span>,columns=[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>])</span><br><span class="line"></span><br><span class="line">df.iplot(kind=<span class="string">&#x27;bar&#x27;</span>, barmode=<span class="string">&#x27;stack&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="散点图-1"><a href="#散点图-1" class="headerlink" title="散点图"></a>散点图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJLlT.png" alt="散点图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chart_studio.plotly <span class="keyword">as</span> py</span><br><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line">df = cf.datagen.lines(<span class="number">2</span>, columns=[<span class="string">&#x27;中信证券&#x27;</span>,<span class="string">&#x27;招商证券&#x27;</span>])</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter&#x27;</span>,mode=<span class="string">&#x27;markers&#x27;</span>,size=<span class="number">10</span>,symbol=<span class="string">&#x27;x&#x27;</span>,colorscale=<span class="string">&#x27;paired&#x27;</span>,</span><br><span class="line">                          xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;每股盈利增长率&#x27;</span>,title=<span class="string">&#x27;散点图&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="价差图"><a href="#价差图" class="headerlink" title="价差图"></a>价差图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJO6U.png" alt="价差图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line">df= cf.datagen.lines(<span class="number">2</span>,columns=[<span class="string">&#x27;万科A&#x27;</span>,<span class="string">&#x27;中粮地产&#x27;</span>])</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;spread&#x27;</span>,xTitle=<span class="string">&#x27;日期&#x27;</span>,yTitle=<span class="string">&#x27;收益率&#x27;</span>,title=<span class="string">&#x27;价差图&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVYY7j.png" alt="直方图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df= cf.datagen.histogram(<span class="number">2</span>)</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;histogram&#x27;</span>,opacity=<span class="number">.75</span>,title=<span class="string">&#x27;直方图&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="时序子图"><a href="#时序子图" class="headerlink" title="时序子图"></a>时序子图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVJXXF.png" alt="时序子图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>, theme=<span class="string">&#x27;pearl&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df=cf.datagen.lines(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">df.iplot(subplots=<span class="literal">True</span>, shape=(<span class="number">4</span>,<span class="number">1</span>), shared_xaxes=<span class="literal">True</span>, fill=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="3D散点图"><a href="#3D散点图" class="headerlink" title="3D散点图"></a>3D散点图</h4><p><img src="https://s3.ax1x.com/2020/12/12/rVYpkR.png" alt="3D散点图"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cufflinks <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line">cf.set_config_file(offline=<span class="literal">True</span>, world_readable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df = cf.datagen.scatter3d(<span class="number">2</span>,<span class="number">150</span>)</span><br><span class="line">df.iplot(kind=<span class="string">&#x27;scatter3d&#x27;</span>,x=<span class="string">&#x27;x&#x27;</span>,y=<span class="string">&#x27;y&#x27;</span>,z=<span class="string">&#x27;z&#x27;</span>,size=<span class="number">15</span>,categories=<span class="string">&#x27;categories&#x27;</span>,text=<span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">                             title=<span class="string">&#x27;3D散点图&#x27;</span>,colors=[<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>],width=<span class="number">0.5</span>,margin=(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>),</span><br><span class="line">                             opacity=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>艾西，<code>pandas</code>这章跟我想的还是不太一样，有点失望。<br>看来具体理解还得自己去尝试，感觉没有学到预期的东西，<code>cufflinks</code>非常方便，但可能也只是限于理解绘图函数吧。</p>
-<h1 id="pyecharts绘图示例"><a href="#pyecharts绘图示例" class="headerlink" title="pyecharts绘图示例"></a>pyecharts绘图示例</h1><p>而且<code>pyecharts</code>的效果也是很好的，还可以画动态图，下面举个例子.</p>
-<p><img src="https://s3.ax1x.com/2020/12/14/rnSOdH.png" alt="line"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> Line, Bar</span><br><span class="line"><span class="comment"># 折线图， 日均积数</span></span><br><span class="line"></span><br><span class="line">line = Line(<span class="string">&#x27;积数按季度变化图&#x27;</span>) <span class="comment"># 图的名字</span></span><br><span class="line">xii = [<span class="string">&#x27;20160930&#x27;</span>, <span class="string">&#x27;20161231&#x27;</span>, <span class="string">&#x27;20170331&#x27;</span>, <span class="string">&#x27;20170630&#x27;</span>, <span class="string">&#x27;20170930&#x27;</span>, <span class="string">&#x27;20171231&#x27;</span>, <span class="string">&#x27;20180331&#x27;</span>, <span class="string">&#x27;20180630&#x27;</span>, <span class="string">&#x27;20180819&#x27;</span>]</span><br><span class="line">yii = [<span class="string">&#x27;13156337.93&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;39318037.75&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;59714025.06&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;63307896.71&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;120550973.1&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;130784306.8&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;191504839.2&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;242483066&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;266377661.4&#x27;</span>]</span><br><span class="line">line.add(<span class="string">&quot;日均积数&quot;</span>, xii, yii, mark_line=[<span class="string">&quot;average&quot;</span>], mark_point=[<span class="string">&quot;max&quot;</span>, <span class="string">&quot;min&quot;</span>])</span><br><span class="line">line.show_config()</span><br><span class="line">line.render()</span><br></pre></td></tr></table></figure>
-<p>会在当前文件夹生成一个html文件。</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -995,6 +996,89 @@
       <tags>
         <tag>learn</tag>
         <tag>spyder</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>谈谈博客开通过程遇到的问题</title>
+    <url>/2020/10/30/%E8%B0%88%E8%B0%88%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>过去和现在：这里记录着创建博客过程的坑</p>
+<a id="more"></a>
+
+<h1 id="初识Hexo"><a href="#初识Hexo" class="headerlink" title="初识Hexo"></a>初识Hexo</h1><h2 id="文件介绍"><a href="#文件介绍" class="headerlink" title="文件介绍"></a>文件介绍</h2><ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li>_config.yml: 博客的配置文件</li>
+</ul>
+<h2 id="现在来介绍常用的Hexo-命令"><a href="#现在来介绍常用的Hexo-命令" class="headerlink" title="现在来介绍常用的Hexo 命令"></a>现在来介绍常用的Hexo 命令</h2><ul>
+<li>npm install hexo -g #安装Hexo</li>
+<li>npm update hexo -g #升级</li>
+<li>hexo init #初始化博客</li>
+<li>hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</li>
+<li>hexo server -s #静态模式</li>
+<li>hexo server -p 5000 #更改端口</li>
+<li>hexo server -i 192.168.1.1 #自定义 IP</li>
+<li>hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</li>
+</ul>
+<h2 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h2><ul>
+<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
+<li>hexo g == hexo generate #生成</li>
+<li>hexo s == hexo server #启动服务预览</li>
+<li>hexo d == hexo deploy #部署</li>
+</ul>
+<h2 id="写完后输入"><a href="#写完后输入" class="headerlink" title="写完后输入"></a>写完后输入</h2><ul>
+<li>hexo clean</li>
+<li>hexo g</li>
+<li>hexo d</li>
+</ul>
+<h2 id="默认布局"><a href="#默认布局" class="headerlink" title="默认布局"></a>默认布局</h2><p>默认用post布局。</p>
+<p>Hexo 有三种默认布局：<code>post</code>、<code>page</code>和<code>draft</code>，他们分别对应不同的路径，都将储存到<code>source/_posts</code>文件夹。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="CR-CRLF"><a href="#CR-CRLF" class="headerlink" title="CR CRLF"></a>CR CRLF</h1><p>改了<code>_config.yml</code>之后，<code>git</code>总是给一堆警告说：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">warning:LF will be replaced by CRLF in XXXX</span><br></pre></td></tr></table></figure>
+
+<p>我们知道如果是<code>python</code>的话，就可以加上如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import warnings</span><br><span class="line">warnings.filterwarnings(&#39;ignore&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>百度了一下发现<code>windows</code>下的解决办法是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
+
+<p>就是说我们改的时候弄进去了LF，而git是要都是CRLF的，所以git就警告我们一下.</p>
+<p>所以眼不见心不烦..</p>
+<h1 id="在华为云上布置Hexo"><a href="#在华为云上布置Hexo" class="headerlink" title="在华为云上布置Hexo"></a>在华为云上布置Hexo</h1><h2 id="域名过户"><a href="#域名过户" class="headerlink" title="域名过户"></a>域名过户</h2><p>需要先设置一个用户信息的模板，工作日审核很快的，然后是域名过户，用到通过审核的那个模板，审核也很快，我大概总共用了一天，这期间就在<code>github.io</code>上测试改动的结果，也不耽误。</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>然后就是域名解析了。百度好像结果很少，我一开始是参考<a href="https://zhuanlan.zhihu.com/p/26625249">鱼佬都点赞的博文!</a>搭建的，解析后先输入了<code>github</code>的IP，是A类，然后再创建CNAME就不行，说有冲突，一开始以为是和默认的NS类冲突了，仔细读了一下发现是和自己刚建的A类冲突，于是乎删了<code>github</code>的IP先。</p>
+<p>我的步骤：</p>
+<h3 id="创建CNAME"><a href="#创建CNAME" class="headerlink" title="创建CNAME"></a>创建CNAME</h3><p><img src="https://s1.ax1x.com/2020/10/31/BUK5CD.png"></p>
+<h3 id="github的IP"><a href="#github的IP" class="headerlink" title="github的IP"></a>github的IP</h3><p>这里要用github最新的IP，不然没用几分钟就404，给你发邮件让你再改。</p>
+<p><img src="https://s1.ax1x.com/2020/10/31/BUMZPU.png"></p>
+<p>华为云这边就没问题了，剩下两步跟参考博文一样。</p>
+<h1 id="Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed"><a href="#Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed" class="headerlink" title="Failed to connect to github.com port 443:connection timed out, error: spawn failed"></a>Failed to connect to github.com port 443:connection timed out, error: spawn failed</h1><p>我出现这个问题的原因是改动了<code>_config.yml</code>的<code>symbols_count_time:</code>，都设置成<code>true</code>就好了，但是他会在主页下面也出现统计字数和时长，</p>
+<p>详见<a href="https://github.com/next-theme/hexo-word-counter">官方文档</a></p>
+<p><code>awl</code>：几个字算一个词儿<br><code>wpm = 275</code>：一分钟读275个词儿</p>
+<p>我想知道下面这个<code>theme</code>的配置里，第三个为啥是false，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
+
+<p>emm并不是这样的，后面经常改完了出现这个，最后发现实际上是网络状况不好..</p>
+<h1 id="如何正确测试"><a href="#如何正确测试" class="headerlink" title="如何正确测试"></a>如何正确测试</h1><p>在<code>git bash</code>上输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s -p 1024</span><br></pre></td></tr></table></figure>
+
+<p>然后去浏览器：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:1024</span><br></pre></td></tr></table></figure>
+
+<p><em>注：数字是我随便输的</em></p>
+<p>测试没问题了再三连</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>learning notes</category>
+      </categories>
+      <tags>
+        <tag>learn</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1455,89 +1539,6 @@ Kurtosis：1.495</code></pre>
       <tags>
         <tag>python</tag>
         <tag>visualization</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>谈谈博客开通过程遇到的问题</title>
-    <url>/2020/10/30/%E8%B0%88%E8%B0%88%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>过去和现在：这里记录着创建博客过程的坑</p>
-<a id="more"></a>
-
-<h1 id="初识Hexo"><a href="#初识Hexo" class="headerlink" title="初识Hexo"></a>初识Hexo</h1><h2 id="文件介绍"><a href="#文件介绍" class="headerlink" title="文件介绍"></a>文件介绍</h2><ul>
-<li>node_modules: 依赖包</li>
-<li>public：存放生成的页面</li>
-<li>scaffolds：生成文章的一些模板</li>
-<li>source：用来存放你的文章</li>
-<li>themes：主题</li>
-<li>_config.yml: 博客的配置文件</li>
-</ul>
-<h2 id="现在来介绍常用的Hexo-命令"><a href="#现在来介绍常用的Hexo-命令" class="headerlink" title="现在来介绍常用的Hexo 命令"></a>现在来介绍常用的Hexo 命令</h2><ul>
-<li>npm install hexo -g #安装Hexo</li>
-<li>npm update hexo -g #升级</li>
-<li>hexo init #初始化博客</li>
-<li>hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</li>
-<li>hexo server -s #静态模式</li>
-<li>hexo server -p 5000 #更改端口</li>
-<li>hexo server -i 192.168.1.1 #自定义 IP</li>
-<li>hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</li>
-</ul>
-<h2 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h2><ul>
-<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
-<li>hexo g == hexo generate #生成</li>
-<li>hexo s == hexo server #启动服务预览</li>
-<li>hexo d == hexo deploy #部署</li>
-</ul>
-<h2 id="写完后输入"><a href="#写完后输入" class="headerlink" title="写完后输入"></a>写完后输入</h2><ul>
-<li>hexo clean</li>
-<li>hexo g</li>
-<li>hexo d</li>
-</ul>
-<h2 id="默认布局"><a href="#默认布局" class="headerlink" title="默认布局"></a>默认布局</h2><p>默认用post布局。</p>
-<p>Hexo 有三种默认布局：<code>post</code>、<code>page</code>和<code>draft</code>，他们分别对应不同的路径，都将储存到<code>source/_posts</code>文件夹。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="CR-CRLF"><a href="#CR-CRLF" class="headerlink" title="CR CRLF"></a>CR CRLF</h1><p>改了<code>_config.yml</code>之后，<code>git</code>总是给一堆警告说：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">warning:LF will be replaced by CRLF in XXXX</span><br></pre></td></tr></table></figure>
-
-<p>我们知道如果是<code>python</code>的话，就可以加上如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import warnings</span><br><span class="line">warnings.filterwarnings(&#39;ignore&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>百度了一下发现<code>windows</code>下的解决办法是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
-
-<p>就是说我们改的时候弄进去了LF，而git是要都是CRLF的，所以git就警告我们一下.</p>
-<p>所以眼不见心不烦..</p>
-<h1 id="在华为云上布置Hexo"><a href="#在华为云上布置Hexo" class="headerlink" title="在华为云上布置Hexo"></a>在华为云上布置Hexo</h1><h2 id="域名过户"><a href="#域名过户" class="headerlink" title="域名过户"></a>域名过户</h2><p>需要先设置一个用户信息的模板，工作日审核很快的，然后是域名过户，用到通过审核的那个模板，审核也很快，我大概总共用了一天，这期间就在<code>github.io</code>上测试改动的结果，也不耽误。</p>
-<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>然后就是域名解析了。百度好像结果很少，我一开始是参考<a href="https://zhuanlan.zhihu.com/p/26625249">鱼佬都点赞的博文!</a>搭建的，解析后先输入了<code>github</code>的IP，是A类，然后再创建CNAME就不行，说有冲突，一开始以为是和默认的NS类冲突了，仔细读了一下发现是和自己刚建的A类冲突，于是乎删了<code>github</code>的IP先。</p>
-<p>我的步骤：</p>
-<h3 id="创建CNAME"><a href="#创建CNAME" class="headerlink" title="创建CNAME"></a>创建CNAME</h3><p><img src="https://s1.ax1x.com/2020/10/31/BUK5CD.png"></p>
-<h3 id="github的IP"><a href="#github的IP" class="headerlink" title="github的IP"></a>github的IP</h3><p>这里要用github最新的IP，不然没用几分钟就404，给你发邮件让你再改。</p>
-<p><img src="https://s1.ax1x.com/2020/10/31/BUMZPU.png"></p>
-<p>华为云这边就没问题了，剩下两步跟参考博文一样。</p>
-<h1 id="Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed"><a href="#Failed-to-connect-to-github-com-port-443-connection-timed-out-error-spawn-failed" class="headerlink" title="Failed to connect to github.com port 443:connection timed out, error: spawn failed"></a>Failed to connect to github.com port 443:connection timed out, error: spawn failed</h1><p>我出现这个问题的原因是改动了<code>_config.yml</code>的<code>symbols_count_time:</code>，都设置成<code>true</code>就好了，但是他会在主页下面也出现统计字数和时长，</p>
-<p>详见<a href="https://github.com/next-theme/hexo-word-counter">官方文档</a></p>
-<p><code>awl</code>：几个字算一个词儿<br><code>wpm = 275</code>：一分钟读275个词儿</p>
-<p>我想知道下面这个<code>theme</code>的配置里，第三个为啥是false，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
-
-<p>emm并不是这样的，后面经常改完了出现这个，最后发现实际上是网络状况不好..</p>
-<h1 id="如何正确测试"><a href="#如何正确测试" class="headerlink" title="如何正确测试"></a>如何正确测试</h1><p>在<code>git bash</code>上输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s -p 1024</span><br></pre></td></tr></table></figure>
-
-<p>然后去浏览器：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:1024</span><br></pre></td></tr></table></figure>
-
-<p><em>注：数字是我随便输的</em></p>
-<p>测试没问题了再三连</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>learning notes</category>
-      </categories>
-      <tags>
-        <tag>learn</tag>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
